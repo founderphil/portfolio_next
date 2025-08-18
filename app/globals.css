@@ -2,5 +2,80 @@
 @tailwind components;
 @tailwind utilities;
 
-:root { color-scheme: dark light; }
-html { scroll-behavior: smooth; }
+/* ... custom styles below... */
+
+:root {
+  color-scheme: dark light;
+  --font-sans: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Menlo', 'Monaco', 'Consolas', monospace;
+  --bg-main: #111;
+  --text-main: #e5e7eb;
+  --text-muted: #9ca3af;
+  --border: #222;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--bg-main);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background: var(--bg-main);
+  color: var(--text-main);
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text-main);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+h1 { font-size: 2.5rem; margin-top: 0; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+
+p {
+  margin-bottom: 1.25rem;
+  color: var(--text-muted);
+}
+
+a {
+  color: #38bdf8;
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+a:hover {
+  color: #0ea5e9;
+}
+
+img {
+  max-width: 100%;
+  border-radius: 0.75rem;
+  border: 1px solid var(--border);
+}
+
+pre, code {
+  font-family: var(--font-mono);
+  background: #18181b;
+  color: #f3f4f6;
+  border-radius: 0.5rem;
+  padding: 0.25em 0.5em;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  background: #18181b;
+}
+::-webkit-scrollbar-thumb {
+  background: #222;
+  border-radius: 8px;
+}

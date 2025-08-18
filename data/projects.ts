@@ -4,7 +4,7 @@ export const projects = [
     title: 'The MAIA Experience',
     kicker: 'Multi-sensory AI performance; real-time STT, CV, and voice.',
     tags: ['AI','XR','Live'],
-    thumb: '/images/maia.jpg',
+    thumb: '/images/maia.png',
     featured: true
   },
   {
@@ -12,7 +12,7 @@ export const projects = [
     title: 'ChalkNotes',
     kicker: 'Mixed-reality authoring & discovery platform.',
     tags: ['XR','Platform','Creator'],
-    thumb: '/images/chalknotes.jpg',
+    thumb: '/images/chalknotes.png',
     featured: true
   },
   {
@@ -20,7 +20,7 @@ export const projects = [
     title: 'Emily Was Here',
     kicker: 'Self-guided XR audio-AR walk across Brooklyn Bridge.',
     tags: ['XR','Audio AR'],
-    thumb: '/images/emily.jpg',
+    thumb: '/images/emily.png',
     featured: true
   },
   {
@@ -28,7 +28,7 @@ export const projects = [
     title: 'FAIRYLAND',
     kicker: 'Transmedia UX/tech lead for live+digital world.',
     tags: ['Transmedia','AI','Experience Design'],
-    thumb: '/images/fairyland.jpg',
+    thumb: '/images/fairyland.gif',
     featured: true
   },
   // ...add more projects as needed
