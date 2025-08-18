@@ -1,14 +1,32 @@
+"use client";
 import Link from 'next/link';
 import WorkConstellation from '@/components/WorkConstellation';
 import TagBar from '@/components/TagBar';
 import ProjectCard from '@/components/ProjectCard';
 import { projects } from '@/data/projects';
+import FaceDotsExperience from '@/components/FaceDotsExperience';
+import { useState } from 'react';
 
 export default function Page() {
+  const [showDots, setShowDots] = useState(true);
+  const [fadeInContent, setFadeInContent] = useState(false);
   const featured = projects.filter(p => p.featured);
 
-  return (
-    <div className="py-16 space-y-20">
+  function handleEnter() {
+    setShowDots(false);
+    setTimeout(() => setFadeInContent(true), 100); 
+  }
+
+  return showDots ? (
+    <FaceDotsExperience onEnter={handleEnter} />
+  ) : (
+    <div
+      className="py-16 space-y-20"
+      style={{
+        opacity: fadeInContent ? 1 : 0,
+        transition: 'opacity 1.2s',
+      }}
+    >
       <header className="space-y-6">
         <h1 className="text-5xl md:text-7xl font-semibold tracking-tight">
           Product Design · AI · Mixed Reality
