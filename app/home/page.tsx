@@ -1,10 +1,4 @@
 "use client";
-import Link from 'next/link';
-import TagBar from '@/components/TagBar';
-import ProjectCard from '@/components/ProjectCard';
-import { projects } from '@/data/projects';
-import FaceDotsExperience from '@/components/FaceDotsExperience';
-import { useState } from 'react';
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import CredStrip from "@/components/CredStrip";
@@ -14,24 +8,10 @@ import FeaturedWork from "@/components/FeaturedWork";
 import Approach from "@/components/Approach";
 import ContactCTA from "@/components/ContactCTA";
 import Footer from "@/components/Footer";
-import { useRouter } from "next/navigation";
 
-export default function Page() {
-  const router = useRouter();
-  const [showDots, setShowDots] = useState(true);
-  const [fadeInContent, setFadeInContent] = useState(false);
-  const featured = projects.filter(p => p.featured);
-
-  function handleEnter() {
-    setShowDots(false);
-    setTimeout(() => setFadeInContent(true), 100); 
-    router.push("/home");
-  }
-
-  return showDots ? (
-    <FaceDotsExperience onEnter={handleEnter} />
-  ) : (
-     <div className="min-h-screen bg-neutral-950 text-neutral-100">
+export default function HomePage() {
+  return (
+    <div className="min-h-screen bg-neutral-950 text-neutral-100">
       <Header />
       <main className="mx-auto max-w-6xl px-6">
         <Hero />

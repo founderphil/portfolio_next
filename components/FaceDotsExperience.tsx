@@ -234,29 +234,51 @@ export default function FaceDotsExperience({ onEnter }: { onEnter: () => void })
         }}
       />
       {!entered && (
-        <button
-          style={{
-            position: 'absolute',
-            left: '50%',
-            bottom: '3rem',
-            zIndex: 3,
-            padding: '0.75rem 2rem',
-            fontSize: '1rem',
-            borderRadius: '999px',
-            background: 'rgba(30,30,30,0.8)',
-            color: '#fff',
-            border: 'none',
-            boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
-            cursor: 'pointer',
-            transform: 'translateX(-50%)',
-          }}
-          onClick={() => {
-            setEntered(true);
-            setFade(2);
-          }}
-        >
-          ENTER
-        </button>
+        <>
+          <div
+            style={{
+              position: 'absolute',
+              left: '50%',
+              bottom: '6.5rem',
+              zIndex: 3,
+              transform: 'translateX(-50%)',
+              fontSize: '1.1rem',
+              color: '#222',
+              background: 'rgba(255,255,255,0.8)',
+              padding: '0.5rem 1.5rem',
+            //  borderRadius: '999px',
+           //   boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
+              pointerEvents: 'none',
+              fontWeight: 500,
+              letterSpacing: '0.05em',
+            }}
+          >
+            push. click. drag
+          </div>
+          <button
+            style={{
+              position: 'absolute',
+              left: '50%',
+              bottom: '3rem',
+              zIndex: 3,
+              padding: '0.75rem 2rem',
+              fontSize: '1rem',
+              borderRadius: '999px',
+              background: 'rgba(30,30,30,0.8)',
+              color: '#fff',
+              border: 'none',
+              boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
+              cursor: 'pointer',
+              transform: 'translateX(-50%)',
+            }}
+            onClick={() => {
+              setEntered(true);
+              setFade(2);
+            }}
+          >
+            ENTER
+          </button>
+        </>
       )}
     </div>
   );
