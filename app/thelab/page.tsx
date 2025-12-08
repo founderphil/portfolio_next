@@ -45,7 +45,7 @@ const LabPage: React.FC = () => {
             v∞.weird
           </span>
         </div>
-        <p className="text-base sm:text-lg md:text-xl text-cyan-100/90 max-w-3xl mx-auto leading-relaxed">
+        <p className="text-base text-cyan-100/90 max-w-3xl mx-auto leading-relaxed">
           AR spells, AI creatures, light rituals, and data that dances.
           This is where the experiments escape the notebook and take over the room.
         </p>
@@ -60,7 +60,7 @@ const LabPage: React.FC = () => {
               <span className="h-2 w-2 rounded-full bg-fuchsia-400 animate-[ping_2s_ease_out_infinite]" />
               Creative Technology
             </h2>
-            <div className="space-y-4 text-gray-200/90 leading-relaxed">
+            <div className="space-y-4 text-gray-200/90 leading-relaxed text-base">
           <p>
             As part of my deep dive into the forefront of creative technology, I set out to explore the latest innovations in frontend web development. Today’s creative technologists are pushing the boundaries of what’s possible by seamlessly integrating code with both software and hardware, fundamentally reimagining how we interact with computers. The interface between humans and machines is constantly evolving, opening new dimensions of interaction.
           </p>
@@ -249,7 +249,7 @@ const LabPage: React.FC = () => {
             spreadsheets → stories → systems
           </span>
         </div>
-        <div className="space-y-4 text-sky-50/90 leading-relaxed">
+        <div className="space-y-4 text-sky-50/90 leading-relaxed text-base">
           <p>
             I explored datasets to analyze and model human behavior and urban dynamics — for example, evaluating how different demographics might be impacted by policy changes like congestion pricing in cities.
           </p>
@@ -287,7 +287,7 @@ const LabPage: React.FC = () => {
             <div className="space-y-4 text-sky-50/90 leading-relaxed">
               <div>
                 <h2 className="text-2xl sm:text-3xl font-semibold text-white mb-2">AI &amp; Computer Vision</h2>
-                <p className="text-sm sm:text-base text-sky-100/90 max-w-xl">
+                <p className="text-base text-sky-100/90 max-w-xl">
                   I took a deep dive into implementing various AI models and exploring the mathematical black box of AI. This included training models from datasets, using computer vision to understand pixels on maps to predict the trajectory of static position objects obscured by other objects ("sidewalks covered by trees"), image recognition, and more.
                 </p>
               </div>
@@ -357,7 +357,7 @@ const LabPage: React.FC = () => {
         </div>
 
         <div className="grid md:grid-cols-[minmax(0,1.2fr)_minmax(0,1.1fr)] gap-10 items-start">
-          <div className="space-y-4 text-cyan-50/90 leading-relaxed">
+          <div className="space-y-4 text-cyan-50/90 leading-relaxed text-base">
           <p>
             Augmented Reality (AR) is rapidly reshaping the landscape of human-computer interaction, blurring the lines between the physical and digital worlds. My journey into AR involved pushing the boundaries of what’s possible with platforms like Niantic Lightship, Adobe Aero, Unreal, Snap Lens Studio, Meta Spark, and TikTok Effect House.
           </p>
@@ -430,7 +430,7 @@ const LabPage: React.FC = () => {
           alt="AI PetRock screenshot"
           className="w-full rounded-3xl shadow-[0_0_40px_rgba(34,211,238,0.4)] object-cover border border-cyan-300/70"
         />
-        <div className="relative space-y-4 text-cyan-50/90 leading-relaxed">
+        <div className="relative space-y-4 text-cyan-50/90 leading-relaxed text-base">
           <p>
             I have been working with NLP since 2018 — primarily understanding sentiment and context of massive transcript- or text-based libraries. For my grad work, I extended that into research with efficient language models, aiming to run fully functional AI with personality on constrained devices like Raspberry Pi CPUs.
           </p>
@@ -583,7 +583,7 @@ const LabPage: React.FC = () => {
             p5.js · particles · diary orbits
           </span>
         </div>
-        <div className="space-y-4 text-amber-50/90 leading-relaxed">
+        <div className="space-y-4 text-amber-50/90 leading-relaxed text-base">
           <p>
             I delved into experiments using P5.js: transforming a week of diary entries into a visual chart; building immersive particle systems and orbiting characters; and syncing light sensors on microcontrollers (Arduino) to generate sound and color — a symphony of data, light, and motion.
           </p>
