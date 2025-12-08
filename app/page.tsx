@@ -1,48 +1,44 @@
 "use client";
-import Link from 'next/link';
-import TagBar from '@/components/TagBar';
-import ProjectCard from '@/components/ProjectCard';
-import { projects } from '@/data/projects';
-import FaceDotsExperience from '@/components/FaceDotsExperience';
-import { useState } from 'react';
+import { useSearchParams } from "next/navigation";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import CredStrip from "@/components/CredStrip";
-import SocialPlayground from "@/components/SocialPlayground";
-import Legend from "@/components/Legend";
 import FeaturedWork from "@/components/FeaturedWork";
 import Approach from "@/components/Approach";
 import ContactCTA from "@/components/ContactCTA";
 import Footer from "@/components/Footer";
-import { useRouter } from "next/navigation";
+import FaceDotsExperience from "@/components/FaceDotsExperience";
+import { projects } from "@/data/projects";
+import { useEffect, useState } from "react";
 
 export default function Page() {
-  const router = useRouter();
-  const [showDots, setShowDots] = useState(true);
-  const [fadeInContent, setFadeInContent] = useState(false);
-  const featured = projects.filter(p => p.featured);
+  const searchParams = useSearchParams();
+  const from = searchParams.get("from");
 
-  function handleEnter() {
-    setShowDots(false);
-    setTimeout(() => setFadeInContent(true), 100); 
-    router.push("/home");
+  const [entered, setEntered] = useState(false);
+
+  // If we came from a work detail page, skip FaceDots
+  useEffect(() => {
+    if (from === "work") {
+      setEntered(true);
+    }
+  }, [from]);
+
+  const featured = Object.entries(projects)
+    .filter(([_, p]) => p.featured)
+    .map(([slug, p]) => ({ ...p, slug }));
+
+  if (!entered) {
+    return <FaceDotsExperience onEnter={() => setEntered(true)} />;
   }
 
-  return showDots ? (
-    <FaceDotsExperience onEnter={handleEnter} />
-  ) : (
-     <div className="min-h-screen bg-neutral-950 text-neutral-100">
+  return (
+    <div className="min-h-screen bg-neutral-950 text-neutral-100">
       <Header />
-      <main className="mx-auto max-w-6xl px-6">
+      <main className="mx-auto max-w-6xl px-4 md:px-8 lg:px-10 xl:px-16">
         <Hero />
-        <CredStrip />
-        <section className="py-16 space-y-6" aria-label="Interactive demo">
-          <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">Make it fun together</h2>
-          <p className="text-neutral-300 max-w-2xl">A tiny taste of my approach: simple rules that invite people to co‑create, notice one another, and feel part of something. Click to add players. Drag to cluster them. See what emerges.</p>
-          <SocialPlayground />
-          <Legend />
-        </section>
-        <FeaturedWork />
+        {/* <CredStrip /> */}
+        <FeaturedWork featured={featured} />
         <Approach />
         <ContactCTA />
       </main>

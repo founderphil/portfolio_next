@@ -1,12 +1,10 @@
 import { useRef, useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
 import * as THREE from 'three';
 import dots from '../phil_face_dots.json';
 
 const DOTS = dots.dots;
 
 export default function FaceDotsExperience({ onEnter }: { onEnter: () => void }) {
-  const router = useRouter();
   const mountRef = useRef<HTMLDivElement>(null);
   const [entered, setEntered] = useState(false);
   const [fade, setFade] = useState(0);
@@ -238,8 +236,31 @@ export default function FaceDotsExperience({ onEnter }: { onEnter: () => void })
           <div
             style={{
               position: 'absolute',
+              top: '2.5rem',
               left: '50%',
-              bottom: '6.5rem',
+              transform: 'translateX(-50%)',
+              zIndex: 3,
+              textAlign: 'center',
+              color: '#000',
+              padding: '0.75rem 1.5rem',
+              background: 'rgba(255,255,255,0.9)',
+              borderRadius: '999px',
+              boxShadow: '0 12px 30px rgba(0,0,0,0.12)',
+              maxWidth: '90vw',
+            }}
+          >
+            <div style={{ fontSize: '1.6rem', fontWeight: 700, letterSpacing: '0.04em', textTransform: 'uppercase' }}>
+              Phil Olarte
+            </div>
+            <div style={{ fontSize: '0.9rem', fontWeight: 600, marginTop: '0.25rem', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+              Product & design leader for emerging experiences.
+            </div>
+          </div>
+          <div
+            style={{
+              position: 'absolute',
+              left: '50%',
+              bottom: '9rem',
               zIndex: 3,
               transform: 'translateX(-50%)',
               fontSize: '1.1rem',
@@ -253,18 +274,18 @@ export default function FaceDotsExperience({ onEnter }: { onEnter: () => void })
               letterSpacing: '0.05em',
             }}
           >
-            push. click. drag
+            push. click. create.
           </div>
           <button
             style={{
               position: 'absolute',
               left: '50%',
-              bottom: '3rem',
+              bottom: '5rem',
               zIndex: 3,
               padding: '0.75rem 2rem',
               fontSize: '1rem',
               borderRadius: '999px',
-              background: 'rgba(30,30,30,0.8)',
+              background: 'rgba(255, 149, 0, 0.96)',
               color: '#fff',
               border: 'none',
               boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
@@ -278,6 +299,31 @@ export default function FaceDotsExperience({ onEnter }: { onEnter: () => void })
           >
             ENTER
           </button>
+          <div
+            style={{
+              position: 'absolute',
+              left: '50%',
+              bottom: '1.25rem',
+              transform: 'translateX(-50%)',
+              zIndex: 3,
+              display: 'flex',
+              gap: '1.5rem',
+              padding: '0.5rem 1.25rem',
+              background: 'rgba(255,255,255,0.9)',
+              borderRadius: '999px',
+              boxShadow: '0 10px 24px rgba(0,0,0,0.12)',
+              fontSize: '0.78rem',
+              fontWeight: 600,
+              letterSpacing: '0.18em',
+              textTransform: 'uppercase',
+              color: '#000',
+              whiteSpace: 'nowrap',
+            }}
+          >
+            <span>AI / Experience Design</span>
+            <span>XR Storyworlds</span>
+            <span>Enterprise & Startups</span>
+          </div>
         </>
       )}
     </div>

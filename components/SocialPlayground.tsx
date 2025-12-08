@@ -132,7 +132,7 @@ export default function SocialPlayground() {
       clusters.forEach((c, idx) => {
         const centroid = c.reduce((acc, n)=>({x:acc.x+n.x, y:acc.y+n.y}), {x:0,y:0});
         centroid.x /= c.length; centroid.y /= c.length;
-        const label = c.length >= 5 ? 'Co‑creation' : c.length >= 3 ? 'Co‑presence' : 'Flair';
+        const label = c.length >= 5 ? 'Co‑creation' : c.length >= 3 ? 'Co‑presence' : 'Divergent Thinker';
         ctx.fillText(`${label} (${c.length})`, centroid.x+8, centroid.y-8);
       });
 

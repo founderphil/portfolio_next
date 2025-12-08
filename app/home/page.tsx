@@ -8,25 +8,25 @@ import FeaturedWork from "@/components/FeaturedWork";
 import Approach from "@/components/Approach";
 import ContactCTA from "@/components/ContactCTA";
 import Footer from "@/components/Footer";
+import { projects } from "@/data/projects";
 
 export default function HomePage() {
+  // Get featured projects and add slug
+  const featured = Object.entries(projects)
+    .filter(([_, p]) => p.featured)
+    .map(([slug, p]) => ({ ...p, slug }));
+
   return (
-    <div className="min-h-screen bg-neutral-950 text-neutral-100">
-      <Header />
-      <main className="mx-auto max-w-6xl px-6">
-        <Hero />
-        <CredStrip />
-        <section className="py-16 space-y-6" aria-label="Interactive demo">
-          <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">Make it fun together</h2>
-          <p className="text-neutral-300 max-w-2xl">A tiny taste of my approach: simple rules that invite people to co‑create, notice one another, and feel part of something. Click to add players. Drag to cluster them. See what emerges.</p>
-          <SocialPlayground />
-          <Legend />
-        </section>
-        <FeaturedWork />
-        <Approach />
-        <ContactCTA />
-      </main>
-      <Footer />
-    </div>
-  );
+      <div className="min-h-screen bg-neutral-950 text-neutral-100">
+        <Header />
+        <main className="mx-auto max-w-6xl px-4 md:px-8 lg:px-10 xl:px-16">
+          <Hero />
+          {/* <CredStrip /> */}
+          <FeaturedWork featured={featured} />
+          <Approach />
+          <ContactCTA />
+        </main>
+        <Footer />
+      </div>
+    );
 }
