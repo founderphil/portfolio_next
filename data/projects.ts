@@ -42,9 +42,9 @@ export const projects: Record<string, Project> = {
       'Local LLM running on edge device for low latency.'
     ],
     featured: true,
-    outcomesVisual: '/images/maia_outcomes.png',
-    processVisual: '/images/maia_process.png',
-    overviewVisual: '/images/maia_overview.png'
+    outcomesVisual: '/images/MAIA_outcomes.png',
+    processVisual: '/images/MAIA_process.png',
+    overviewVisual: '/images/MAIA_overview.png'
   },
 
   fairyland: {
@@ -69,9 +69,9 @@ export const projects: Record<string, Project> = {
       'System map of narrative loops.'
     ],
     featured: true,
-    outcomesVisual: '/images/fairyland_outcomes.png',
-    processVisual: '/images/fairyland_process.png',
-    overviewVisual: '/images/fairyland_overview.png'
+    outcomesVisual: '/images/FAIRYLAND_outcomes.png',
+    processVisual: '/images/FAIRYLAND_process.png',
+    overviewVisual: '/images/FAIRYLAND_overview.png'
   },
 
   chalknotes: {
@@ -94,9 +94,9 @@ export const projects: Record<string, Project> = {
       'Final web interface showing story‑pin configuration.',
       'Mobile map/listen flow.'
     ],
-    outcomesVisual: '/images/chalknotes_outcomes.png',
-    processVisual: '/images/chalknotes_process.png',
-    overviewVisual: '/images/chalknotes_overview.png',
+    outcomesVisual: '/images/CHALKNOTES_OUTCOMES.png',
+    processVisual: '/images/CHALKNOTES_process.png',
+    overviewVisual: '/images/CHALKNOTES_overview.png',
     featured: true
   },
 
