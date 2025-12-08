@@ -271,7 +271,10 @@ const LabPage: React.FC = () => {
             </div>
           </div>
           <div className="w-full rounded-3xl border border-cyan-300/70 bg-black/60 shadow-[0_0_40px_rgba(34,211,238,0.5)] overflow-hidden">
-                    <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRYeZOA7EU6JPRI1m3Wwu-OKBNHpvAd4oltGAGN8q5d4yebdZgo9-2JGp9OPvwfONmDTYn2NlGFHtmK/embed?start=false&amp;loop=false&amp;delayms=60000" frameBorder="0" width="960" height="569" allowFullScreen={true}></iframe>
+                    <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRYeZOA7EU6JPRI1m3Wwu-OKBNHpvAd4oltGAGN8q5d4yebdZgo9-2JGp9OPvwfONmDTYn2NlGFHtmK/embed?start=false&amp;loop=false&amp;delayms=60000" 
+                    className="w-full h-[260px] sm:h-[340px] md:h-[420px] border-0"
+                    allowFullScreen
+                    ></iframe>
 
           </div>
         </div>
@@ -396,7 +399,7 @@ const LabPage: React.FC = () => {
             muted
             playsInline
             className="w-full h-auto rounded-3xl shadow-[0_0_40px_rgba(251,191,36,0.45)] bg-black object-cover border border-amber-300/70 hover:rotate-[-1.5deg] hover:scale-[1.01] transition-transform"
-            src="https://www.phillipolarte.com/wp-content/uploads/2025/03/eclipse2024lens-1.mp4"
+            src="/video/eclipse_ar.mov"
           />
           <video
             autoPlay
@@ -404,7 +407,7 @@ const LabPage: React.FC = () => {
             muted
             playsInline
             className="w-full h-auto rounded-3xl shadow-[0_0_40px_rgba(244,114,182,0.55)] bg-black object-cover border border-fuchsia-300/70 hover:rotate-[1.5deg] hover:scale-[1.01] transition-transform"
-            src="https://www.phillipolarte.com/wp-content/uploads/2025/03/usernameIsFire-1.mp4"
+            src="/video/username_fire.mov"
           />
           {/* Add more media items as needed */}
           </div>
@@ -423,7 +426,7 @@ const LabPage: React.FC = () => {
           “Hmm, just another day on the streets. Cars going by, people walking… nothing too exciting happening here. Oh wait! Is that a rock in the back seat of the white van? *giggles* Aahahahaha, I’m so glad someone’s got their priorities straight!”
         </blockquote>
         <img
-          src="https://www.phillipolarte.com/wp-content/uploads/2024/08/its-an-angry-AI-1024x454.png"
+          src="/images/edge_ui.png"
           alt="AI PetRock screenshot"
           className="w-full rounded-3xl shadow-[0_0_40px_rgba(34,211,238,0.4)] object-cover border border-cyan-300/70"
         />

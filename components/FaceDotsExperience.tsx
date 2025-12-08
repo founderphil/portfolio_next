@@ -257,7 +257,7 @@ export default function FaceDotsExperience({ onEnter }: { onEnter: () => void })
               Phil Olarte
             </div>
             <div style={{ fontSize: '0.9rem', fontWeight: 600, marginTop: '0.25rem', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-              Product & design leader for emerging experiences.
+              Product design leader for emerging experiences.
             </div>
           </div>
           <button
