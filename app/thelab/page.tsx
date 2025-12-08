@@ -1,3 +1,4 @@
+"use client";
 // src/app/lab/page.tsx
 import React from "react";
 
@@ -18,6 +19,8 @@ const projects = {
 };
 
 const LabPage: React.FC = () => {
+  const [paperModalOpen, setPaperModalOpen] = React.useState(false);
+
   return (
     <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-fuchsia-900 via-slate-950 to-cyan-900 text-gray-100 px-4 sm:px-6 md:px-10 lg:px-20 py-10 sm:py-16 space-y-20">
 
@@ -33,7 +36,7 @@ const LabPage: React.FC = () => {
         <p className="inline-flex items-center gap-2 rounded-full border border-cyan-400/40 bg-black/40 px-4 py-1 text-xs sm:text-sm uppercase tracking-[0.2em] text-cyan-200/80 mb-6 backdrop-blur">
           <span className="h-2 w-2 rounded-full bg-lime-300 animate-ping" />
           Experimental Zone · No Boring Allowed
-        </p>
+        </p><br />
         <div className="inline-flex flex-wrap items-baseline justify-center gap-3 mb-4">
           <span className="text-3xl sm:text-4xl md:text-6xl font-extrabold tracking-tight text-white drop-shadow-[0_0_25px_rgba(34,211,238,0.7)]">
             The Lab
@@ -238,6 +241,99 @@ const LabPage: React.FC = () => {
         </div>
       </section>
 
+            {/* Data Science / ML */}
+      <section className="relative z-10 max-w-5xl mx-auto space-y-6 pb-2">
+        <div className="flex items-center justify-between gap-4 flex-wrap">
+          <h2 className="text-2xl sm:text-3xl font-semibold text-white">Machine Learning & Data Science</h2>
+          <span className="text-[0.7rem] sm:text-xs font-mono uppercase tracking-[0.2em] text-sky-100 bg-black/40 px-3 py-1 rounded-full border border-sky-300/60">
+            spreadsheets → stories → systems
+          </span>
+        </div>
+        <div className="space-y-4 text-sky-50/90 leading-relaxed">
+          <p>
+            I explored datasets to analyze and model human behavior and urban dynamics — for example, evaluating how different demographics might be impacted by policy changes like congestion pricing in cities.
+          </p>
+          <p>
+            The goal: build data-driven narratives that highlight structural inequities — and propose solutions that are informed by real data.
+          </p>
+          <div className="grid sm:grid-cols-3 gap-3 text-[0.7rem] sm:text-xs font-mono text-sky-100">
+            <div className="rounded-2xl border border-sky-300/70 bg-black/60 p-3 rotate-[-2deg]">
+              <div className="uppercase tracking-[0.2em] mb-1">inputs ...WASH THY DATA!</div>
+              <div>transit logs · census data · city sensors</div>
+            </div>
+            <div className="rounded-2xl border border-emerald-300/70 bg-black/60 p-3 rotate-[1deg]">
+              <div className="uppercase tracking-[0.2em] mb-1">alchemy</div>
+              <div>models + visuals that make policy feel human.</div>
+            </div>
+            <div className="rounded-2xl border border-amber-300/70 bg-black/60 p-3 rotate-[3deg]">
+              <div className="uppercase tracking-[0.2em] mb-1">output ...DROP THE MIC!</div>
+              <div>maps that argue back and plots that protest.</div>
+            </div>
+          </div>
+          <div className="w-full rounded-3xl border border-cyan-300/70 bg-black/60 shadow-[0_0_40px_rgba(34,211,238,0.5)] overflow-hidden">
+                    <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRYeZOA7EU6JPRI1m3Wwu-OKBNHpvAd4oltGAGN8q5d4yebdZgo9-2JGp9OPvwfONmDTYn2NlGFHtmK/embed?start=false&amp;loop=false&amp;delayms=60000" frameBorder="0" width="960" height="569" allowFullScreen={true}></iframe>
+
+          </div>
+        </div>
+      </section>
+
+              {/* AI & Computer Vision */}
+        <section className="relative z-10 max-w-6xl mx-auto space-y-10">
+          <div className="grid gap-10 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1.6fr)] items-start">
+            {/* Left: copy */}
+            <div className="space-y-4 text-sky-50/90 leading-relaxed">
+              <div>
+                <h2 className="text-2xl sm:text-3xl font-semibold text-white mb-2">AI &amp; Computer Vision</h2>
+                <p className="text-sm sm:text-base text-sky-100/90 max-w-xl">
+                  I took a deep dive into implementing various AI models and exploring the mathematical black box of AI. This included training models from datasets, using computer vision to understand pixels on maps to predict the trajectory of static position objects obscured by other objects ("sidewalks covered by trees"), image recognition, and more.
+                </p>
+              </div>
+
+              <div className="hidden md:block rounded-3xl overflow-hidden border border-sky-300/70 bg-black/60 shadow-[0_0_35px_rgba(56,189,248,0.5)]">
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-auto object-cover"
+                  src="/video/CV_model_test.mov"
+                />
+              </div>
+            </div>
+
+            {/* Right: grid of outputs */}
+            <div className="space-y-4">
+              <div className="flex items-center justify-between gap-3">
+                <h3 className="text-sm sm:text-base font-semibold text-sky-100">
+                  Inference identifying sidewalks in satellite imagery.
+                </h3>
+                <span className="hidden sm:inline text-[0.7rem] font-mono uppercase tracking-[0.2em] text-sky-200/80 bg-black/40 px-3 py-1 rounded-full border border-sky-300/60">
+                  masks · overlays · probability maps
+                </span>
+              </div>
+
+              <div className="rounded-3xl border border-sky-300/70 bg-black/70 p-3 sm:p-4 shadow-[0_0_40px_rgba(56,189,248,0.6)]">
+                <img
+                  src="/images/CV_img.png"
+                  alt="AI & Computer Vision outputs"
+                  className="w-full h-auto rounded-2xl object-cover"
+                />
+              </div>
+
+              <div className="md:hidden rounded-3xl overflow-hidden border border-sky-300/70 bg-black/60 shadow-[0_0_35px_rgba(56,189,248,0.5)]">
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-auto object-cover"
+                  src="/video/CV_model_test.mov"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
       {/* AR + Generative AI Section */}
       <section className="relative z-10 max-w-6xl mx-auto space-y-8">
         <div className="flex flex-wrap items-center justify-between gap-4">
@@ -331,7 +427,7 @@ const LabPage: React.FC = () => {
           alt="AI PetRock screenshot"
           className="w-full rounded-3xl shadow-[0_0_40px_rgba(34,211,238,0.4)] object-cover border border-cyan-300/70"
         />
-        <div className="space-y-4 text-cyan-50/90 leading-relaxed">
+        <div className="relative space-y-4 text-cyan-50/90 leading-relaxed">
           <p>
             I have been working with NLP since 2018 — primarily understanding sentiment and context of massive transcript- or text-based libraries. For my grad work, I extended that into research with efficient language models, aiming to run fully functional AI with personality on constrained devices like Raspberry Pi CPUs.
           </p>
@@ -341,7 +437,7 @@ const LabPage: React.FC = () => {
           <div className="grid sm:grid-cols-3 gap-3 text-[0.7rem] sm:text-xs font-mono text-cyan-100">
             <div className="rounded-2xl border border-emerald-300/70 bg-black/60 p-3 rotate-[-2deg]">
               <div className="uppercase tracking-[0.2em] mb-1">hardware toys</div>
-              <div>raspberry pi · cameras · weird sensors</div>
+              <div>raspberry pi · cameras · edge sensors</div>
             </div>
             <div className="rounded-2xl border border-amber-300/70 bg-black/60 p-3 rotate-[1deg]">
               <div className="uppercase tracking-[0.2em] mb-1">constraints</div>
@@ -351,10 +447,131 @@ const LabPage: React.FC = () => {
               <div className="uppercase tracking-[0.2em] mb-1">personality sliders</div>
               <div>snark · wonder · chaos dialed way up.</div>
             </div>
+            <img
+              src="/images/AI-UI.png"
+              alt="AI PetRock UI"
+              className="sm:col-span-3 w-full rounded-2xl border border-cyan-300/70 bg-black/60 shadow-[0_0_40px_rgba(34,211,238,0.5)] object-cover"
+            />
           </div>
+
+          {/* Paper teaser stack */}
+          <button
+            type="button"
+            onClick={() => setPaperModalOpen(true)}
+            className="group absolute -bottom-10 left-0 flex flex-col items-start gap-2 text-left focus:outline-none"
+          >
+            <div className="relative h-28 w-36 sm:h-36 sm:w-48">
+              <img
+                src="/images/page2_rock.png"
+                alt="Research paper page 2"
+                className="absolute inset-0 h-full w-full rounded-xl border border-cyan-300/60 bg-black/70 object-cover shadow-[0_18px_40px_rgba(34,211,238,0.3)] rotate-[5deg] group-hover:translate-x-1 group-hover:translate-y-1 transition-transform duration-200"
+              />
+              <img
+                src="/images/page1_paper.png"
+                alt="Research paper page 1"
+                className="absolute inset-0 h-full w-full rounded-xl border border-cyan-100/80 bg-black/80 object-cover shadow-[0_22px_55px_rgba(59,130,246,0.55)] -rotate-3 group-hover:-translate-y-1 group-hover:-translate-x-1 transition-transform duration-200"
+              />
+            </div>
+            <div className="inline-flex items-center gap-2 rounded-full bg-cyan-400 text-slate-950 px-3 py-1 text-[0.7rem] sm:text-xs font-semibold shadow-[0_0_20px_rgba(34,211,238,0.7)] group-hover:bg-cyan-300 transition-colors">
+              <span className="text-xs">✏️</span>
+              <span>we wrote a paper!</span>
+            </div>
+          </button>
         </div>
       </section>
 
+      {/* Paper modal */}
+      {paperModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm px-4">
+          <button
+            type="button"
+            className="absolute inset-0 w-full h-full cursor-default"
+            onClick={() => setPaperModalOpen(false)}
+          />
+          <div className="relative z-10 max-w-5xl w-full bg-slate-950/95 border border-cyan-400/60 rounded-3xl shadow-[0_0_60px_rgba(34,211,238,0.7)] p-4 sm:p-6">
+            <div className="flex items-center justify-between gap-4 mb-4">
+              <h3 className="text-sm sm:text-base font-semibold text-cyan-100 flex items-center gap-2">
+                <span className="h-2 w-2 rounded-full bg-emerald-300 animate-pulse" />
+                Edge AI paper · full pages
+              </h3>
+              <button
+                type="button"
+                onClick={() => setPaperModalOpen(false)}
+                className="text-xs sm:text-sm font-mono uppercase tracking-[0.2em] text-cyan-200 hover:text-cyan-100 px-2 py-1 rounded-full hover:bg-cyan-400/10"
+              >
+                close
+              </button>
+            </div>
+            <div className="grid sm:grid-cols-2 gap-4 max-h-[70vh] overflow-auto pr-1">
+              <img
+                src="/images/page1_paper.png"
+                alt="Research paper page 1"
+                className="w-full rounded-2xl border border-cyan-300/70 bg-black/80 object-contain"
+              />
+              <img
+                src="/images/page2_rock.png"
+                alt="Research paper page 2"
+                className="w-full rounded-2xl border border-cyan-300/70 bg-black/80 object-contain"
+              />
+            </div>
+          </div>
+        </div>
+      )}
+
+            {/* Human Centered Design for emerging tech (VR) */}
+            <section className="relative z-10 max-w-6xl mx-auto space-y-10">
+              <div className="grid gap-10 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1.6fr)] items-start">
+                {/* Left: narrative + links */}
+                <div className="space-y-5 text-rose-50/95 leading-relaxed">
+                  <div className="space-y-3">
+                    <h2 className="text-2xl sm:text-3xl font-semibold text-white">
+                      Human Centered Design for emerging tech (VR)
+                    </h2>
+                    <p className="text-sm sm:text-base text-rose-100/90">
+                      As we advance into the new age of artificial intelligence, mixed reality and virtual worlds, common practices of UX/UI, product design, and product management will change drastically. I used this work to test UX theories with touch-less interfaces on Meta’s VR Quest headset, focusing on how people actually move, point, and make sense of interfaces floating in space.
+                    </p>
+                  </div>
+
+                  <div className="space-y-3 text-sm sm:text-base">
+                    <a
+                      href="https://medium.com/@phil_74559/usability-evaluation-of-meta-s-quest-horizon-feed-interface-with-hand-controls-ea1701fffcbe"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 rounded-full bg-rose-500 text-slate-950 px-4 py-1.5 font-semibold shadow-[0_0_30px_rgba(244,63,94,0.7)] hover:bg-rose-400 transition-colors"
+                    >
+                      <span className="text-xs">✍️</span>
+                      <span>Usability Evaluation of Meta’s Quest Horizon Feed interface with Hand Controls</span>
+                      <span className="text-xs">↗</span>
+                    </a>
+
+                    <a
+                      href="https://www.figma.com/proto/Lqgo4exNrgbJaKlLpQfiPg/Meta-Horizon-OS-UI-%5BOlarte-NYU%5D?node-id=3008-44491&node-type=canvas&t=erfQYLhkb61LNjnE-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=3008%3A44491&show-proto-sidebar=1"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 rounded-full bg-fuchsia-500 text-slate-950 px-4 py-1.5 font-semibold shadow-[0_0_30px_rgba(217,70,239,0.7)] hover:bg-fuchsia-400 transition-colors"
+                    >
+                      <span className="text-xs">🕹️</span>
+                      <span>Interactive prototype made with Meta’s VR design assets</span>
+                      <span className="text-xs">↗</span>
+                    </a>
+
+                    <p className="text-xs sm:text-sm text-rose-100/90 max-w-xl">
+                      Here is an example of a UX Design Plan for Meta’s VR Quest Headset showcasing a formal approach to get buy-in to a UX effort.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Right: embedded deck */}
+                <div className="rounded-3xl border border-rose-400/70 bg-black/70 shadow-[0_0_45px_rgba(244,63,94,0.75)] overflow-hidden">
+                  <iframe
+                    src="https://docs.google.com/presentation/d/e/2PACX-1vSFtWUkD6FFsgeYdLvThou5CZiSDXC1iwwu_q0azf6_ohUJGeZpEsQTR8paFrG5FoMUepuTHTkDdQd2/embed?start=false&loop=false&delayms=60000"
+                    className="w-full h-[260px] sm:h-[340px] md:h-[420px] border-0"
+                    allowFullScreen
+                    title="Meta Horizon Feed UX Design Plan"
+                  />
+                </div>
+              </div>
+            </section>
       {/* Creative Code */}
       <section className="relative z-10 max-w-5xl mx-auto space-y-6">
         <div className="flex items-center justify-between gap-4 flex-wrap">
@@ -399,46 +616,14 @@ const LabPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Data Science / ML */}
-      <section className="relative z-10 max-w-5xl mx-auto space-y-6 pb-20">
-        <div className="flex items-center justify-between gap-4 flex-wrap">
-          <h2 className="text-2xl sm:text-3xl font-semibold text-white">Machine Learning & Data Science</h2>
-          <span className="text-[0.7rem] sm:text-xs font-mono uppercase tracking-[0.2em] text-sky-100 bg-black/40 px-3 py-1 rounded-full border border-sky-300/60">
-            spreadsheets → stories → systems
-          </span>
-        </div>
-        <div className="space-y-4 text-sky-50/90 leading-relaxed">
-          <p>
-            I explored datasets to analyze and model human behavior and urban dynamics — for example, evaluating how different demographics might be impacted by policy changes like congestion pricing in cities.
-          </p>
-          <p>
-            The goal: build data-driven narratives that highlight structural inequities — and propose solutions that are informed by real data.
-          </p>
-          <div className="grid sm:grid-cols-3 gap-3 text-[0.7rem] sm:text-xs font-mono text-sky-100">
-            <div className="rounded-2xl border border-sky-300/70 bg-black/60 p-3 rotate-[-2deg]">
-              <div className="uppercase tracking-[0.2em] mb-1">inputs</div>
-              <div>transit logs · census data · city sensors</div>
-            </div>
-            <div className="rounded-2xl border border-emerald-300/70 bg-black/60 p-3 rotate-[1deg]">
-              <div className="uppercase tracking-[0.2em] mb-1">alchemy</div>
-              <div>models + visuals that make policy feel human.</div>
-            </div>
-            <div className="rounded-2xl border border-amber-300/70 bg-black/60 p-3 rotate-[3deg]">
-              <div className="uppercase tracking-[0.2em] mb-1">output</div>
-              <div>maps that argue back and plots that protest.</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Footer */}
       <footer className="relative z-10 text-center text-cyan-200/70 text-xs sm:text-sm pt-4 pb-2">
         <p className="inline-flex flex-wrap items-center gap-2 bg-black/40 px-4 py-2 rounded-full border border-cyan-400/50 backdrop-blur">
           <span className="font-mono uppercase tracking-[0.2em] text-cyan-200">end of lab tour*</span>
           <span className="hidden sm:inline text-cyan-300/70">(*for now)</span>
           <span className="opacity-40">·</span>
-          <span>© 2025 All Rights Reserved.</span>
-          <a href="mailto:[email protected]" className="hover:text-cyan-100 underline-offset-2 hover:underline">
+          <span>© 2026 All Rights Reserved.</span>
+          <a href="mailto: phil@storyversenyc.com" className="hover:text-cyan-100 underline-offset-2 hover:underline">
             email the lab keeper
           </a>
         </p>

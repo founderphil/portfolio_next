@@ -3,12 +3,12 @@ import React from "react";
 export default function Approach() {
   const pillars = [
     { 
-      title: 'Systems First', 
-      body: 'Zoom out before zooming in. Map incentives, constraints, and feedback loops so solutions play nicely across the full ecosystem.' 
-    },
-    { 
-      title: 'Human‑Centered', 
+      title: 'Human‑Centered First', 
       body: 'Start from real people, not features. Prioritize clarity, control, and trust so products feel intuitive, respectful, and empowering.' 
+    },
+        { 
+      title: 'Scalable Systems', 
+      body: 'Zoom out before zooming in. Map incentives, constraints, and feedback loops so solutions play nicely across the full ecosystem.' 
     },
     { 
       title: 'Outcome‑Driven', 
@@ -31,7 +31,7 @@ export default function Approach() {
           <p className="text-sm uppercase tracking-widest text-neutral-400 mb-2">Capabilities</p>
           <ul className="space-y-1 text-neutral-300 text-sm list-disc list-inside">
             <li>Problem framing, vision setting & narrative decks</li>
-            <li>End‑to‑end product design from discovery to launch</li>
+            <li>End‑to‑end AI product design from discovery to launch</li>
             <li>Service blueprints, systems and interaction design</li>
             <li>Design systems, component libraries & design ops</li>
             <li>Partnering with product, eng & research to ship</li>
@@ -43,8 +43,8 @@ export default function Approach() {
             <li>Figma, Framer, Adobe Creative Cloud, VS Code</li>
             <li>Next.js, React, Tailwind, React Native, OpenCV, RAG</li>
             <li>Prototyping across web, mobile & mixed fidelity</li>
-            <li>Analytics, experimentation & qualitative research tools</li>
-            <li>Working fluently with modern web stacks</li>
+            <li>Analytics, experimentation & research groups facilitation</li>
+            <li>Working fluently with AI-integrated web stacks</li>
           </ul>
         </div>
       </div>
