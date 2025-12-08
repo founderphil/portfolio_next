@@ -234,19 +234,23 @@ export default function FaceDotsExperience({ onEnter }: { onEnter: () => void })
       {!entered && (
         <>
           <div
+            className="intro-name-pill"
             style={{
               position: 'absolute',
-              top: '2.5rem',
+              top: '1rem',
               left: '50%',
               transform: 'translateX(-50%)',
               zIndex: 3,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
               textAlign: 'center',
               color: '#000',
               padding: '0.75rem 1.5rem',
-              background: 'rgba(255,255,255,0.9)',
-              borderRadius: '999px',
+              background: 'rgba(255,255,255,0.8)',
+              borderRadius: '10px',
               boxShadow: '0 12px 30px rgba(0,0,0,0.12)',
-              maxWidth: '90vw',
             }}
           >
             <div style={{ fontSize: '1.6rem', fontWeight: 700, letterSpacing: '0.04em', textTransform: 'uppercase' }}>
@@ -256,31 +260,11 @@ export default function FaceDotsExperience({ onEnter }: { onEnter: () => void })
               Product & design leader for emerging experiences.
             </div>
           </div>
-          <div
-            style={{
-              position: 'absolute',
-              left: '50%',
-              bottom: '9rem',
-              zIndex: 3,
-              transform: 'translateX(-50%)',
-              fontSize: '1.1rem',
-              color: '#222',
-              background: 'rgba(255,255,255,0.8)',
-              padding: '0.5rem 1.5rem',
-            //  borderRadius: '999px',
-           //   boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
-              pointerEvents: 'none',
-              fontWeight: 500,
-              letterSpacing: '0.05em',
-            }}
-          >
-            push. click. create.
-          </div>
           <button
             style={{
               position: 'absolute',
               left: '50%',
-              bottom: '5rem',
+              bottom: '5.5rem',
               zIndex: 3,
               padding: '0.75rem 2rem',
               fontSize: '1rem',
@@ -299,16 +283,21 @@ export default function FaceDotsExperience({ onEnter }: { onEnter: () => void })
           >
             ENTER
           </button>
-          <div
+          <div            
+          className="intro-tags-pill"
             style={{
               position: 'absolute',
               left: '50%',
               bottom: '1.25rem',
               transform: 'translateX(-50%)',
-              zIndex: 3,
+              zIndex: 2,
               display: 'flex',
-              gap: '1.5rem',
-              padding: '0.5rem 1.25rem',
+              flexWrap: 'wrap',
+              justifyContent: 'center',
+              alignItems: 'center',
+              textAlign: 'center',
+              gap: '0.5rem 1.5rem',
+              padding: '0.4rem 1rem',
               background: 'rgba(255,255,255,0.9)',
               borderRadius: '999px',
               boxShadow: '0 10px 24px rgba(0,0,0,0.12)',
@@ -317,12 +306,10 @@ export default function FaceDotsExperience({ onEnter }: { onEnter: () => void })
               letterSpacing: '0.18em',
               textTransform: 'uppercase',
               color: '#000',
-              whiteSpace: 'nowrap',
             }}
           >
             <span>AI / Experience Design</span>
             <span>XR Storyworlds</span>
-            <span>Enterprise & Startups</span>
           </div>
         </>
       )}
