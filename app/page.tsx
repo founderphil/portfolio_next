@@ -1,4 +1,6 @@
 "use client";
+
+import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
@@ -11,7 +13,7 @@ import FaceDotsExperience from "@/components/FaceDotsExperience";
 import { projects } from "@/data/projects";
 import { useEffect, useState } from "react";
 
-export default function Page() {
+function HomeContent() {
   const searchParams = useSearchParams();
   const from = searchParams.get("from");
 
@@ -44,5 +46,13 @@ export default function Page() {
       </main>
       <Footer />
     </div>
+  );
+}
+
+export default function Page() {
+  return (
+    <Suspense fallback={null}>
+      <HomeContent />
+    </Suspense>
   );
 }
