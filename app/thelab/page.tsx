@@ -23,7 +23,6 @@ const LabPage: React.FC = () => {
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-fuchsia-900 via-slate-950 to-cyan-900 text-gray-100 px-4 sm:px-6 md:px-10 lg:px-20 py-10 sm:py-16 space-y-20">
-
       {/* Floating orbs / background chaos */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute -top-20 -left-10 h-64 w-64 rounded-full bg-cyan-400/20 blur-3xl animate-pulse" />
@@ -32,7 +31,9 @@ const LabPage: React.FC = () => {
       </div>
 
       {/* Page Title */}
+
       <header className="relative z-10 max-w-5xl mx-auto text-center">
+
         <p className="inline-flex items-center gap-2 rounded-full border border-cyan-400/40 bg-black/40 px-4 py-1 text-xs sm:text-sm uppercase tracking-[0.2em] text-cyan-200/80 mb-6 backdrop-blur">
           <span className="h-2 w-2 rounded-full bg-lime-300 animate-ping" />
           Experimental Zone · No Boring Allowed
@@ -42,7 +43,7 @@ const LabPage: React.FC = () => {
             The Lab
           </span>
           <span className="text-base sm:text-lg font-mono bg-yellow-300 text-black px-3 py-1 rounded-md rotate-[-4deg] shadow-md">
-            v∞.weird
+            v0.24601
           </span>
         </div>
         <p className="text-base text-cyan-100/90 max-w-3xl mx-auto leading-relaxed">
@@ -557,10 +558,6 @@ const LabPage: React.FC = () => {
                       <span>Interactive prototype made with Meta’s VR design assets</span>
                       <span className="text-xs">↗</span>
                     </a>
-
-                    <p className="text-xs sm:text-sm text-rose-100/90 max-w-xl">
-                      Here is an example of a UX Design Plan for Meta’s VR Quest Headset showcasing a formal approach to get buy-in to a UX effort.
-                    </p>
                   </div>
                 </div>
 
@@ -572,6 +569,9 @@ const LabPage: React.FC = () => {
                     allowFullScreen
                     title="Meta Horizon Feed UX Design Plan"
                   />
+                  <p className="px-4 pb-4 pt-2 text-[0.7rem] sm:text-xs text-rose-100/90">
+                    UX Design Plan for Meta’s VR Quest Headset showcasing a formal approach to get buy-in to a UX effort.
+                  </p>
                 </div>
               </div>
             </section>
@@ -616,6 +616,24 @@ const LabPage: React.FC = () => {
               title="P5.js Sound Sketch"
             />
           </div>
+          <div className="w-full rounded-3xl border border-cyan-300/70 bg-black/60 shadow-[0_0_40px_rgba(34,211,238,0.5)] overflow-hidden">
+            <iframe
+              src="https://editor.p5js.org/founderphil/full/8jWq8TpL9"
+              width="100%"
+              height={700}
+              className="border-0"
+              title="P5.js Sound Sketch"
+            />
+          </div>
+          <div className="w-full rounded-3xl border border-cyan-300/70 bg-black/60 shadow-[0_0_40px_rgba(34,211,238,0.5)] overflow-hidden">
+            <iframe
+              src="https://editor.p5js.org/founderphil/full/HibQEDUFE"
+              width="100%"
+              height={700}
+              className="border-0"
+              title="P5.js Sound Sketch"
+            />
+          </div>
         </div>
       </section>
 
@@ -624,8 +642,13 @@ const LabPage: React.FC = () => {
         <p className="inline-flex flex-wrap items-center gap-2 bg-black/40 px-4 py-2 rounded-full border border-cyan-400/50 backdrop-blur">
           <span className="font-mono uppercase tracking-[0.2em] text-cyan-200">end of lab tour*</span>
           <span className="hidden sm:inline text-cyan-300/70">(*for now)</span>
+           <span className="opacity-40">·</span>
+          <a href="/home" className="hover:text-cyan-100 underline-offset-2 hover:underline">
+            Back HOME
+          </a>
           <span className="opacity-40">·</span>
-          <span>© 2026 All Rights Reserved.</span>
+          <span>© 2026 All Rights Reserved</span>
+          <span className="opacity-40">·</span>
           <a href="mailto: phil@storyversenyc.com" className="hover:text-cyan-100 underline-offset-2 hover:underline">
             email the lab keeper
           </a>
