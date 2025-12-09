@@ -1,6 +1,6 @@
 # Phil Olarte – Product Designer Portfolio
 
-Hi! I’m Phil, a product designer who loves turning messy, ambiguous problems into clear, intuitive experiences. This repository contains the source for my personal portfolio site – the place I use to share my work, process, and experiments.
+Hi! I’m Phil, a product designer who loves turning messy, ambiguous problems into clear, intuitive experiences. This repository contains the source for my personal portfolio site – the place I use to share my work, process, and experiments. 
 
 ---
 
@@ -28,7 +28,7 @@ This portfolio is built as a small product in itself. It’s designed to:
 - Demonstrate craft: layout, hierarchy, motion, and interaction details
 - Give a glimpse of personality through small experiments in "The Lab"
 
-Under the hood, it’s a Next.js app with TypeScript and Tailwind CSS. Hosted with Vercel backend. While the code is here for transparency, the real focus is the product thinking and design decisions.
+Under the hood, it’s a Next.js app with TypeScript and Tailwind CSS. Hosted with Vercel backend. While the code is here for transparency, the real focus is the product thinking and design decisions. Worked in tandum with several different AI models in VS Code - impressive that OpenAI 5.1+ created very little bugs; a big jump from 4.1.  
 
 ---
 
