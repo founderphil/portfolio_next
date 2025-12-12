@@ -16,6 +16,7 @@ export type Project = {
   outcomesVisual?: string;
   processVisual?: string;
   overviewVisual?: string;
+  featuredVideo?: string;
 };
 
 export const projects: Record<string, Project> = {
@@ -143,66 +144,6 @@ export const projects: Record<string, Project> = {
       'Interview‑driven script fragments.',
       'Street‑level interaction captures.',
       'Authoring UI frames.'
-    ],
-    featured: false
-  },
-
-  esg_materiality: {
-    title: 'ESG Materiality App',
-    img: '/images/esg.png',
-    tags: ['Enterprise', 'Data', 'Web App', 'ESG'],
-    overview: `A web app to capture, prioritize, and aggregate ESG topics for global organizations, modeling impact trajectories over the next decade.`,
-    role: `Lead Product/UX — research synthesis, information architecture, dashboards, and scenario modeling UX.`,
-    outcomes: [
-      'Unified survey inputs and topic scoring into a single workflow.',
-      'Enabled strategy teams to compare present vs. future materiality.',
-      'Improved clarity for stakeholder reporting.'
-    ],
-    why: `Turns abstract ESG frameworks into actionable, comparable productized workflows.`,
-    snapshots: [
-      'Materiality matrix explorations.',
-      'Topic scoring UI.',
-      'Executive dashboard frames.',
-      'Export/report concepts.'
-    ],
-    featured: false
-  },
-
-  internal_ops_ford: {
-    title: 'Internal Ops UX — Ford Foundation',
-    img: '/images/ford_ops.png',
-    tags: ['NLP', 'BI', 'Search', 'Enterprise'],
-    overview: `Usability study and new BI tools across ~80 years of grantmaking artifacts; applied NLP to improve discovery and sense‑making.`,
-    role: `Lead UX & Research — stakeholder interviews, IA, search/retrieval UX, and internal repo relaunch.`,
-    outcomes: [
-      'Consolidated multiple repositories into a single source of truth.',
-      'Introduced NLP‑assisted search facets and document “about‑ness”.',
-      'Increased internal findability for program officers.'
-    ],
-    why: `Brings modern retrieval patterns to legacy knowledge at institutional scale.`,
-    snapshots: [
-      'Usability maps and task flows.',
-      'Search faceting & results views.',
-      'Doc detail page with NLP highlights.',
-      'Information architecture artifacts.'
-    ],
-    featured: false
-  },
-
-    // --- Grad portfolio (playful experiments & R&D) ---
-  grad_labs: {
-    title: 'Creative Labs',
-    img: '/images/creative_labs.png',
-    tags: ['Interactive', 'Light', 'Installation', 'Play'],
-    overview: `A series of experimental installations exploring light, space, and interaction design through playful systems at NYU.`,
-    role: `Designer & Engineer — ideation, prototyping, fabrication, and interaction design for physical installations.`,
-    outcomes: [
-      'Developed multiple interactive light installations using projection mapping and LED technologies.',
-      'Explored user interaction patterns through light and spatial design.',
-      'Documented installation processes and user engagement.'
-    ],
-    why: `Investigates the intersection of light, space, and user interaction through hands-on experimentation.`,
-    snapshots: ['Installation photos', 'Projection mapping tests', 'Interaction diagrams', 'User engagement captures'
     ],
     featured: false
   },

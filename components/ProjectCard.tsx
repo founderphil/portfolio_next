@@ -7,7 +7,7 @@ type ProjectCardProps = {
 };
 
 export default function ProjectCard({ slug, project }: ProjectCardProps) {
-  const href = slug === 'grad_labs' ? '/lab' : `/work/${slug}`;
+  const href = slug === 'grad_labs' ? '/thelab' : `/work/${slug}`;
 
   return (
     <Link href={href} className="group block border border-neutral-800 rounded-xl overflow-hidden hover:border-neutral-600 transition">
