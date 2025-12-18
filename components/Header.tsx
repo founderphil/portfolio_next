@@ -20,9 +20,9 @@ export default function Header() {
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-6 text-sm text-neutral-300">
-          <a className="hover:text-white transition" href="#work">Work</a>
-          <a className="hover:text-white transition" href="#approach">Approach</a>
-          <a className="hover:text-white transition" href="#contact">Contact</a>
+          <a className="hover:text-white transition" href="/home#work">Work</a>
+          <a className="hover:text-white transition" href="/home#approach">Approach</a>
+          <a className="hover:text-white transition" href="/home#contact">Contact</a>
           <a className="hover:text-white transition" href="/Phil_Olarte_AI_Product_Resume.pdf">Resume</a>
 
           {/* Social links */}
@@ -118,9 +118,9 @@ export default function Header() {
       {isOpen && (
         <div className="md:hidden mt-2 px-4 sm:px-6">
           <nav className="glass-tile border border-white/10 bg-white/5 backdrop-blur flex flex-col gap-3 rounded-2xl px-4 py-3 text-sm text-neutral-200 shadow-[0_18px_45px_rgba(15,23,42,0.85)]">
-            <a className="hover:text-white transition" href="#work" onClick={closeMenu}>Work</a>
-            <a className="hover:text-white transition" href="#approach" onClick={closeMenu}>Approach</a>
-            <a className="hover:text-white transition" href="#contact" onClick={closeMenu}>Contact</a>
+            <a className="hover:text-white transition" href="/home#work" onClick={closeMenu}>Work</a>
+            <a className="hover:text-white transition" href="/home#approach" onClick={closeMenu}>Approach</a>
+            <a className="hover:text-white transition" href="/home#contact" onClick={closeMenu}>Contact</a>
             <a className="hover:text-white transition" href="/Phil_Olarte_AI_Product_Resume.pdf" onClick={closeMenu}>Resume</a>
             <a
               href="/thelab"

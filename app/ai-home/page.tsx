@@ -93,7 +93,10 @@ export default function AIHomePage() {
 
   return (
     <div className="relative h-screen overflow-hidden bg-black text-neutral-100">
-      {/* Background video */}
+      {/* Solid black overlay to hide legacy blue background */}
+      <div className="pointer-events-none fixed inset-0 bg-black" />
+
+      {/* Background video (above overlay) */}
       <video
         ref={videoRef}
         className="pointer-events-none fixed inset-0 h-screen w-screen object-contain"
@@ -104,28 +107,8 @@ export default function AIHomePage() {
         playsInline
       />
 
-      {/* Dark overlay for readability */}
-      <div className="pointer-events-none fixed inset-0 bg-black/10" />
-
       {/* Foreground content */}
       <div className="relative z-10 flex h-full flex-col">
-        {/* Sound toggle button */}
-        <button
-          type="button"
-          onClick={() => setSoundOn((prev) => !prev)}
-          className="fixed bottom-4 left-4 z-20 flex h-9 w-9 items-center justify-center rounded-full bg-white text-xs text-neutral-900 shadow-lg shadow-black/70 backdrop-blur-sm hover:bg-neutral-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
-          aria-label={soundOn ? "Mute background video" : "Turn on background video sound"}
-        >
-          <span
-            className={
-              "flex h-7 w-7 items-center justify-center rounded-full transition-colors " +
-              (soundOn ? "bg-sky-200" : "bg-transparent")
-            }
-          >
-            {soundOn ? "🔊" : "🔈"}
-          </span>
-        </button>
-
         <Header />
 
         <main className="flex-1" />
@@ -171,26 +154,52 @@ export default function AIHomePage() {
               </div>
             )}
 
-            {/* Input row pinned at the bottom of this surface with drop shadow */}
-            <form
-              onSubmit={handleSubmit}
-              className="flex w-full items-center gap-2 rounded-full bg-white px-3 py-1.5 text-xs text-neutral-900 shadow-xl shadow-black/60 sm:text-sm"
-            >
-              <textarea
-                className="max-h-32 min-h-[24px] w-full resize-none bg-transparent text-xs outline-none placeholder:text-[11px] placeholder:text-neutral-400 sm:text-sm sm:placeholder:text-xs"
-                placeholder="Hello, I'm Phil Bot! What do you want to know about Phil? Ask me about his work with AI, XR, data systems, and more. (Press Enter to send, Shift + Enter for new line)"
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                onKeyDown={handleKeyDown}
-              />
+            {/* Sound toggle + input row pinned at the bottom, with gradient glow matching header name */}
+            <div className="flex items-center gap-3">
               <button
-                type="submit"
-                aria-label="Send query to Phil Bot"
-                className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-neutral-900 text-[14px] text-white shadow-md hover:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-700 sm:h-9 sm:w-9"
+                type="button"
+                onClick={() => setSoundOn((prev) => !prev)}
+                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white text-xs text-neutral-900 shadow-lg shadow-black/70 backdrop-blur-sm hover:bg-neutral-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
+                aria-label={soundOn ? "Mute background video" : "Turn on background video sound"}
               >
-                ➤
+                <span
+                  className={
+                    "relative flex h-7 w-7 items-center justify-center rounded-full transition-colors " +
+                    (soundOn ? "bg-sky-200" : "bg-transparent")
+                  }
+                >
+                  <span className="text-base leading-none">🔊</span>
+                  {!soundOn && (
+                    <span className="pointer-events-none absolute inset-0 flex items-center justify-center text-[16px] font-bold text-red-500">
+                      ✕
+                    </span>
+                  )}
+                </span>
               </button>
-            </form>
+
+              <div className="relative flex-1">
+                <div className="pointer-events-none absolute -inset-[2px] rounded-full bg-gradient-to-r from-sky-400 via-emerald-300 to-sky-500 opacity-60 blur-md" />
+                <form
+                  onSubmit={handleSubmit}
+                  className="relative flex w-full items-center gap-2 rounded-full bg-white px-3 py-1.5 text-xs text-neutral-900 sm:text-sm"
+                >
+                  <textarea
+                    className="max-h-32 min-h-[24px] w-full resize-none bg-transparent px-1 text-xs outline-none placeholder:text-[11px] placeholder:text-neutral-500 sm:text-sm sm:placeholder:text-xs"
+                    placeholder="Hello, I'm Phil Bot! What do you want to know about Phil? Ask me about his work with AI, XR, data systems, and more. (Press Enter to send, Shift + Enter for new line)"
+                    value={input}
+                    onChange={(e) => setInput(e.target.value)}
+                    onKeyDown={handleKeyDown}
+                  />
+                  <button
+                    type="submit"
+                    aria-label="Send query to Phil Bot"
+                    className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-neutral-900 text-[14px] text-white shadow-md hover:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-700 sm:h-9 sm:w-9"
+                  >
+                    ➤
+                  </button>
+                </form>
+              </div>
+            </div>
           </div>
         </section>
       </div>
@@ -218,7 +227,7 @@ function buildAssistantSummary(
   return (
     <div className="space-y-3">
       <p>
-        Here are some of Phil&apos;s projects that connect to &ldquo;{query}&rdquo;:
+         &ldquo;{query}&rdquo; is a good quesiton. Here are some of Phil&apos;s projects that relate to that topic:
       </p>
       {top.map(([slug, p]) => (
         <div
