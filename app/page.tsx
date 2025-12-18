@@ -1,58 +1,40 @@
-"use client";
-
-import { Suspense } from "react";
-import { useSearchParams } from "next/navigation";
-import Header from "@/components/Header";
-import Hero from "@/components/Hero";
-import CredStrip from "@/components/CredStrip";
-import FeaturedWork from "@/components/FeaturedWork";
-import Approach from "@/components/Approach";
-import ContactCTA from "@/components/ContactCTA";
-import Footer from "@/components/Footer";
-import FaceDotsExperience from "@/components/FaceDotsExperience";
-import { projects } from "@/data/projects";
-import { useEffect, useState } from "react";
-
-function HomeContent() {
-  const searchParams = useSearchParams();
-  const from = searchParams.get("from");
-
-  const [entered, setEntered] = useState(false);
-
-  // If we came from a work detail page, skip FaceDots
-  useEffect(() => {
-    if (from === "work") {
-      setEntered(true);
-    }
-  }, [from]);
-
-  const featured = Object.entries(projects)
-    .filter(([_, p]) => p.featured)
-    .map(([slug, p]) => ({ ...p, slug }));
-
-  if (!entered) {
-    return <FaceDotsExperience onEnter={() => setEntered(true)} />;
-  }
-
-  return (
-    <div className="min-h-screen bg-neutral-950 text-neutral-100">
-      <Header />
-      <main className="mx-auto max-w-6xl px-4 md:px-8 lg:px-10 xl:px-16">
-        <Hero />
-        {/* <CredStrip /> */}
-        <FeaturedWork featured={featured} />
-        <Approach />
-        <ContactCTA />
-      </main>
-      <Footer />
-    </div>
-  );
-}
-
 export default function Page() {
   return (
-    <Suspense fallback={null}>
-      <HomeContent />
-    </Suspense>
+    <>
+      {/* Hero Video */}
+      <div className="video-container">
+        <video autoPlay muted playsInline>
+          <source src="/videos/storyverse_logo.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      {/* Hero Text Below Video */}
+      <section className="hero-text">
+        <h1>Storyverse</h1>
+      </section>
+
+      <main>
+        <h1>enter. engage. become.</h1>
+        <br />
+        <p>
+          Our mission is to craft deeply felt, nonlinear worlds where human
+          experience guides the journey. At Storyverse, you don&rsquo;t just watch
+          the story. You become it.
+        </p>
+        <div className="mission-video">
+          <video controls width="100%">
+            <source src="/videos/enter_engage_become.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </main>
+
+      <footer>
+        &copy; 2025 StoryverseNYC Inc. — All rights reserved
+        <br />
+        <a href="mailto:contact@storyversenyc.com">contact@storyversenyc.com</a>
+      </footer>
+    </>
   );
 }
