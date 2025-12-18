@@ -16,6 +16,7 @@ export type Project = {
   outcomesVisual?: string;
   processVisual?: string;
   overviewVisual?: string;
+  featuredVideo?: string;
 };
 
 export const projects: Record<string, Project> = {
