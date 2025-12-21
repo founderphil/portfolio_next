@@ -1,22 +1,7 @@
 "use client";
 // src/app/lab/page.tsx
 import React from "react";
-
-const projects = {
-  lightAndControl: [
-    { label: "Temple of Light", url: "https://philolarte.notion.site/Temple-of-Light-11561f22995d80c1b2d6c21061c29ea5?pvs=74" },
-    { label: "Simulate Synesthesia", url: "https://philolarte.notion.site/Simulate-Synesthesia-ff546fbf6f56418dbca50459093aede7" },
-    { label: "DUI – A Data-Powered Sequence", url: "https://philolarte.notion.site/DUI-A-Sequence-11361f22995d80ef908ef1409e80588c" },
-    { label: "Sounds of Starlight", url: "https://philolarte.notion.site/Sounds-of-Starlight-13561f22995d80ed884ce517c61eaba5" },
-    { label: "Scale – Space chaos (LED art)", url: "https://www.notion.so/philolarte/Massive-LED-art-13561f22995d80008374e10f39436472" },
-    { label: "API data and the Addressable LED", url: "https://philolarte.notion.site/API-data-the-Addressable-LED-14561f22995d803c8e5fed5548cbb4a6?pvs=4" },
-  ],
-  immersiveDesign: [
-    { label: "Painting the Future: Collaborative Play and AI-powered Creativity in an Interactive 3D World", url: "https://philolarte.notion.site/Painting-the-Future-Collaborative-Play-and-AI-Powered-Creativity-in-an-Interactive-3D-World-15b61f22995d800b8b7ffec0c00cb0e3?pvs=4" },
-    { label: "Non-linear Storytelling: Peter & Wendy", url: "https://philolarte.notion.site/Non-linear-retelling-Peter-Wendy-19161f22995d80ee8974fefafb6cc419?pvs=4" },
-    { label: "Custom particle controller for TouchDesigner", url: "https://philolarte.notion.site/TouchDesigner-Particle-Controller-13e61f22995d80f19231ce953a195f89?pvs=4" },
-  ],
-};
+import { labProjectGroups } from "@/data/labProjects";
 
 const LabPage: React.FC = () => {
   const [paperModalOpen, setPaperModalOpen] = React.useState(false);
@@ -169,7 +154,7 @@ const LabPage: React.FC = () => {
                 Light & Control
               </h3>
               <ul className="space-y-2.5 text-sm text-cyan-50/90">
-                {projects.lightAndControl.map(p => (
+                {labProjectGroups.lightAndControl.map(p => (
                   <li key={p.url} className="flex items-start gap-2 group">
                     <span className="mt-[6px] h-1.5 w-1.5 rounded-full bg-cyan-300 group-hover:scale-150 transition-transform" />
                     <a
@@ -195,7 +180,7 @@ const LabPage: React.FC = () => {
                 Immersive Design
               </h3>
               <ul className="space-y-2.5 text-sm text-fuchsia-50/90">
-                {projects.immersiveDesign.map(p => (
+                {labProjectGroups.immersiveDesign.map(p => (
                   <li key={p.url} className="flex items-start gap-2 group">
                     <span className="mt-[6px] h-1.5 w-1.5 rounded-full bg-fuchsia-300 group-hover:scale-150 transition-transform" />
                     <a

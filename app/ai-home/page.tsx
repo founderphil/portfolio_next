@@ -18,9 +18,31 @@ type ChatMessage = {
 };
 
 function renderAnswerWithLinks(text: string): ReactNode {
-  const parts = text.split(/(\/work\/[a-zA-Z0-9_-]+)/g);
+  // Linkify internal work/lab paths and full http/https URLs
+  const parts = text.split(
+    /(https?:\/\/[^\s)]+|\/(?:work|lab)\/[a-zA-Z0-9_-]+)/g
+  );
+
   return parts.map((part, index) => {
-    if (/^\/work\/[a-zA-Z0-9_-]+$/.test(part)) {
+    if (!part) return null;
+
+    // Full external URL
+    if (/^https?:\/\//.test(part)) {
+      return (
+        <a
+          key={index}
+          href={part}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-sky-300 underline underline-offset-2 hover:text-sky-200"
+        >
+          {part}
+        </a>
+      );
+    }
+
+    // Internal work or lab path like /work/esg_materiality or /lab/slug
+    if (/^\/(?:work|lab)\/[a-zA-Z0-9_-]+$/.test(part)) {
       return (
         <a
           key={index}
@@ -31,6 +53,7 @@ function renderAnswerWithLinks(text: string): ReactNode {
         </a>
       );
     }
+
     return <span key={index}>{part}</span>;
   });
 }
@@ -167,11 +190,10 @@ export default function AIHomePage() {
     [input, messages]
   );
 
-  // Auto-scroll to the latest message when a new one arrives
+  // Keep scroll position stable so users see their question and response
+  // without auto-jumping to the bottom.
   useEffect(() => {
-    if (messagesEndRef.current) {
-      messagesEndRef.current.scrollIntoView({ behavior: "smooth", block: "end" });
-    }
+    // Intentionally left blank; previously auto-scrolled to bottom.
   }, [messages.length]);
 
   const handleKeyDown = (e: KeyboardEvent<HTMLTextAreaElement>) => {
@@ -181,7 +203,7 @@ export default function AIHomePage() {
     }
   };
 
-  const containerHeight = expanded ? "h-[80vh]" : "h-[50px]";
+  const containerHeight = expanded ? "h-[72vh]" : "h-[45px]";
 
   return (
     <div className="relative h-screen overflow-hidden bg-black text-neutral-100">
@@ -212,7 +234,7 @@ export default function AIHomePage() {
           >
             {/* Messages (expand upward above the input) */}
             {expanded && (
-              <div className="flex-1 overflow-y-auto rounded-xl bg-neutral-900/70 p-3 text-xs text-neutral-100 shadow-inner shadow-black/60 sm:text-sm">
+              <div className="flex-1 overflow-y-auto rounded-xl bg-neutral-900/90 p-3 text-xs text-neutral-100 shadow-inner shadow-black/60 sm:text-sm">
                 {messages.length === 0 ? (
                   <p className="text-neutral-400">
                     Phil Bot will summarize projects that relate to your request
@@ -270,10 +292,15 @@ export default function AIHomePage() {
                     (soundOn ? "bg-sky-200" : "bg-transparent")
                   }
                 >
-                  <span className="text-base leading-none">🔊</span>
+                  <span className="text-[30px] leading-none">
+                    {soundOn ? "♪" : "♪"}
+                  </span>
                   {!soundOn && (
-                    <span className="pointer-events-none absolute inset-0 flex items-center justify-center text-[16px] font-bold text-red-500">
-                      ✕
+                    <span
+                      className="pointer-events-none absolute inset-0 flex items-center justify-center text-[30px] text-black-100"
+                      style={{ transform: "rotate(120deg)" }}
+                    >
+                      /
                     </span>
                   )}
                 </span>

@@ -1,14 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
 import OpenAI from "openai";
 import { projects, type Project } from "@/data/projects";
+import { labProjects, type LabProject } from "@/data/labProjects";
 import { expandTokens } from "./synonyms";
 
 const apiKey = process.env.OPENAI_API_KEY ?? process.env.OPENAI_API;
 const client = apiKey ? new OpenAI({ apiKey }) : null;
 
-function findRelevantProjects(query: string): [string, Project][] {
+function getQueryTokens(query: string): string[] {
   const trimmed = query.trim();
-  if (!trimmed) return [] as [string, (typeof projects)[string]][];
+  if (!trimmed) return [];
 
   const baseTokens = trimmed
     .toLowerCase()
@@ -16,7 +17,11 @@ function findRelevantProjects(query: string): [string, Project][] {
     .split(/\s+/)
     .filter((word) => word.length >= 2);
 
-  const queryTokens = expandTokens(baseTokens);
+  return expandTokens(baseTokens);
+}
+
+function findRelevantProjects(queryTokens: string[]): [string, Project][] {
+  if (!queryTokens.length) return [] as [string, Project][];
 
   const entries = Object.entries(projects) as [
     string,
@@ -64,6 +69,37 @@ function findRelevantProjects(query: string): [string, Project][] {
   return final.map<[string, Project]>((item) => [item.slug, item.project]);
 }
 
+function findRelevantLabProjects(queryTokens: string[]): LabProject[] {
+  if (!queryTokens.length) return [];
+
+  const scored = labProjects
+    .map((p) => {
+      const haystack = [p.label, ...(p.tags || [])]
+        .join(" ")
+        .toLowerCase()
+        .replace(/[^a-z0-9\s]/g, " ");
+
+      let score = 0;
+      for (const token of queryTokens) {
+        if (haystack.includes(token)) score += 1;
+      }
+      return { project: p, score };
+    })
+    .filter((item) => item.score > 0)
+    .sort((a, b) => b.score - a.score);
+
+  if (!scored.length) return [];
+
+  const top = scored.slice(0, 2);
+  if (top.length === 1) return [top[0].project];
+
+  const [first, second] = top;
+  const keepSecond = second.score >= 2 && second.score >= first.score - 1;
+  const final = keepSecond ? top : [first];
+
+  return final.map((item) => item.project);
+}
+
 function buildProjectsContext(matching: [string, Project][]) {
   if (!matching.length) return "No directly matching projects were found.";
 
@@ -108,10 +144,24 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const matching = findRelevantProjects(query);
+    const queryTokens = getQueryTokens(query);
+    const matching = findRelevantProjects(queryTokens);
+    const labMatching = findRelevantLabProjects(queryTokens);
     const projectsContext = buildProjectsContext(matching);
 
-    const systemPrompt = `You are Phil Bot, an AI guide to Phil Olarte's portfolio.\n\nGoals:\n- Answer the user's question directly, in a friendly, concise tone.\n- Only talk about projects that are provided in the context below — do not invent new work.\n- When relevant, reference projects by name, and mention why they are connected to the question.\n- When it helps, suggest concrete links or slugs so the user can explore more on the site.\n\nRules:\n- At most, spotlight two specific projects for any given answer.\n- If no projects are clearly a match, still give a helpful answer about Phil's general focus and suggest what to ask instead.\n- Keep responses short, usually 1–3 short paragraphs or a few bullets.\n- If you reference a project, use its slug as /work/{slug} when suggesting navigation.\n\nProject context (one JSON object per line):\n${projectsContext}`;
+    const labContext = labMatching
+      .map((p) =>
+        JSON.stringify({
+          id: p.id,
+          label: p.label,
+          url: p.url,
+          group: p.group,
+          tags: p.tags,
+        })
+      )
+      .join("\n");
+
+    const systemPrompt = `You are Phil Bot, an AI guide to Phil Olarte's portfolio.\n\nGoals:\n- Answer the user's question directly, in a friendly, concise tone.\n- Only talk about projects that are provided in the context below — do not invent new work.\n- When relevant, reference projects by name, and mention why they are connected to the question.\n- When it helps, suggest concrete links or slugs so the user can explore more on the site.\n\nRules:\n- At most, spotlight two specific projects for any given answer.\n- If no projects are clearly a match, still give a helpful answer about Phil's general focus and suggest what to ask instead.\n- Keep responses short, usually 1–3 short paragraphs or a few bullets.\n- If you reference a project, use its slug as /work/{slug} when suggesting navigation, or direct Notion/other URLs for Lab experiments.\n\nMain Work project context (one JSON object per line):\n${projectsContext}\n\nLab experiments and prototypes (one JSON object per line):\n${labContext}`;
 
     const userPrompt = `User question: ${query}`;
 

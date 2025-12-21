@@ -18,6 +18,17 @@ export default function Hero() {
             experiential platforms, and complex systems that feel intuitive, human, and
             commercially meaningful.
           </p>
+<p className="text-base md:text-lg text-neutral-300 max-w-3xl">
+I am a Lead Product Designer with a master’s degree in artificial intelligence and design from NYU, and my work lives in that shift. I’ve studied and built AI models, but more importantly, I’ve designed how people interact with them—how intent is expressed, how trust is earned, and how complex systems remain digestible when intelligence is no longer deterministic.
+</p>
+<p className="text-base md:text-lg text-neutral-300 max-w-3xl">
+My perspective is shaped by working across disciplines that are often siloed: design, product strategy, and applied AI. I’m comfortable discussing model capabilities and limitations with engineers, while translating those realities into interactions that feel clear, ethical, and useful to people. I don’t treat AI as a feature; I treat it as a new design material—one that requires restraint, judgment, and strong product thinking.
+</p>
+<p className="text-base md:text-lg text-neutral-300 max-w-3xl">
+I’ve also been a founder and product lead, which means I design with business reality in mind. I’m used to making decisions when the roadmap is incomplete, the data is imperfect, and the cost of getting it wrong is real. I care about craft, but I’m equally focused on adoption, leverage, and long-term value—building products that scale not just technically, but organizationally.
+</p><p className="text-base md:text-lg text-neutral-300 max-w-3xl">
+I’m looking for a team that understands the next generation of products won’t be defined by interfaces alone, but by how intelligently they respond, adapt, and earn trust over time. If you’re building toward that future, I’d love to be part of the conversation.
+          </p>{/* 
           <div className="grid gap-4 md:grid-cols-3 text-sm text-neutral-300 pt-10">
             <div className="glass-tile p-3 rounded-2xl border border-white/10 bg-white/5 backdrop-blur">
               <p className="text-[11px] uppercase tracking-[0.16em] text-neutral-400 mb-1">Focus</p>
@@ -33,7 +44,7 @@ export default function Hero() {
             </div>
           </div>
           
-          {/* <div className="flex flex-wrap gap-3 pt-2">
+          <div className="flex flex-wrap gap-3 pt-2">
             <a
               href="#work"
               className="px-5 py-2.5 rounded-full bg-white/90 text-black font-medium hover:bg-white transition backdrop-blur border border-white/40"
