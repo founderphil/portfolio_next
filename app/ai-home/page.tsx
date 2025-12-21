@@ -10,7 +10,6 @@ import {
   type ReactNode,
 } from "react";
 import Header from "@/components/Header";
-import { projects } from "@/data/projects";
 
 type ChatMessage = {
   id: number;
@@ -18,16 +17,36 @@ type ChatMessage = {
   content: ReactNode;
 };
 
+function renderAnswerWithLinks(text: string): ReactNode {
+  const parts = text.split(/(\/work\/[a-zA-Z0-9_-]+)/g);
+  return parts.map((part, index) => {
+    if (/^\/work\/[a-zA-Z0-9_-]+$/.test(part)) {
+      return (
+        <a
+          key={index}
+          href={part}
+          className="text-sky-300 underline underline-offset-2 hover:text-sky-200"
+        >
+          {part}
+        </a>
+      );
+    }
+    return <span key={index}>{part}</span>;
+  });
+}
+
 export default function AIHomePage() {
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [expanded, setExpanded] = useState(false);
   const [soundOn, setSoundOn] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
   const handleSubmit = useCallback(
-    (e?: FormEvent<HTMLFormElement>) => {
+    async (e?: FormEvent<HTMLFormElement>) => {
       if (e) e.preventDefault();
       const trimmed = input.trim();
       if (!trimmed) return;
@@ -38,39 +57,105 @@ export default function AIHomePage() {
         role: "user",
         content: trimmed,
       };
-
-      const queryTokens = trimmed
-        .toLowerCase()
-        .replace(/[^a-z0-9\s]/g, " ")
-        .split(/\s+/)
-        .filter((word) => word.length >= 2);
-
-      const matchingProjects = Object.entries(projects).filter(([_, p]) => {
-        const haystack = [
-          p.title,
-          p.subtitle,
-          p.overview,
-          p.role,
-          p.why,
-          ...(p.tags || []),
-        ]
-          .join(" ")
-          .toLowerCase()
-          .replace(/[^a-z0-9\s]/g, " ");
-
-        return queryTokens.some((token) => haystack.includes(token));
-      });
-
-      const assistantSummary = buildAssistantSummary(trimmed, matchingProjects);
-      const assistantMessage: ChatMessage = {
-        id: nextId + 1,
-        role: "assistant",
-        content: assistantSummary,
-      };
-
-      setMessages((prev) => [...prev, userMessage, assistantMessage]);
+      setMessages((prev) => [...prev, userMessage]);
       setInput("");
       setExpanded(true);
+      setIsLoading(true);
+      setError(null);
+
+      try {
+        const res = await fetch("/api/phil-bot", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ query: trimmed }),
+        });
+
+        if (!res.ok) {
+          const data = await res.json().catch(() => null);
+          throw new Error(data?.error || "Something went wrong talking to Phil Bot.");
+        }
+
+        const data: {
+          answer: string;
+          projects?: {
+            slug: string;
+            title: string;
+            subtitle?: string;
+            overview: string;
+            tags?: string[];
+            img?: string;
+          }[];
+        } = await res.json();
+
+        const assistantContent: ReactNode = (
+          <div className="space-y-3">
+            <p className="text-xs sm:text-sm whitespace-pre-wrap">
+              {renderAnswerWithLinks(data.answer)}
+            </p>
+            {data.projects && data.projects.length > 0 && (
+              <div className="space-y-2 border-t border-neutral-700/60 pt-2">
+                <p className="text-[11px] uppercase tracking-wide text-neutral-400">
+                  Projects mentioned
+                </p>
+                <div className="flex flex-col gap-2">
+                  {data.projects.map((p) => (
+                    <a
+                      key={p.slug}
+                      href={`/work/${p.slug}`}
+                      className="flex gap-2 rounded-lg bg-neutral-900/80 p-2 hover:bg-neutral-800/90"
+                    >
+                      {p.img && (
+                        <img
+                          src={p.img}
+                          alt={p.title}
+                          className="h-10 w-14 rounded-md object-cover border border-neutral-700/60"
+                        />
+                      )}
+                      <div className="flex-1">
+                        <div className="text-xs font-medium text-neutral-50">
+                          {p.title}
+                        </div>
+                        {p.subtitle && (
+                          <div className="text-[11px] text-neutral-300">
+                            {p.subtitle}
+                          </div>
+                        )}
+                        <div className="line-clamp-2 text-[11px] text-neutral-400">
+                          {p.overview}
+                        </div>
+                      </div>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        );
+
+        const assistantMessage: ChatMessage = {
+          id: nextId + 1,
+          role: "assistant",
+          content: assistantContent,
+        };
+
+        setMessages((prev) => [...prev, assistantMessage]);
+      } catch (err: any) {
+        console.error(err);
+        setError(err.message || "Error talking to Phil Bot.");
+        const fallbackMessage: ChatMessage = {
+          id: nextId + 1,
+          role: "assistant",
+          content: (
+            <p>
+              I ran into an issue reaching my brain in the cloud.
+              Please try again in a moment.
+            </p>
+          ),
+        };
+        setMessages((prev) => [...prev, fallbackMessage]);
+      } finally {
+        setIsLoading(false);
+      }
     },
     [input, messages]
   );
@@ -148,6 +233,16 @@ export default function AIHomePage() {
                         {m.content}
                       </div>
                     ))}
+                    {isLoading && (
+                      <div className="mt-1 text-[11px] text-neutral-400">
+                        Thinking...
+                      </div>
+                    )}
+                    {error && (
+                      <div className="mt-1 text-[11px] text-red-400">
+                        {error}
+                      </div>
+                    )}
                     <div ref={messagesEndRef} />
                   </div>
                 )}
@@ -203,71 +298,6 @@ export default function AIHomePage() {
           </div>
         </section>
       </div>
-    </div>
-  );
-}
-
-function buildAssistantSummary(
-  query: string,
-  matching: [string, (typeof projects)[string]][]
-): ReactNode {
-  if (!matching.length) {
-    return (
-      <p>
-        I didn&apos;t find an obvious direct match for &ldquo;{query}&rdquo;, but many of
-        Phil&apos;s projects explore AI, XR, and data systems. Try asking about a
-        type of experience (for example, &ldquo;AI character&rdquo;,
-        &ldquo;location-based audio&rdquo;, or &ldquo;enterprise dashboards&rdquo;)
-        and I&apos;ll suggest specific work.
-      </p>
-    );
-  }
-
-  const top = matching.slice(0, 4);
-  return (
-    <div className="space-y-3">
-      <p>
-         &ldquo;{query}&rdquo; is a good quesiton. Here are some of Phil&apos;s projects that relate to that topic:
-      </p>
-      {top.map(([slug, p]) => (
-        <div
-          key={slug}
-          className="space-y-2 rounded-xl bg-neutral-900/80 p-3"
-        >
-          <div className="text-sm font-medium text-neutral-50">
-            {p.title}
-            {p.subtitle && (
-              <span className="text-neutral-300">
-                {" "}
-                &mdash; {p.subtitle}
-              </span>
-            )}
-          </div>
-          {p.tags && p.tags.length > 0 && (
-            <div className="text-[11px] uppercase tracking-wide text-neutral-400">
-              {p.tags.join("  b7 ")}
-            </div>
-          )}
-          <p className="text-xs text-neutral-200">{p.overview}</p>
-          {p.img && (
-            <img
-              src={p.img}
-              alt={p.title}
-              className="mt-2 w-full rounded-lg border border-neutral-700/60 object-cover"
-            />
-          )}
-          <a
-            href={`/work/${slug}`}
-            className="inline-block text-xs font-semibold text-sky-300 underline underline-offset-2 hover:text-sky-200"
-          >
-            Jump to project details
-          </a>
-        </div>
-      ))}
-      <p className="text-[11px] text-neutral-400">
-        You can also browse more from the main Work section for deeper case
-        studies.
-      </p>
     </div>
   );
 }

@@ -152,7 +152,7 @@ export const projects: Record<string, Project> = {
     title: 'ESG Materiality App',
     img: '/images/esg.png',
     tags: ['Enterprise', 'Data', 'Web App', 'ESG'],
-    overview: `A web app to capture, prioritize, and aggregate ESG topics for global organizations, modeling impact trajectories over the next decade.`,
+    overview: `A business intelligence web app to capture, prioritize, and aggregate ESG topics for global organizations, modeling impact trajectories over the next decade.`,
     role: `Lead Product/UX — research synthesis, information architecture, dashboards, and scenario modeling UX.`,
     outcomes: [
       'Unified survey inputs and topic scoring into a single workflow.',
@@ -166,6 +166,9 @@ export const projects: Record<string, Project> = {
       'Executive dashboard frames.',
       'Export/report concepts.'
     ],
+    outcomesVisual: '/images/esg_outcomes.png',
+    processVisual: '/images/esg_process.png',
+    overviewVisual: '/images/esg_overview.png',
     featured: false
   },
 
@@ -187,6 +190,7 @@ export const projects: Record<string, Project> = {
       'Doc detail page with NLP highlights.',
       'Information architecture artifacts.'
     ],
+    processVisual: '/images/ford_ops.png',
     featured: false
   },
 
