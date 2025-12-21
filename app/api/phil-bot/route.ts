@@ -3,7 +3,8 @@ import OpenAI from "openai";
 import { projects, type Project } from "@/data/projects";
 import { expandTokens } from "./synonyms";
 
-const client = new OpenAI({ apiKey: process.env.OPENAI_API });
+const apiKey = process.env.OPENAI_API_KEY ?? process.env.OPENAI_API;
+const client = apiKey ? new OpenAI({ apiKey }) : null;
 
 function findRelevantProjects(query: string): [string, Project][] {
   const trimmed = query.trim();
@@ -90,9 +91,9 @@ function buildProjectsContext(matching: [string, Project][]) {
 
 export async function POST(req: NextRequest) {
   try {
-    if (!process.env.OPENAI_API) {
+    if (!apiKey || !client) {
       return NextResponse.json(
-        { error: "Missing OPENAI_API environment variable" },
+        { error: "Missing OpenAI API key (set OPENAI_API_KEY)" },
         { status: 500 }
       );
     }
