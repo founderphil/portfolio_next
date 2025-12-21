@@ -44,6 +44,7 @@ export default function AIHomePage() {
   const [error, setError] = useState<string | null>(null);
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
+  const textareaRef = useRef<HTMLTextAreaElement | null>(null);
 
   const handleSubmit = useCallback(
     async (e?: FormEvent<HTMLFormElement>) => {
@@ -62,6 +63,12 @@ export default function AIHomePage() {
       setExpanded(true);
       setIsLoading(true);
       setError(null);
+
+      // On mobile, blur the input so the keyboard hides and
+      // the viewport returns to a stable state for reading results.
+      if (textareaRef.current) {
+        textareaRef.current.blur();
+      }
 
       try {
         const res = await fetch("/api/phil-bot", {
@@ -276,10 +283,11 @@ export default function AIHomePage() {
                 <div className="pointer-events-none absolute -inset-[2px] rounded-full bg-gradient-to-r from-sky-400 via-emerald-300 to-sky-500 opacity-60 blur-md" />
                 <form
                   onSubmit={handleSubmit}
-                  className="relative flex w-full items-center gap-2 rounded-full bg-white px-3 py-1.5 text-xs text-neutral-900 sm:text-sm"
+                  className="relative flex w-full items-center gap-2 rounded-full bg-white px-3 py-1.5 text-sm text-neutral-900 sm:text-base"
                 >
                   <textarea
-                    className="max-h-32 min-h-[24px] w-full resize-none bg-transparent px-1 text-xs outline-none placeholder:text-[11px] placeholder:text-neutral-500 sm:text-sm sm:placeholder:text-xs"
+                    ref={textareaRef}
+                    className="max-h-32 min-h-[28px] w-full resize-none bg-transparent px-1 text-base outline-none placeholder:text-sm placeholder:text-neutral-500 sm:text-base"
                     placeholder="Hello, I'm Phil Bot! What do you want to know about Phil? Ask me about his work with AI, XR, data systems, and more. (Press Enter to send, Shift + Enter for new line)"
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
