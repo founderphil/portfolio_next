@@ -220,6 +220,13 @@ export const QUERY_SYNONYMS: Record<string, string[]> = {
   // Tools (helpful for portfolio narratives)
   figma: ["design system", "components", "prototyping"],
   "design ops": ["design operations", "workflow", "governance", "process"],
+
+  // Web / sites
+  website: ["web", "web app", "site", "sites", "websites"],
+  websites: ["website", "web", "web app", "sites"],
+  site: ["website", "web", "web app", "sites"],
+  sites: ["website", "websites", "web", "web app"],
+  web: ["website", "websites", "web app", "site", "sites"],
 };
 
 export function expandTokens(tokens: string[]): string[] {

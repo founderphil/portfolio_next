@@ -145,8 +145,23 @@ export async function POST(req: NextRequest) {
     }
 
     const queryTokens = getQueryTokens(query);
-    const matching = findRelevantProjects(queryTokens);
+    let matching = findRelevantProjects(queryTokens);
     const labMatching = findRelevantLabProjects(queryTokens);
+
+    // Fallback: if the user is asking about websites/sites and
+    // no specific projects were matched by keywords, surface
+    // all projects that have an external link so Phil Bot can
+    // still answer concretely.
+    if (!matching.length) {
+      const websiteTokens = ["websites", "website", "site", "sites", "web"];
+      const isWebsiteQuery = queryTokens.some((t) => websiteTokens.includes(t));
+
+      if (isWebsiteQuery) {
+        const entries = Object.entries(projects) as [string, Project][];
+        const withLinks = entries.filter(([, p]) => !!p.link);
+        matching = withLinks;
+      }
+    }
     const projectsContext = buildProjectsContext(matching);
 
     const labContext = labMatching

@@ -1,38 +1,38 @@
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect } from 'react';
 import * as THREE from 'three';
 import dots from '../phil_face_dots.json';
 
 const DOTS = dots.dots;
 
-export default function FaceDotsExperience({ onEnter }: { onEnter: () => void }) {
+export default function FaceDotsExperience() {
   const mountRef = useRef<HTMLDivElement>(null);
-  const [entered, setEntered] = useState(false);
-  const [fade, setFade] = useState(0);
-  const [dotsLoaded, setDotsLoaded] = useState(false);
 
   useEffect(() => {
     if (!mountRef.current) return;
+
+    const container = mountRef.current;
+    const width = container.clientWidth || window.innerWidth;
+    const height = container.clientHeight || window.innerHeight;
+
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
     camera.position.z = 1000;
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setSize(width, height);
     renderer.setClearColor(0xffffff, 1);
 
-    mountRef.current.appendChild(renderer.domElement);
-    setDotsLoaded(true);
+    container.appendChild(renderer.domElement);
 
-    // Dots
     const dotGeometry = new THREE.SphereGeometry(2, 16, 16);
-    const dots: THREE.Mesh[] = [];
+    const dotMeshes: THREE.Mesh[] = [];
     const originalPositions: { x: number; y: number }[] = [];
+
     const xSum = DOTS.reduce((sum, dot) => sum + dot.x, 0);
     const ySum = DOTS.reduce((sum, dot) => sum + dot.y, 0);
     const count = DOTS.length;
     const xCenter = count > 0 ? xSum / count : 0;
     const yCenter = count > 0 ? ySum / count : 0;
 
-    // Add face dots
     DOTS.forEach(dot => {
       const brightness = dot.area !== undefined ? Math.min(dot.area * 10, 100) : 50;
       const color = new THREE.Color(`hsl(0, 0%, ${100 - brightness}%)`);
@@ -42,17 +42,17 @@ export default function FaceDotsExperience({ onEnter }: { onEnter: () => void })
       const py = -(dot.y - yCenter);
       mesh.position.set(px, py, 0);
       scene.add(mesh);
-      dots.push(mesh);
+      dotMeshes.push(mesh);
       originalPositions.push({ x: px, y: py });
     });
 
-    // Add background grid dots
-    const gridSpacing = 20; 
+    const gridSpacing = 20;
     const gridColor = new THREE.Color('hsl(0, 0%, 90%)');
     const gridMaterial = new THREE.MeshBasicMaterial({ color: gridColor });
-    const gridWidth = window.innerWidth;
-    const gridHeight = window.innerHeight;
+    const gridWidth = width;
+    const gridHeight = height;
     const minDist = 20;
+
     for (let gx = -gridWidth / 2; gx < gridWidth / 2; gx += gridSpacing) {
       for (let gy = -gridHeight / 2; gy < gridHeight / 2; gy += gridSpacing) {
         let tooClose = false;
@@ -68,13 +68,12 @@ export default function FaceDotsExperience({ onEnter }: { onEnter: () => void })
           const mesh = new THREE.Mesh(dotGeometry, gridMaterial.clone());
           mesh.position.set(gx, gy, 0);
           scene.add(mesh);
-          dots.push(mesh);
+          dotMeshes.push(mesh);
           originalPositions.push({ x: gx, y: gy });
         }
       }
     }
 
-    // Mousy clicky
     let mouse = { x: 0, y: 0 };
     let lastMouse = { x: 0, y: 0 };
     let mouseDelta = { x: 0, y: 0 };
@@ -92,14 +91,14 @@ export default function FaceDotsExperience({ onEnter }: { onEnter: () => void })
       mouse.y = clientY;
       pushing = Math.abs(mouseDelta.x) > 0.5 || Math.abs(mouseDelta.y) > 0.5;
     }
+
     window.addEventListener('mousemove', onPointerMove);
     window.addEventListener('touchmove', onPointerMove);
 
-    // dot velocity 
-    const velocities: { x: number; y: number }[] = dots.map(() => ({ x: 0, y: 0 }));
+    const velocities: { x: number; y: number }[] = dotMeshes.map(() => ({ x: 0, y: 0 }));
 
     function animate() {
-      dots.forEach((dot, i) => {
+      dotMeshes.forEach((dot, i) => {
         const vector = dot.position.clone();
         vector.project(camera);
         const screenX = (vector.x * 0.5 + 0.5) * window.innerWidth;
@@ -115,39 +114,45 @@ export default function FaceDotsExperience({ onEnter }: { onEnter: () => void })
           velocities[i].x += mouseDelta.x * force * proximity;
           velocities[i].y += mouseDelta.y * force * proximity;
         }
+
         dot.position.x += velocities[i].x;
         dot.position.y += velocities[i].y;
+
         const returnStrength = 0.02;
         velocities[i].x += (originalPositions[i].x - dot.position.x) * returnStrength;
         velocities[i].y += (originalPositions[i].y - dot.position.y) * returnStrength;
-        // Damping
+
         velocities[i].x *= 0.85;
         velocities[i].y *= 0.85;
 
         dot.position.z += (0 - dot.position.z) * 0.05;
         dot.scale.set(1, 1, 1);
       });
+
       renderer.render(scene, camera);
       requestAnimationFrame(animate);
     }
+
     animate();
 
     function paintDotsAt(x: number, y: number) {
-      const dotScreenPositions = dots.map(dot => {
+      const dotScreenPositions = dotMeshes.map(dot => {
         const vector = dot.position.clone();
         vector.project(camera);
         const screenX = (vector.x * 0.5 + 0.5) * window.innerWidth;
         const screenY = (-vector.y * 0.5 + 0.5) * window.innerHeight;
         return { dot, screenX, screenY };
       });
+
       const distances = dotScreenPositions.map((pos, i) => {
         const dx = pos.screenX - x;
         const dy = pos.screenY - y;
         return { index: i, dist: Math.sqrt(dx * dx + dy * dy) };
       });
+
       const nearest = distances.sort((a, b) => a.dist - b.dist).slice(0, 30);
       nearest.forEach((entry, idx) => {
-        const dot = dots[entry.index];
+        const dot = dotMeshes[entry.index];
         if (dot.material && 'color' in dot.material) {
           const lightness = 70 - idx * 1.3;
           (dot.material as THREE.MeshBasicMaterial).color.set(`hsl(210, 100%, ${lightness}%)`);
@@ -162,9 +167,11 @@ export default function FaceDotsExperience({ onEnter }: { onEnter: () => void })
       const clientY = 'touches' in e ? e.touches[0].clientY : (e as MouseEvent).clientY;
       paintDotsAt(clientX, clientY);
     }
+
     function onPointerUp() {
       painting = false;
     }
+
     function onPointerMovePaint(e: MouseEvent | TouchEvent) {
       if (!painting) return;
       const clientX = 'touches' in e ? e.touches[0].clientX : (e as MouseEvent).clientX;
@@ -179,7 +186,6 @@ export default function FaceDotsExperience({ onEnter }: { onEnter: () => void })
     renderer.domElement.addEventListener('mousemove', onPointerMovePaint);
     renderer.domElement.addEventListener('touchmove', onPointerMovePaint);
 
-    // Cleanup
     return () => {
       window.removeEventListener('mousemove', onPointerMove);
       window.removeEventListener('touchmove', onPointerMove);
@@ -189,130 +195,23 @@ export default function FaceDotsExperience({ onEnter }: { onEnter: () => void })
       renderer.domElement.removeEventListener('touchstart', onPointerDown);
       renderer.domElement.removeEventListener('mousemove', onPointerMovePaint);
       renderer.domElement.removeEventListener('touchmove', onPointerMovePaint);
-      mountRef.current?.removeChild(renderer.domElement);
+      if (mountRef.current) {
+        mountRef.current.removeChild(renderer.domElement);
+      }
       renderer.dispose();
     };
   }, []);
 
-  // Fade logic
-  useEffect(() => {
-    if (fade === 1) {
-      const timeout = setTimeout(() => setFade(2), 2500);
-      return () => clearTimeout(timeout);
-    }
-    if (fade === 2) {
-      const timeout = setTimeout(() => {
-        if (onEnter) onEnter();
-      }, 1200);
-      return () => clearTimeout(timeout);
-    }
-  }, [fade, onEnter]);
-
   return (
     <div
+      ref={mountRef}
       style={{
-        position: 'fixed',
-        inset: 0,
-        zIndex: 10,
-        background: 'white',
+        position: 'relative',
+        width: '100%',
+        height: '100%',
         overflow: 'hidden',
-        opacity: fade === 2 ? 0 : 1,
-        transition: 'opacity 1.2s',
-        pointerEvents: fade === 2 ? 'none' : 'auto',
+        background: 'white',
       }}
-    >
-      <div
-        ref={mountRef}
-        style={{
-          position: 'absolute',
-          inset: 0,
-          width: '100vw',
-          height: '100vh',
-          zIndex: 2,
-        }}
-      />
-      {!entered && (
-        <>
-          <div
-            className="intro-name-pill"
-            style={{
-              position: 'absolute',
-              top: '1rem',
-              left: '50%',
-              transform: 'translateX(-50%)',
-              zIndex: 3,
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
-              textAlign: 'center',
-              color: '#000',
-              padding: '0.75rem 1.5rem',
-              background: 'rgba(255,255,255,0.8)',
-              borderRadius: '10px',
-              boxShadow: '0 12px 30px rgba(0,0,0,0.12)',
-            }}
-          >
-            <div style={{ fontSize: '1.6rem', fontWeight: 700, letterSpacing: '0.04em', textTransform: 'uppercase' }}>
-              Phil Olarte
-            </div>
-            <div style={{ fontSize: '0.9rem', fontWeight: 600, marginTop: '0.25rem', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-              Product design leader for emerging experiences.
-            </div>
-          </div>
-          <button
-            style={{
-              position: 'absolute',
-              left: '50%',
-              bottom: '5.5rem',
-              zIndex: 3,
-              padding: '0.75rem 2rem',
-              fontSize: '1rem',
-              borderRadius: '999px',
-              background: 'rgba(255, 149, 0, 0.96)',
-              color: '#fff',
-              border: 'none',
-              boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
-              cursor: 'pointer',
-              transform: 'translateX(-50%)',
-            }}
-            onClick={() => {
-              setEntered(true);
-              setFade(2);
-            }}
-          >
-            ENTER
-          </button>
-          <div            
-          className="intro-tags-pill"
-            style={{
-              position: 'absolute',
-              left: '50%',
-              bottom: '1.25rem',
-              transform: 'translateX(-50%)',
-              zIndex: 2,
-              display: 'flex',
-              flexWrap: 'wrap',
-              justifyContent: 'center',
-              alignItems: 'center',
-              textAlign: 'center',
-              gap: '0.5rem 1.5rem',
-              padding: '0.4rem 1rem',
-              background: 'rgba(255,255,255,0.9)',
-              borderRadius: '999px',
-              boxShadow: '0 10px 24px rgba(0,0,0,0.12)',
-              fontSize: '0.78rem',
-              fontWeight: 600,
-              letterSpacing: '0.18em',
-              textTransform: 'uppercase',
-              color: '#000',
-            }}
-          >
-            <span>AI / Experience Design</span>
-            <span>XR Storyworlds</span>
-          </div>
-        </>
-      )}
-    </div>
+    />
   );
 }
