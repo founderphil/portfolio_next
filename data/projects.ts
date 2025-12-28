@@ -104,6 +104,7 @@ export const projects: Record<string, Project> = {
   emily_was_here: {
     title: 'Emily Was Here — Brooklyn Bridge Experience',
     subtitle: 'Geospatial Mixed Reality',
+    link: 'https://brooklynbridgeexperience.com/',
     img: '/images/emily.png',
     tags: ['Audio', 'AR', 'XR', 'Place‑based', 'NYC'],
     overview: `A poetic, GPS‑triggered audio walk across the Brooklyn Bridge. Voiceover, poetry, and ambient sound transform the crossing into an intimate narrative.`,
@@ -129,6 +130,7 @@ export const projects: Record<string, Project> = {
   // --- Additional portfolio projects (site) ---
   juliet_wherefore: {
     title: 'Wherefore Art Thou, Juliet?',
+    link: 'https://storyversenyc.com/',
     img: '/images/juliet.png',
     tags: ['XR', 'Location‑based', 'Audio', 'Theatre District', 'NYC'],
     overview: `A choose‑your‑own‑adventure mixed‑reality journey across NYC’s Theater District, guided by interviews with Broadway performers.`,
