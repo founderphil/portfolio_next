@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import OpenAI from "openai";
 import { projects, type Project } from "@/data/projects";
 import { labProjects, type LabProject } from "@/data/labProjects";
+import { profile } from "@/data/profile";
 import { expandTokens } from "./synonyms";
 
 const apiKey = process.env.OPENAI_API_KEY ?? process.env.OPENAI_API;
@@ -18,6 +19,37 @@ function getQueryTokens(query: string): string[] {
     .filter((word) => word.length >= 2);
 
   return expandTokens(baseTokens);
+}
+
+function isOverviewQuery(query: string, tokens: string[]): boolean {
+  const q = query.toLowerCase();
+
+  if (
+    q.includes("overview") ||
+    q.includes("summary") ||
+    q.includes("summarize") ||
+    q.includes("background") ||
+    q.includes("overall experience") ||
+    q.includes("range of work") ||
+    q.includes("kinds of work") ||
+    q.includes("types of work") ||
+    q.includes("what work has phil done") ||
+    q.includes("what has phil worked on")
+  ) {
+    return true;
+  }
+
+  const broadTokens = [
+    "overview",
+    "summary",
+    "experience",
+    "background",
+    "range",
+    "types",
+    "kinds",
+  ];
+
+  return tokens.some((t) => broadTokens.includes(t));
 }
 
 function findRelevantProjects(queryTokens: string[]): [string, Project][] {
@@ -145,8 +177,15 @@ export async function POST(req: NextRequest) {
     }
 
     const queryTokens = getQueryTokens(query);
-    let matching = findRelevantProjects(queryTokens);
-    const labMatching = findRelevantLabProjects(queryTokens);
+    const overviewQuery = isOverviewQuery(query, queryTokens);
+
+    let matching: [string, Project][] = overviewQuery
+      ? (Object.entries(projects) as [string, Project][])
+      : findRelevantProjects(queryTokens);
+
+    const labMatching: LabProject[] = overviewQuery
+      ? [...labProjects]
+      : findRelevantLabProjects(queryTokens);
 
     // Fallback: if the user is asking about websites/sites and
     // no specific projects were matched by keywords, surface
@@ -176,7 +215,34 @@ export async function POST(req: NextRequest) {
       )
       .join("\n");
 
-    const systemPrompt = `You are Phil Bot, an AI guide to Phil Olarte's portfolio.\n\nGoals:\n- Answer the user's question directly, in a friendly, concise tone.\n- Only talk about projects that are provided in the context below — do not invent new work.\n- When relevant, reference projects by name, and mention why they are connected to the question.\n- When it helps, suggest concrete links or slugs so the user can explore more on the site.\n\nRules:\n- At most, spotlight two specific projects for any given answer.\n- If no projects are clearly a match, still give a helpful answer about Phil's general focus and suggest what to ask instead.\n- Keep responses short, usually 1–3 short paragraphs or a few bullets.\n- If you reference a project:\n  - Use its slug as /work/{slug} when suggesting navigation within this site.\n  - If the project object includes a 'link' field, also include that full URL in your answer when it's helpful (e.g., "FAIRYLAND — fairylandshow.com").\n  - For Lab experiments, you can surface direct Notion or other URLs from the context.\n\nMain Work project context (one JSON object per line):\n${projectsContext}\n\nLab experiments and prototypes (one JSON object per line):\n${labContext}`;
+    const profileHighlights = profile.highlights.join(" \n- ");
+    const profileExpertise = profile.coreExpertise.join(" \n- ");
+    const profileSkills = profile.skillsKeywords.join(", ");
+
+    const systemPrompt = `You are Phil Bot, an AI guide to Phil Olarte's portfolio.
+\n\nProfile summary (from Phil's resume and site):
+- ${profileHighlights}
+\n\nCore expertise:
+- ${profileExpertise}
+\n\nSkills & keywords:
+- ${profileSkills}
+\n\nWhat Phil is looking for:
+- ${profile.whatImLookingFor}
+\n\nGoals:\n- Answer the user's question directly, in a friendly, concise tone.
+\n- Only talk about projects that are provided in the context below — do not invent new work.
+\n- When relevant, reference projects by name, and mention why they are connected to the question.
+\n- When it helps, suggest concrete links or slugs so the user can explore more on the site.
+\n\nRules:\n- At most, spotlight two specific projects for any given answer.
+\n- If no projects are clearly a match, still give a helpful answer about Phil's general focus and suggest what to ask instead.
+\n- Keep responses short, usually 1–3 short paragraphs or a few bullets.
+\n- If you reference a project:
+\n  - Use its slug as /work/{slug} when suggesting navigation within this site.
+\n  - If the project object includes a 'link' field, also include that full URL in your answer when it's helpful (e.g., "FAIRYLAND — fairylandshow.com").
+\n  - For Lab experiments, you can surface direct Notion or other URLs from the context.
+\n\nMain Work project context (one JSON object per line):
+\n${projectsContext}
+\n\nLab experiments and prototypes (one JSON object per line):
+\n${labContext}`;
 
     const userPrompt = `User question: ${query}`;
 
