@@ -2,7 +2,7 @@ import React from 'react';
 import './globals.css';
 
 export const metadata = {
-  title: 'Phil Olarte · Product Design · AI & XR',
+  title: 'Phil Olarte · Product Design · AI, XR & Emerging Technology',
   description: 'Story-led product design across AI, XR, and data systems.'
 };
 

@@ -10,7 +10,7 @@ export default function Header() {
 
   return (
     <header className="sticky top-5 z-30 backdrop-blur supports-[backdrop-filter]:bg-neutral-950/70 border-b border-neutral-900">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 h-14 flex items-center justify-between">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 py-3 flex items-center justify-between">
         <a href="/" className="flex flex-col leading-none">
           <span className="text-4xl md:text-6xl font-extrabold tracking-tight bg-gradient-to-r from-sky-400 via-emerald-300 to-sky-500 bg-clip-text text-transparent hover:from-sky-300 hover:via-orange-200 hover:to-sky-400 transition-colors duration-300">
             Phil Olarte

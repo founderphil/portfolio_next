@@ -80,20 +80,26 @@ export default function FaceDotsExperience() {
     let pushing = false;
     let painting = false;
 
-    function onPointerMove(e: MouseEvent | TouchEvent) {
+    function getLocalPointer(e: MouseEvent | TouchEvent) {
+      const rect = renderer.domElement.getBoundingClientRect();
       const clientX = 'touches' in e ? e.touches[0].clientX : (e as MouseEvent).clientX;
       const clientY = 'touches' in e ? e.touches[0].clientY : (e as MouseEvent).clientY;
-      mouseDelta.x = clientX - mouse.x;
-      mouseDelta.y = clientY - mouse.y;
+      return { x: clientX - rect.left, y: clientY - rect.top };
+    }
+
+    function onPointerMove(e: MouseEvent | TouchEvent) {
+      const { x, y } = getLocalPointer(e);
+      mouseDelta.x = x - mouse.x;
+      mouseDelta.y = y - mouse.y;
       lastMouse.x = mouse.x;
       lastMouse.y = mouse.y;
-      mouse.x = clientX;
-      mouse.y = clientY;
+      mouse.x = x;
+      mouse.y = y;
       pushing = Math.abs(mouseDelta.x) > 0.5 || Math.abs(mouseDelta.y) > 0.5;
     }
 
-    window.addEventListener('mousemove', onPointerMove);
-    window.addEventListener('touchmove', onPointerMove);
+    renderer.domElement.addEventListener('mousemove', onPointerMove);
+    renderer.domElement.addEventListener('touchmove', onPointerMove);
 
     const velocities: { x: number; y: number }[] = dotMeshes.map(() => ({ x: 0, y: 0 }));
 
@@ -101,8 +107,8 @@ export default function FaceDotsExperience() {
       dotMeshes.forEach((dot, i) => {
         const vector = dot.position.clone();
         vector.project(camera);
-        const screenX = (vector.x * 0.5 + 0.5) * window.innerWidth;
-        const screenY = (-vector.y * 0.5 + 0.5) * window.innerHeight;
+        const screenX = (vector.x * 0.5 + 0.5) * width;
+        const screenY = (-vector.y * 0.5 + 0.5) * height;
 
         const dx = screenX - mouse.x;
         const dy = screenY - mouse.y;
@@ -139,8 +145,8 @@ export default function FaceDotsExperience() {
       const dotScreenPositions = dotMeshes.map(dot => {
         const vector = dot.position.clone();
         vector.project(camera);
-        const screenX = (vector.x * 0.5 + 0.5) * window.innerWidth;
-        const screenY = (-vector.y * 0.5 + 0.5) * window.innerHeight;
+        const screenX = (vector.x * 0.5 + 0.5) * width;
+        const screenY = (-vector.y * 0.5 + 0.5) * height;
         return { dot, screenX, screenY };
       });
 
@@ -163,9 +169,8 @@ export default function FaceDotsExperience() {
 
     function onPointerDown(e: MouseEvent | TouchEvent) {
       painting = true;
-      const clientX = 'touches' in e ? e.touches[0].clientX : (e as MouseEvent).clientX;
-      const clientY = 'touches' in e ? e.touches[0].clientY : (e as MouseEvent).clientY;
-      paintDotsAt(clientX, clientY);
+      const { x, y } = getLocalPointer(e);
+      paintDotsAt(x, y);
     }
 
     function onPointerUp() {
@@ -174,9 +179,8 @@ export default function FaceDotsExperience() {
 
     function onPointerMovePaint(e: MouseEvent | TouchEvent) {
       if (!painting) return;
-      const clientX = 'touches' in e ? e.touches[0].clientX : (e as MouseEvent).clientX;
-      const clientY = 'touches' in e ? e.touches[0].clientY : (e as MouseEvent).clientY;
-      paintDotsAt(clientX, clientY);
+      const { x, y } = getLocalPointer(e);
+      paintDotsAt(x, y);
     }
 
     renderer.domElement.addEventListener('mousedown', onPointerDown);
@@ -187,8 +191,8 @@ export default function FaceDotsExperience() {
     renderer.domElement.addEventListener('touchmove', onPointerMovePaint);
 
     return () => {
-      window.removeEventListener('mousemove', onPointerMove);
-      window.removeEventListener('touchmove', onPointerMove);
+      renderer.domElement.removeEventListener('mousemove', onPointerMove);
+      renderer.domElement.removeEventListener('touchmove', onPointerMove);
       window.removeEventListener('mouseup', onPointerUp);
       window.removeEventListener('touchend', onPointerUp);
       renderer.domElement.removeEventListener('mousedown', onPointerDown);

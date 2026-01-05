@@ -12,7 +12,7 @@ export default function Hero() {
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.02]">
             Product design leader for emerging experiences.
           </h1>
-          <p className="text-base md:text-lg text-neutral-300 max-w-3xl">
+          <p className="text-base md:text-lg text-neutral-300 max-w-4xl">
             I lead cross-disciplinary, international teams to ship AI-first products,
             experiential platforms, and complex systems that feel intuitive, human, and
             commercially meaningful.

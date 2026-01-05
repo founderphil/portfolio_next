@@ -19,7 +19,7 @@ export default function HomePage() {
   return (
       <div className="min-h-screen bg-neutral-950 text-neutral-100">
         <Header />
-        <main className="mx-auto max-w-6xl px-4 md:px-8 lg:px-10 xl:px-16">
+        <main className="mx-auto w-full max-w-[1400px] px-6 md:px-10 lg:px-12 xl:px-16">
           <Hero />
           {/* <CredStrip /> */}
           <FeaturedWork featured={featured} />
