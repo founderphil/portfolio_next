@@ -292,7 +292,12 @@ export default function AIHomePage() {
                     (soundOn ? "bg-sky-200" : "bg-transparent")
                   }
                 >
-                  <span className="text-[30px] leading-none">
+                  <span
+                    className={
+                      "text-[30px] leading-none " +
+                      (!soundOn ? "animate-[bounce_0.4s_ease-in-out_infinite]" : "")
+                    }
+                  >
                     {soundOn ? "♪" : "♪"}
                   </span>
                   {!soundOn && (
