@@ -7,15 +7,15 @@ export default function Hero() {
       <div className="grid gap-10 md:grid-cols-1 items-start">
         <div className="space-y-8 ">
           <p className="text-xs md:text-sm uppercase tracking-[0.25em] text-neutral-400">
-            Product Leadership · AI · Experience Design
+            Product Leadership · AI · Generative Interface Design
           </p>
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.02]">
-            Product design leader for emerging experiences.
+            Product design leader for the AI era.
           </h1>
           <p className="text-base md:text-lg text-neutral-300 max-w-4xl">
-            I lead cross-disciplinary, international teams to ship AI-first products,
-            experiential platforms, and complex systems that feel intuitive, human, and
-            commercially meaningful.
+             I design, lead and ship AI-native products that turn complex probabilistic systems into intuitive creative tools.
+             I combine technical depth (M.S. in AI & Design) with product strategy to build software that ntuitive, human, 
+             and commercially meaningful.
           </p>         
           
           {/* 
