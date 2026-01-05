@@ -25,7 +25,7 @@ export default function Header() {
           <a className="hover:text-white transition" href="/home#work">Work</a>
           <a className="hover:text-white transition" href="/home#approach">Approach</a>
           <a className="hover:text-white transition" href="/home#contact">Contact</a>
-          <a className="hover:text-white transition" href="/Phil_Olarte_AI_Product_Resume.pdf">Resume</a>
+          <a className="hover:text-white transition" href="/Phil_Olarte_AI_Resume.pdf">Resume</a>
 
           {/* Social links */}
           <div className="ml-1 mb-1 flex items-center gap-4 text-neutral-400">
@@ -123,7 +123,7 @@ export default function Header() {
             <a className="hover:text-white transition" href="/home#work" onClick={closeMenu}>Work</a>
             <a className="hover:text-white transition" href="/home#approach" onClick={closeMenu}>Approach</a>
             <a className="hover:text-white transition" href="/home#contact" onClick={closeMenu}>Contact</a>
-            <a className="hover:text-white transition" href="/Phil_Olarte_AI_Product_Resume.pdf" onClick={closeMenu}>Resume</a>
+            <a className="hover:text-white transition" href="/Phil_Olarte_AI_Resume.pdf" onClick={closeMenu}>Resume</a>
             <a
               href="/thelab"
               onClick={closeMenu}
