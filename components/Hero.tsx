@@ -10,7 +10,7 @@ export default function Hero() {
             Product Leadership · AI · Generative Interface Design
           </p>
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.02]">
-            Product design leader for the AI era.
+            Product designer for the AI era.
           </h1>
           <p className="text-base md:text-lg text-neutral-300 max-w-4xl">
              I design, lead and ship AI-native products that turn complex probabilistic systems into intuitive creative tools.
