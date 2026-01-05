@@ -13,7 +13,7 @@ export default function Hero() {
             Product designer for the AI era.
           </h1>
           <p className="text-base md:text-lg text-neutral-300 max-w-4xl">
-             I design, lead and ship AI-native products that turn complex probabilistic systems into intuitive creative tools.
+             I design, lead and ship AI-native products that turn complex probabilistic systems into intuitive tools and narratives.
              I combine technical depth (M.S. in AI & Design) with product strategy to build software that ntuitive, human, 
              and commercially meaningful.
           </p>         
