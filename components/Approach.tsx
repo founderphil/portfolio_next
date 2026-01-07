@@ -72,7 +72,7 @@ export default function Approach() {
             I am a lead product designer with a master’s degree in artificial
             intelligence and design from NYU, and my work lives in that shift.
             I’ve studied and built AI models, but more importantly, I’ve
-            designed how people interact with them: how intent is expressed, how
+            designed how people interact with these models...how intent is expressed, how
             trust is earned, and how complex systems remain digestible when
             intelligence is no longer deterministic.
           </p>
