@@ -72,7 +72,7 @@ export default function Approach() {
             I am a lead product designer with a master’s degree in artificial
             intelligence and design from NYU, and my work lives in that shift.
             I’ve studied and built AI models, but more importantly, I’ve
-            designed how people interact with them—how intent is expressed, how
+            designed how people interact with them: how intent is expressed, how
             trust is earned, and how complex systems remain digestible when
             intelligence is no longer deterministic.
           </p>
@@ -89,7 +89,7 @@ export default function Approach() {
             As a former founder, I also design for reality. I know that great tech dies without adoption.
              I focus on reducing the cognitive load of professional tools and ensuring that innovation 
              connects directly to business value. I care about craft, but I’m equally
-            focused on adoption, leverage, and long-term value—building products
+            focused on adoption, leverage, and long-term value - building products
             that scale not just technically, but organizationally.
           </p>
           <p className="text-base md:text-lg text-neutral-300 max-w-4xl">
@@ -98,6 +98,9 @@ export default function Approach() {
             intelligently they respond, adapt, and earn trust over time. If
             you’re building toward that future, I’d love to be part of the
             conversation.
+          </p>
+          <p className="text-base md:text-lg text-neutral-300 max-w-4xl">
+            Phil.
           </p>
         </div>
         <div className="space-y-4">
