@@ -141,10 +141,10 @@ export const projects: Record<string, Project> = {
     
     Below is the augmented reality element activation. Instead of relying on visual markers alone, I designed an audio-centric interface where users hear spatial cues as they approach points of interest. The UI provides subtle visual feedback, but the primary interaction is auditory, allowing users to stay aware of their surroundings while engaging with content.`,
     uxVisual: "/images/tpm/chalknotes_ui_grid.png",
-    outcomesVisual: '/images/tpm/chalknotes_outcomes.png',
-    outcomesVisual2: '/images/tpm/chalknotes_outcomes2.png',
-    processVisual: '/images/tpm/chalknotes_process.png',
-    overviewVisual: '/images/tpm/chalknotes_overview.png',
+    outcomesVisual: '/images/chalknotes_outcomes.png',
+    outcomesVisual2: '/images/chalknotes_outcomes2.png',
+    processVisual: '/images/chalknotes_process.png',
+    overviewVisual: '/images/chalknotes_overview.png',
     featured: true
   },
 
