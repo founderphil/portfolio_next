@@ -140,7 +140,7 @@ export const projects: Record<string, Project> = {
     designDesc: `The core design challenge was 'Heads-Up' usability. I moved the primary interaction controls to the bottom third of the screen (thumb zone) and designed high-contrast, bold typography that remains legible in direct sunlight. The 'Audio Radar' visualization gave users directional feedback without requiring map literacy, solving the 'blue dot' anxiety common in GPS apps.
     
     Below is the augmented reality element activation. Instead of relying on visual markers alone, I designed an audio-centric interface where users hear spatial cues as they approach points of interest. The UI provides subtle visual feedback, but the primary interaction is auditory, allowing users to stay aware of their surroundings while engaging with content.`,
-    uxVisual: "/images/tpm/chalknotes_ui_grid.png",
+    uxVisual: "/images/chalknotes_ui_grid.png",
     outcomesVisual: '/images/chalknotes_outcomes.png',
     outcomesVisual2: '/images/chalknotes_outcomes2.png',
     processVisual: '/images/chalknotes_process.png',
