@@ -1,9 +1,37 @@
 import React from 'react';
+import type { Metadata } from 'next';
 import './globals.css';
 
-export const metadata = {
-  title: 'Phil Olarte · Product Design · AI, XR & Emerging Technology',
-  description: 'Story-led product design across AI, XR, and data systems.'
+const siteUrl = 'https://phillipolarte.com';
+const siteTitle = 'Phil Olarte · Product Design · AI, XR & Emerging Technology';
+const siteDescription = 'Portfolio site of Phillip Olarte. Product design across AI, XR, and data systems.';
+const shareImage = '/images/olarte_headshot.jpeg';
+
+export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
+  title: siteTitle,
+  description: siteDescription,
+  openGraph: {
+    title: siteTitle,
+    description: siteDescription,
+    url: siteUrl,
+    siteName: 'Phil Olarte',
+    images: [
+      {
+        url: shareImage,
+        width: 1200,
+        height: 630,
+        alt: 'Phil Olarte portfolio preview',
+      },
+    ],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: siteTitle,
+    description: siteDescription,
+    images: [shareImage],
+  },
 };
 
 export const viewport = {
