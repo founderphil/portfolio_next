@@ -50,7 +50,11 @@ export default function Approach() {
     },
   ];
   return (
-    <section id="approach" className="py-0 space-y-8" aria-label="Approach">
+    <section
+      id="approach"
+      className="scroll-mt-24 md:scroll-mt-40 py-0 space-y-8"
+      aria-label="Approach"
+    >
       <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">
         My Approach
       </h2>
