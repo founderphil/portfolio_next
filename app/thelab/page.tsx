@@ -1,6 +1,7 @@
 "use client";
 // src/app/lab/page.tsx
 import React from "react";
+import Header from "@/components/Header";
 import { labProjectGroups } from "@/data/labProjects";
 
 const LabPage: React.FC = () => {
@@ -8,6 +9,7 @@ const LabPage: React.FC = () => {
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-fuchsia-900 via-slate-950 to-cyan-900 text-gray-100 px-4 sm:px-6 md:px-10 lg:px-20 py-10 sm:py-16 space-y-20">
+      <Header />
       {/* Floating orbs / background chaos */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute -top-20 -left-10 h-64 w-64 rounded-full bg-cyan-400/20 blur-3xl animate-pulse" />
