@@ -14,8 +14,8 @@ export default function Hero() {
           </h1>
           <p className="text-base md:text-lg text-neutral-300 max-w-4xl">
              I design, lead and ship AI-native products that turn complex probabilistic systems into intuitive tools and narratives.
-             I combine technical depth (M.S. in AI & Design) with product strategy to build software that is intuitive, human, 
-             and commercially meaningful. In a world where execution is cheap, my expertise in matching business goals to product strategy sets me apart.
+             I combine technical depth (M.S. in AI & Design), product strategy, and storytelling to build software that is intuitive, human, 
+             trustworthy, visually compelling, and commercially meaningful. In a world where execution is cheap, my expertise in imbuing storytelling into products sets me apart.
           </p>         
           
           {/* 
