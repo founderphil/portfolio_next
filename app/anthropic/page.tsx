@@ -137,8 +137,7 @@ export default function AnthropicPage() {
           </p>
 
           <p className={styles.paragraph}>
-            What I bring to Claude.ai isn&apos;t just engineering range: it&apos;s the specific conviction that <em>the
-            interface layer of an AI product is load-bearing</em>. The way a response streams, the way an empty state
+            What I bring to Claude.ai is a deep understanding of how interface design impacts user trust in AI systems. The way a response streams, the way an empty state
             is framed, the way error recovery feels: these are the moments that determine whether someone trusts the
             model. I understand that from both the design and engineering side, and I build accordingly.
           </p>
