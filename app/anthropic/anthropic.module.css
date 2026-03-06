@@ -1,0 +1,329 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Mono:wght@300;400&display=swap');
+
+.routeRoot {
+  --ink: #0f0e0c;
+  --muted: #6b6560;
+  --warm: #f5f2ed;
+  --accent: #c8501a;
+  --line: #d8d2c8;
+  --glow: rgba(200, 80, 26, 0.08);
+
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  background: var(--warm);
+  color: var(--ink);
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 18px;
+  line-height: 1.7;
+  overflow: hidden;
+}
+
+.routeRoot::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.025'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+.page {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 80px 60px 120px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 48px;
+  padding-bottom: 24px;
+  border-bottom: 1.5px solid var(--ink);
+  opacity: 0;
+  transform: translateY(10px);
+  animation: rise 0.6s ease forwards 0.1s;
+}
+
+.name {
+  font-size: 2.6rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: var(--ink);
+  margin: 0;
+}
+
+.subtitle {
+  display: block;
+  font-size: 0.9rem;
+  font-family: 'DM Mono', monospace;
+  font-weight: 300;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+  margin-top: 8px;
+}
+
+.contact {
+  text-align: right;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.9;
+}
+
+.contactLink {
+  color: var(--accent);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.contactLink:hover {
+  opacity: 0.7;
+}
+
+.address {
+  margin-bottom: 48px;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: var(--muted);
+  opacity: 0;
+  animation: rise 0.6s ease forwards 0.25s;
+}
+
+.addressStrong {
+  display: block;
+  color: var(--ink);
+  font-weight: 400;
+  font-size: 0.85rem;
+  margin-top: 12px;
+}
+
+.body {
+  opacity: 0;
+  animation: rise 0.7s ease forwards 0.4s;
+}
+
+.lede {
+  position: relative;
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.55;
+  margin: 0 0 28px;
+  color: var(--ink);
+  padding-left: 20px;
+  border-left: 3px solid var(--accent);
+}
+
+.streamLine::after {
+  content: '▋';
+  font-size: 0.85em;
+  color: var(--accent);
+  opacity: 0;
+  margin-left: 2px;
+}
+
+.streaming::after {
+  opacity: 1;
+  animation: blink 1.1s step-end infinite;
+}
+
+.paragraph {
+  margin: 0 0 22px;
+  color: #2a2622;
+  font-size: 1.05rem;
+}
+
+.chip {
+  display: inline;
+  background: var(--glow);
+  border-radius: 2px;
+  padding: 0 3px;
+  cursor: default;
+  transition: background 0.25s;
+}
+
+.chip:hover {
+  background: rgba(200, 80, 26, 0.15);
+}
+
+.metrics {
+  display: flex;
+  gap: 32px;
+  margin: 36px 0;
+  padding: 24px 28px;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  box-shadow: 0 1px 12px rgba(0, 0, 0, 0.04);
+}
+
+.metric {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.metricNum {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--accent);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.metricLabel {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+
+.metricDivider {
+  width: 1px;
+  background: var(--line);
+  align-self: stretch;
+}
+
+.closing {
+  margin-top: 44px;
+  padding-top: 36px;
+  border-top: 1px solid var(--line);
+  opacity: 0;
+  animation: rise 0.7s ease forwards 0.55s;
+}
+
+.closingP {
+  margin: 0 0 12px;
+  color: #2a2622;
+}
+
+.sig {
+  margin-top: 24px;
+  font-size: 1.4rem;
+  font-weight: 500;
+  font-style: italic;
+  color: var(--ink);
+}
+
+.footerNote {
+  margin-top: 72px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--muted);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  opacity: 0;
+  animation: rise 0.5s ease forwards 0.8s;
+}
+
+.latencyDemo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 6px 10px;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  background: #ffffff;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  user-select: none;
+}
+
+.latencyDemo:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--glow);
+}
+
+.latencyDemo:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.pulseDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #22c55e;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.latencyVal {
+  font-weight: 400;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.85);
+  }
+}
+
+@keyframes rise {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .page {
+    padding: 40px 28px 80px;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .contact {
+    text-align: left;
+  }
+
+  .metrics {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .metricDivider {
+    display: none;
+  }
+
+  .name {
+    font-size: 2rem;
+  }
+
+  .footerNote {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
