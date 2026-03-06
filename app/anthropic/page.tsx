@@ -59,8 +59,6 @@ export default function AnthropicPage() {
           <div className={styles.contact}>
             phil@storyversenyc.com
             <br />
-            202.262.4762
-            <br />
             New York, NY
             <br />
             <a
@@ -100,19 +98,19 @@ export default function AnthropicPage() {
             <span className={styles.chip}>how something feels</span>. Not just whether it works, but whether it feels
             fast. Whether the first landing is disorienting or grounding. Whether the moment the model starts
             streaming feels like magic or like watching a spinner. I hold a Master&apos;s in AI/ML &amp; Human-Computer
-            Interaction from NYU Tandon, and in it I obsessed over a single question: <em>what does latency do to
-            trust in an embodied AI?</em> I built the system. I measured it. I iterated. That obsession never left.
+            Interaction from NYU Tandon, and in it I obsessed over new larger questions around AI: <em>what does latency do to
+            trust in an embodied AI? what is trust between machines and people? what is interaction in the future?</em> I built the system. I measured it. I iterated. That obsession never left.
           </p>
 
           <div className={styles.metrics}>
             <div className={styles.metric}>
               <div className={styles.metricNum}>37</div>
-              <div className={styles.metricLabel}>usability test participants on MAIA AI character UX</div>
+              <div className={styles.metricLabel}>usability test participants on MAIA AI character multimodal experience</div>
             </div>
             <div className={styles.metricDivider} />
             <div className={styles.metric}>
               <div className={styles.metricNum}>66%</div>
-              <div className={styles.metricLabel}>visitor to purchaser conversion on AETHER</div>
+              <div className={styles.metricLabel}>visitor to purchaser conversion on Fairylandshow.com</div>
             </div>
             <div className={styles.metricDivider} />
             <div className={styles.metric}>
