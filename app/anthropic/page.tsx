@@ -3,8 +3,11 @@
 import { useCallback, useEffect, useState } from "react";
 import styles from "./anthropic.module.css";
 
+const LEDE_TEXT =
+  "I design AI experiences that feel human and I want to bring that to the product used by more people than any other AI interface in the world.";
+
 export default function AnthropicPage() {
-  const [isStreaming, setIsStreaming] = useState(false);
+  const [typedLede, setTypedLede] = useState("");
   const [latencyValue, setLatencyValue] = useState("—");
   const [latencyColor, setLatencyColor] = useState("#0f0e0c");
 
@@ -32,20 +35,32 @@ export default function AnthropicPage() {
       measureLatency();
     }, 800);
 
-    const streamStartTimer = window.setTimeout(() => {
-      setIsStreaming(true);
-    }, 900);
-
-    const streamEndTimer = window.setTimeout(() => {
-      setIsStreaming(false);
-    }, 3100);
-
     return () => {
       window.clearTimeout(latencyTimer);
-      window.clearTimeout(streamStartTimer);
-      window.clearTimeout(streamEndTimer);
     };
   }, [measureLatency]);
+
+  useEffect(() => {
+    let typeInterval: number | undefined;
+
+    const typeDelay = window.setTimeout(() => {
+      let index = 0;
+      typeInterval = window.setInterval(() => {
+        index += 1;
+        setTypedLede(LEDE_TEXT.slice(0, index));
+        if (index >= LEDE_TEXT.length) {
+          window.clearInterval(typeInterval);
+        }
+      }, 22);
+    }, 250);
+
+    return () => {
+      window.clearTimeout(typeDelay);
+      if (typeInterval) {
+        window.clearInterval(typeInterval);
+      }
+    };
+  }, []);
 
   return (
     <div className={styles.routeRoot}>
@@ -82,10 +97,7 @@ export default function AnthropicPage() {
         </div>
 
         <div className={styles.body}>
-          <p className={`${styles.lede} ${styles.streamLine} ${isStreaming ? styles.streaming : ""}`}>
-            I design AI experiences that feel human and I want to bring that to the product used by more people
-            than any other AI interface in the world.
-          </p>
+          <p className={`${styles.lede} ${styles.streamLine}`}>{typedLede}</p>
 
           <p className={styles.paragraph}>
             I&apos;m a product designer and engineer <span className={styles.chip}>a few blocks from your New York office</span>{" "}
