@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import type { Project } from '@/data/projects';
+import { plainCopy } from '@/data/projects';
 
 type ProjectCardProps = {
   slug: string;
@@ -20,7 +21,7 @@ export default function ProjectCard({ slug, project }: ProjectCardProps) {
       </div>
       <div className="p-4 space-y-1">
         <h3 className="text-lg font-medium">{project.title}</h3>
-        <p className="text-neutral-400 text-sm">{project.overview}</p>
+        <p className="text-neutral-400 text-sm">{plainCopy(project.overview)}</p>
         <div className="flex gap-2 pt-2 flex-wrap">
           {project.tags.map((t) => (
             <span key={t} className="text-xs border border-neutral-700 px-2 py-0.5 rounded-full">{t}</span>

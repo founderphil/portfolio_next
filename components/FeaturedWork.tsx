@@ -1,3 +1,4 @@
+import { plainCopy } from '@/data/projects';
 import React from "react";
 
 export default function FeaturedWork({ featured = [] }: { featured?: any[] }) {
@@ -16,7 +17,7 @@ export default function FeaturedWork({ featured = [] }: { featured?: any[] }) {
             <div className="p-4 space-y-2">
               <h3 className="text-lg font-medium">{p.title}</h3>
               <h4 className="text-lg font-medium">{p.subtitle}</h4>
-              <p className="text-neutral-400 text-sm">{p.overview}</p>
+              <p className="text-neutral-400 text-sm">{plainCopy(p.overview)}</p>
               <div className="flex flex-wrap gap-2 pt-1">
                 {p.tags.map(t => <span key={t} className="text-[11px] border border-neutral-700 px-2 py-0.5 rounded-full text-neutral-300">{t}</span>)}
               </div>

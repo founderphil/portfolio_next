@@ -12,8 +12,23 @@ type Props = {
   slug: string;
 };
 
+/** Renders inline [label](/path) links in copy strings; plain text passes through unchanged. */
+function renderCopy(text: string) {
+  return text.split(/(\[[^\]]+\]\([^)]+\))/g).map((part, i) => {
+    const m = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+    if (!m) return part;
+    return (
+      <Link key={i} href={m[2]} className="underline underline-offset-4 hover:text-gray-200 transition-colors">
+        {m[1]}
+      </Link>
+    );
+  });
+}
+
 export default function ProjectPageClient({ project, slug }: Props) {
   const [lightboxSrc, setLightboxSrc] = useState<string | null>(null);
+  const hasUxVisual = Boolean(project.uxVisual);
+  const hasOutcomeVisuals = Boolean(project.outcomesVisual || project.outcomesVisual2);
 
   const openLightbox = (src?: string | null) => {
     if (src) setLightboxSrc(src);
@@ -45,7 +60,7 @@ export default function ProjectPageClient({ project, slug }: Props) {
 
           <h1 className="text-5xl lg:text-7xl font-bold tracking-tighter mb-6 text-white">{project.title}</h1>
 
-          <p className="text-lg text-gray-400 max-w-md leading-relaxed mb-12">{project.overview}</p>
+          <p className="text-lg text-gray-400 max-w-md leading-relaxed mb-12">{renderCopy(project.overview)}</p>
 
           {/* Metadata Grid */}
           <div className="grid grid-cols-2 gap-px bg-gray-800 border border-gray-800 font-mono text-sm">
@@ -179,7 +194,6 @@ export default function ProjectPageClient({ project, slug }: Props) {
               {/* Technical Caption */}
               <div className="p-3 border-t border-gray-800 font-mono text-[10px] text-gray-500 flex justify-between uppercase tracking-wider">
                 <span>Fig 1.0 — Data Flow</span>
-                <span>/images/{slug}_arch.png</span>
               </div>
             </button>
           </div>
@@ -188,7 +202,7 @@ export default function ProjectPageClient({ project, slug }: Props) {
 
       {/* 4. THE PRODUCT SOLUTION (UX/UI Layer) */}
       <section className="py-24 px-6 lg:px-20 border-b border-gray-800 bg-[#080808]">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 gap-16">
+        <div className="max-w-6xl mx-auto grid gap-16">
           
           {/* Left: Design Narrative */}
           <div>
@@ -207,8 +221,8 @@ export default function ProjectPageClient({ project, slug }: Props) {
           </div>
 
           {/* Right: The UI Visual */}
-          <div className="relative group">
-            {project.uxVisual ? (
+          {hasUxVisual && (
+            <div className="relative group">
               <button
                 type="button"
                 onClick={() => openLightbox(project.uxVisual)}
@@ -220,60 +234,51 @@ export default function ProjectPageClient({ project, slug }: Props) {
                   className="w-full h-auto shadow-2xl border border-gray-800 rounded-sm cursor-zoom-in transition-transform duration-300 group-hover:scale-[1.02]"
                 />
               </button>
-            ) : (
-              // Fallback placeholder if image missing
-              <div className="aspect-video bg-[#111] border border-gray-800 flex items-center justify-center text-gray-600 font-mono text-xs">
-                UI_VISUAL_PENDING
+              
+              {/* Decorative Caption */}
+              <div className="absolute -bottom-6 -right-6 font-mono text-xs text-gray-600 hidden lg:block">
+                // INTERFACE_V1.0
               </div>
-            )}
-            
-            {/* Decorative Caption */}
-            <div className="absolute -bottom-6 -right-6 font-mono text-xs text-gray-600 hidden lg:block">
-              // INTERFACE_V1.0
             </div>
-          </div>
+          )}
 
         </div>
       </section>
 
       {/* 5. OUTCOMES & IMPACT */}
-      <section className="grid lg:grid-cols-2 border-b border-gray-800">
-        {/* Visual Outcome */}
-        <div className="bg-[#0a0a0a] border-r border-gray-800 min-h-[50vh] flex flex-col items-center justify-center gap-8 p-12">
-          {project.outcomesVisual ? (
-            <button
-              type="button"
-              onClick={() => openLightbox(project.outcomesVisual)}
-              className="group w-full max-w-3xl focus:outline-none"
-            >
-              <img
-                src={project.outcomesVisual}
-                className="shadow-2xl border border-gray-800 w-full object-contain cursor-zoom-in transition-transform duration-300 group-hover:scale-[1.02]"
-                alt={`${project.title} outcome visual 1`}
-              />
-            </button>
-          ) : (
-            <div className="font-mono text-gray-700">NO_VISUAL_DATA</div>
-          )}
-          {project.outcomesVisual2 ? (
-            <button
-              type="button"
-              onClick={() => openLightbox(project.outcomesVisual2)}
-              className="group w-full max-w-3xl focus:outline-none"
-            >
-              <img
-                src={project.outcomesVisual2}
-                className="shadow-2xl border border-gray-800 w-full object-contain cursor-zoom-in transition-transform duration-300 group-hover:scale-[1.02]"
-                alt={`${project.title} outcome visual 2`}
-              />
-            </button>
-          ) : (
-            <div className="font-mono text-gray-700">NO_VISUAL_DATA</div>
-          )}
-        </div>
+      <section className={`${hasOutcomeVisuals ? 'grid lg:grid-cols-2' : ''} border-b border-gray-800`}>
+        {hasOutcomeVisuals && (
+          <div className="bg-[#0a0a0a] border-r border-gray-800 min-h-[50vh] flex flex-col items-center justify-center gap-8 p-12">
+            {project.outcomesVisual && (
+              <button
+                type="button"
+                onClick={() => openLightbox(project.outcomesVisual)}
+                className="group w-full max-w-3xl focus:outline-none"
+              >
+                <img
+                  src={project.outcomesVisual}
+                  className="shadow-2xl border border-gray-800 w-full object-contain cursor-zoom-in transition-transform duration-300 group-hover:scale-[1.02]"
+                  alt={`${project.title} outcome visual 1`}
+                />
+              </button>
+            )}
+            {project.outcomesVisual2 && (
+              <button
+                type="button"
+                onClick={() => openLightbox(project.outcomesVisual2)}
+                className="group w-full max-w-3xl focus:outline-none"
+              >
+                <img
+                  src={project.outcomesVisual2}
+                  className="shadow-2xl border border-gray-800 w-full object-contain cursor-zoom-in transition-transform duration-300 group-hover:scale-[1.02]"
+                  alt={`${project.title} outcome visual 2`}
+                />
+              </button>
+            )}
+          </div>
+        )}
 
-        {/* Text Outcome */}
-        <div className="p-12 lg:p-24 flex flex-col justify-center">
+        <div className={`flex flex-col justify-center ${hasOutcomeVisuals ? 'p-12 lg:p-24' : 'max-w-4xl mx-auto py-24 px-6 lg:px-20'}`}>
           <div className="flex items-center gap-2 mb-6 text-green-400 font-mono text-xs uppercase tracking-widest">
             <Zap size={14} />
             Outcomes & Impact

@@ -57,7 +57,7 @@ export default function Footer() {
         </div>
 
         <div>
-          <a href="https://paodaoinc.com" className="underline">paodaoinc.com</a> · <a href="https://storyversenyc.com" className="underline">storyversenyc.com</a>
+          <a href="https://storyversenyc.com" className="underline">storyversenyc.com</a>
         </div>
       </div>
     </footer>

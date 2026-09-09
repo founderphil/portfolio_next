@@ -41,12 +41,12 @@ export default function Approach() {
     {
       title: "Capabilities",
       body:
-        "Human-in-the-loop AI and multimodal UX (voice, XR, GenAI). Product vision, roadmaping, requirements, and narrative decks. User research, journey mapping, usability metrics, and accessibility (WCAG). Experience architecture, service blueprints, systems thinking, and information architecture. Rapid prototyping, wireframing, and interaction design. Design systems, component libraries, and design ops. Cross-functional alignment across design, product, and engineering. Technical documentation, stakeholder management, and executive communication. Team leadership, mentorship, and strategic alignment. Business strategy, KPI definition, and vendor/partner management.",
+        "Human-AI interaction design (trust, grounding, transparency patterns). Multimodal UX (voice, XR, GenAI). B2B and ops-focused product design. UX research, field studies, and journey mapping. Interaction design and rapid prototyping (Figma to React). Design systems and component libraries. Information architecture and service blueprints. Accessibility (WCAG). Front-end delivery with AI-assisted development (Claude Code, Cursor). Product strategy, prioritization, and executive communication.",
     },
     {
       title: "Tooling",
       body:
-        "Figma, Framer, Adobe Creative Cloud, After Effects, Photoshop, Blender, Jira, usability testing, A/B testing. Next.js, React, React Native, TypeScript, Python, R, Unity, Three.js, p5.js, Pixi.js. OpenAI APIs, RLHF, local inference, multimodal ML, prompt engineering, RAG, data cleanup, BI analytics. Generative audio pipelines (STT, TTS), spatial & geospatial audio, computer vision, AR/MR. AWS, GCP, CI/CD, GitHub, APIs, microservices, SQL/NoSQL, CMS/CRM/intranet, enterprise search, IVR. Prototyping across web, mobile, mixed fidelity, and AI-integrated stacks.",
+        "Figma, Framer, Adobe Creative Cloud, After Effects, Blender. Next.js, React, React Native, TypeScript, Python, Unity, Three.js, p5.js. OpenAI APIs, LLMs, multimodal models, local inference, RAG, prompt engineering, computer vision, STT/TTS, spatial audio, AR/MR. AWS, GCP, GitHub, CI/CD, SQL/NoSQL. Claude Code, Cursor.",
     },
   ];
   return (
@@ -66,24 +66,15 @@ export default function Approach() {
             Now it’s about behavior, systems, and decisions made by machines
             alongside humans.
             <br /><br/>
-            We moved beyond static screens and into probabilistic systems.
+            We moved beyond static screens and into probabilistic systems that need to be trustworthy.
           </p>
           <p className="text-base md:text-lg text-neutral-300 max-w-4xl">
-            I am a lead product designer with a master’s degree in artificial
-            intelligence and design from NYU, and my work lives in that shift.
+            I am a lead product designer with an M.S. in Emerging Technologies
+            (AI/ML & HCI) from NYU, and my work lives in that shift.
             I’ve studied and built AI models, but more importantly, I’ve
-            designed how people interact with these models...how intent is expressed, how
+            designed how people interact with these models: how intent is expressed, how
             trust is earned, and how complex systems remain digestible when
             intelligence is no longer deterministic.
-          </p>
-          <p className="text-base md:text-lg text-neutral-300 max-w-4xl">
-            My perspective is shaped by working across disciplines that are
-            often siloed: design, product strategy, and applied AI. I’m
-            comfortable discussing model capabilities and limitations with
-            engineers, while translating those realities into interactions that
-            feel clear, ethical, and useful to people. I don’t treat AI as a
-            feature; to me, AI is a new design material. It is unpredictable and powerful, 
-            requiring a new set of best practices that blend engineering constraints with user psychology.
           </p>
           <p className="text-base md:text-lg text-neutral-300 max-w-4xl">
             As a former founder, I also design for reality. I know that great tech dies without adoption.

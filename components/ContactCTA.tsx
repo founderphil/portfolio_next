@@ -7,7 +7,7 @@ export default function ContactCTA() {
         <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-3">Let’s craft your next big innovation together.</h2>
         <p className="text-neutral-300 max-w-2xl mb-6">I’m based in NYC and open to Staff/Lead Product Design roles and select collaborations. Let’s talk.</p>
         <div className="flex flex-wrap gap-3">
-          <a href="mailto:phil@storyversenyc.com" className="px-5 py-2.5 rounded-full bg-white text-black font-medium hover:opacity-90 transition">Email Phil</a>
+          <a href="mailto:me@phillipolarte.com" className="px-5 py-2.5 rounded-full bg-white text-black font-medium hover:opacity-90 transition">Email Phil</a>
         </div>
       </div>
     </section>

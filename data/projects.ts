@@ -36,7 +36,105 @@ export type Project = {
 };
 
 export const projects: Record<string, Project> = {
-  // --- Flagship / main projects ---
+  agentic_briefing: {
+    title: 'Agentic Board Intelligence',
+    subtitle: 'Enterprise Decision Support · Under NDA',
+    // TODO(phil): supply a re-created abstraction for the NDA client; using neutral placeholder for now.
+    img: '/images/placeholder.svg',
+    tags: ['Agentic AI', 'Human-AI Interaction', 'Trust & Transparency', 'Mixed-Initiative UX', 'Enterprise UX'],
+    overview: `An agentic decision-support product that reads dense board decks and surfaces the story executives need in order to act. I led the human-AI interaction layer through five UI iterations, from a text-heavy first version to a grounded, chunked, collaborative interface. Client is under NDA: company name, data, and production screens are withheld, and the visuals here are re-created abstractions.`,
+    role: `AI Interaction Design Lead (contract, Jan–May 2026). Owned the interaction model between executives and the agent: research, information architecture, trust cues, transparency patterns, and five rounds of UI iteration driven by founder and user feedback. Also designed the investor deck and marketing site.`,
+    outcomes: [
+      'Replaced a dense, text-heavy results view with an organized layout that reveals findings in chunks, so executives read the story first and the evidence on demand.',
+      'Introduced source attribution where none existed: every derived fact links back to its origin in the deck, and can be clarified at any point.',
+      'Redesigned the upload and analysis flow with confidence scoring, so users could see how solid each extracted fact was before acting on it.',
+      'Replaced an overlapping, non-MECE navigation model with a cleaner mental model of how the product organizes what it found.',
+      'Designed a side-panel collaborator that edits the results as you talk to it, a mixed-initiative pattern rather than a bolt-on chatbot.',
+      'Engagement ended in May 2026 when the company restructured to its two founders; final shipping status is unknown.',
+    ],
+    why: `A board deck is 80-plus pages of text, tables, and charts. Executives don't want a summary; they want the story, and they need to trust it. The failure modes are opposite and both fatal: over-trust (act on a hallucination) or under-trust (ignore the tool). When I joined, the product had no references, no confidence signals, and an interface that buried findings in prose. The challenge was an interaction layer that brings people closer to the narrative inside the data while keeping every claim grounded and contestable.`,
+    architectureDesc: `A retrieval-grounded agent over uploaded board decks. I designed the interaction layer, not the model: how extracted facts are scored, surfaced, sourced, and revised through conversation. Details of the underlying system are withheld under NDA.`,
+    key_components: [
+      'Chunked, narrative-first results: the story on top, evidence one click below, raw extracted facts below that.',
+      'Grounding: every derived fact carries a reference to its source in the deck and can be clarified in place.',
+      'Confidence scoring on the upload and analysis flow, replacing an open process with no signal of reliability.',
+      'A MECE information architecture replacing an overlapping category model that made results hard to navigate.',
+      'Side-panel collaborator: a conversational agent that can change data inside the results as you talk, not just answer questions about them.',
+    ],
+    designDesc: `The first version I inherited was a wall of words. Findings were correct but unreadable, nothing cited a source, and the navigation model overlapped with itself, so executives could not build a stable mental model of what the product had done with their deck. Feedback from founders and users pointed the same direction: people wanted to know where a claim came from before they would act on it.
+
+    Across five iterations the interface moved from prose to structure. Findings are revealed in chunks, ordered by the story they tell, with the underlying facts one layer down and their source passages one layer below that. I introduced trust cues at each level: a confidence score on every extracted fact from the moment of upload, source attribution on every claim, and an explicit path to clarify anything that looked off. The navigation was rebuilt to be mutually exclusive and collectively exhaustive, so the same finding never appeared under two headings.
+
+    The last major addition was a side-panel collaborator. Earlier versions treated chat as a way to ask questions about the results. I redesigned it as a way to change them: an executive could say "treat the Q3 forecast as provisional" and watch the results update. That shifted the product from a chatbot with a report attached to a mixed-initiative tool where the human and the agent revise the same artifact together.`,
+    // TODO(phil): supply /images/agentic_briefing_ui.png (abstracted wireframe, no real UI).
+    // uxVisual: '/images/agentic_briefing_ui.png',
+    featured: true,
+  },
+
+  esg_materiality: {
+    title: 'ESG Materiality App',
+    subtitle: 'B2B Data Visualization',
+    img: '/images/esg.png',
+    tags: ['B2B SaaS', 'Data Viz', 'Complex Workflows', 'Strategy'],
+    overview: `A massive multi-featured business intelligence web app to capture, prioritize, and aggregate ESG topics for the Global 500, modeling enterprise value and environmental impact of today and trajectories over the next decade.`,
+    role: `Lead Product Designer (Head of Product) — research synthesis, information architecture, dashboards, and scenario modeling UX.`,
+    outcomes: [
+      "Productized a manual consulting service, creating a product that structured internal data.",
+      "Unified 5+ disparate data streams into a single 'Materiality Matrix' dashboard.",
+      "Reduced stakeholder reporting time by ~40% through automated visualization.",
+      "Future proofed the platform for evolving ESG standards and reporting requirements.",
+      "Facilitated cross-functional workshops to align on ESG priorities and data strategies.",
+      "Created war-game scenarios to model long-term impact of ESG strategies."
+    ],
+    architectureDesc: "A B2B SaaS architecture transforming unstructured qualitative survey data into a structured SQL schema and quant reporting. The frontend utilizes complex D3.js visualization libraries to render dynamic 'Materiality Matrices,' allowing strategy teams to model risk trajectories in real-time rather than relying on static reports.",
+    why: "Consulting data is often trapped in static PDFs. The challenge was transforming abstract strategy frameworks into a dynamic product used by Global 500 that allowed for year-over-year modeling and aggregation of ESG data.",
+    key_components: [
+      'Materiality topic priority system with unified taxonomy.',
+      'New insights and trend discovery from multi-project data aggregation.',
+      'Global 500 Executive dashboard protected by role-based access controls.',
+      'Topic, Interview & Survey scoring, ingestion and scheduling.',
+    ],
+    designDesc: "I replaced static tabular data with a dynamic interactive scatter plot. The UX allows users to drag-and-drop 'topics' to reweight their priority, giving strategy teams a tactile way to model 'What-If' scenarios. I designed a rigid grid system to ensure that even when displaying 50+ data points, the dashboard remained scannable and never felt cluttered.",
+    uxVisual: "/images/esg_ui.png",
+    featuredVideo: '/video/esg_video.mp4',
+    outcomesVisual: '/images/esg_outcomes.png',
+    outcomesVisual2: '/images/esg_outcomes2.png',
+    processVisual: '/images/esg_process.png',
+    overviewVisual: '/images/esg_overview.png',
+    featured: true
+  },
+
+  emily_was_here: {
+    title: 'Emily Was Here',
+    subtitle: 'Location-Based XR Audio Experience · Solo Build',
+    link: 'https://apps.apple.com/us/app/emily-was-here/id6785517773',
+    img: '/images/emily_was_here.jpg',
+    tags: ['iOS', 'Geo-Triggered Audio', 'Augmented Reality', 'Freemium', 'AI-Assisted Development', 'Solo Shipped'],
+    overview: `An immersive audio walk across the Brooklyn Bridge, narrated by Emily Warren Roebling, that reveals each chapter as you reach the place where it happened. Relaunched in August 2026 as a white-label experience template: the ChalkNotes concept rebuilt from the ground up as a lightweight, reusable iOS app. Designed, built, and shipped entirely by me using AI-assisted development end to end.`,
+    role: `Designer, developer, and publisher. Owned everything from interaction design to App Store submission: geo-triggered audio playback, AR moments, the freemium model, and the buy-once cross-platform unlock. Built in weeks, solo, as the first product I shipped with an AI-assisted workflow from the first line to the release.`,
+    outcomes: [
+      'Live on the App Store (v1.0 August 11, v1.1 August 22, 2026) with a full-experience in-app purchase; 5.0 rating at launch.',
+      'Buy once, walk anywhere: a single purchase unlocks the full experience on iPhone and in any web browser, so a visitor can start on the bridge and finish at home.',
+      'Zero data collection. The app works without accounts or tracking, which simplified both the privacy story and the build.',
+      'Turned a single-site experience into a template: the same codebase can be reskinned for another landmark, walk, or venue.',
+    ],
+    why: `ChalkNotes proved the concept but carried the weight of a platform: a CMS, accounts, creator tools. Most location-based audio experiences don't need any of that. The question was whether one person, with AI-assisted development, could ship a polished geo-aware audio and AR experience with a real business model in weeks rather than quarters, and end up with something reusable.`,
+    architectureDesc: `A native iOS app with location-triggered audio chapters along a guided route, AR moments at key stops, a free opening section with a one-time in-app purchase for the full walk, and a web companion unlocked by an access code the app issues after purchase. Built with AI-assisted development throughout: design, code, copy, and store assets.`,
+    key_components: [
+      'Geo-recognizable audio playback: chapters trigger from position along the route, with a home mode for people who aren\'t on the bridge.',
+      'Augmented reality moments layered onto the physical landmark at key stops.',
+      'Freemium model: free opening, single in-app purchase for the full experience.',
+      'Cross-platform unlock: purchase on iPhone, continue in any browser via an access code.',
+      'White-label structure: story, route, audio, and branding separated from the app shell for reuse.',
+    ],
+    designDesc: `The design constraint was the same one that shaped MAIA and AETHER: the technology should never ask to be looked at. On a bridge, that means the phone stays in the pocket and the audio does the work, with the map and AR available when you want them rather than demanding attention. Chapters trigger where the events happened, so the story and the place stay locked together.
+
+    Shipping it solo with an AI-assisted workflow changed how I think about scope. Things that used to be a sprint (the purchase flow, the cross-platform unlock, the App Store assets) became an afternoon, which meant more of the time went to the walk itself: pacing, narration, where to stop. That's the argument this project makes. A designer who can ship the whole thing gets to spend the saved time on design.`,
+    // TODO(phil): supply /images/emily_was_here_ui.png (app screenshot). /images/bridge_ui.png is the old ChalkNotes-era UI if it still applies.
+    // uxVisual: '/images/emily_was_here_ui.png',
+    featured: true,
+  },
+
   maia: {
     title: 'The MAIA Experience',
     subtitle: 'Generative Voice & Audio',
@@ -44,9 +142,9 @@ export const projects: Record<string, Project> = {
     img: '/images/maia.png',
     tags: ['GenAI', 'Voice UI', 'Python', 'LLM', 'Latency Masking'],
     overview: `An intimate, 10‑minute encounter with MAIA — a real‑time AI character that sees, listens, and converses with visitors inside "Prof. Dupin’s study" as onboarding to a larger story world. Think AI meets Disney pre‑show experience - personalized for each guest.`,
-    role: `MS in Emerging Tech, AI & Design at NYU. Lead Designer & Engineer. End‑to‑end experience design, LLM prompt engineering, real‑time voice interaction system architecture, and front‑end development for the interactive installation.`,
+    role: `M.S. in Emerging Technologies (AI/ML & HCI), NYU. Lead Designer & Engineer. End‑to‑end experience design, LLM prompt engineering, real‑time voice interaction system architecture, and front‑end development for the interactive installation.`,
       outcomes: [
-      "Engineered a local-LLM mult-threaded architecture that reduced latency from 10s to <200ms.",
+      "Engineered a local-LLM multi-threaded architecture that reduced latency from 10s to <200ms.",
       "Designed 'thinking state' animations that maintained narrative immersion during processing.",
       "Personalized interaction pacing and conversation based on discussion with AI.",
       "Proved viability of 'Privacy-First' AI by processing all voice data locally (no cloud).",
@@ -76,6 +174,41 @@ export const projects: Record<string, Project> = {
     overviewVisual: '/images/MAIA_overview.png'
   },
 
+  aether: {
+    title: 'AETHER',
+    subtitle: 'Off-Broadway Immersive Production · Physical AI',
+    link: 'https://aether-show.com/',
+    img: '/images/aether_orb.jpg',
+    tags: ['Experience Architecture', 'Physical Computing', 'ESP32 / IoT', 'Generative Narrative', 'Direction', 'P&L'],
+    overview: `A live immersive off-Broadway production merging performance, original film, music, and retro-futurist interactive installations into a personalized journey. Every guest left with a story generated from what they actually did in the space. Produced by Storyverse, the studio I co-founded.`,
+    role: `Founder, Executive Producer & Technical Director. Ran the business of the show: led a 28-person creative, technical, and production team to a fixed opening date, set the tone for the marketing team, and owned strategy, budget, and P&L. Personally designed and built the guest-facing interactive technology on the show network, working alongside an ML engineer who built the Raspberry Pi fleet, telemetry fabric, and network infrastructure.`,
+    outcomes: [
+      'Grew revenue 4x within six weeks of launch to roughly $25K per performance, with sold-out houses.',
+      'Executive produced a 28-person company across performance, film, music, design, engineering, and production, from first rehearsal to sold-out run.',
+      'Designed and built wireless light orbs carried by each character, with ESP32s inside reporting guest activity to the network through NPC card taps. Each orb had a scripted moment where it came to life through fluctuations in brightness.',
+      'Built the AI "hive mind" that consumed the interaction stream and generated a personal story for each guest from their choices during the show.',
+      'Ran a networked fleet of installations nightly (CRT video cluster, phonebooth, arcade, projector) with live telemetry, so the show could be diagnosed and tuned between performances.',
+    ],
+    why: `A live show is a product with a launch date, a funnel, and nightly live operations. The harder problem was personalization at theatrical scale: give every guest a story that is genuinely theirs, generated from real interactions in a dark, crowded, retro-futurist space, without a single screen breaking the world.`,
+    architectureDesc: `The show ran on a dedicated network with a Raspberry Pi fleet, an MQTT telemetry fabric, and a VPN, built by my ML engineer collaborator (his write-up: vaillant.ai/projects/aether). On top of that layer I built the guest-facing technology: ESP32 orbs carried by characters that reported NPC card taps over the network, the interaction stream those taps produced, and the AI hive mind service that read that stream and wrote each guest a story. Installations on the same fabric included a synchronized CRT video cluster, a phonebooth that triggered environmental effects when lifted, an arcade cabinet reporting scores and endings, and a looping projector.`,
+    key_components: [
+      'Character orbs: wireless ESP32 light objects, one per character, reporting guest card taps and coming alive on cue through brightness fluctuations.',
+      'NPC card taps as the interaction primitive: guests tap a card with a character, and the network records the encounter.',
+      'AI hive mind: a service that turns each guest\'s encounter stream into a personal story.',
+      'Networked installations: synchronized CRT cluster, phonebooth, arcade, projector, all reporting telemetry.',
+      'Digital touchpoints before and after the show that extend the story world beyond the venue.',
+    ],
+    designDesc: `Producing AETHER meant treating a 28-person company like a product team with a ship date. The show's director owned the performance; I owned everything around it: the guest journey, the technology, the marketing tone, and the business, so that every department was building toward the same picture.
+
+    The orb was the central interface decision. A screen in the guests' hands would have broken the world, so the interface became light. Each character carried an orb; when a guest tapped their card with that character, the orb registered the encounter and the network knew. Every orb also had one scripted moment where it came to life, its brightness fluctuating as if breathing, which turned a piece of hardware into a story beat. This continued the "invisible interface" thinking from MAIA: the technology is present but never asks to be looked at.
+
+    The hive mind closed the loop. By the end of a performance, the network held a record of every encounter each guest had chosen. The AI read that record and wrote them a story that was theirs, not a template with their name inserted. The design challenge was less the generation itself than the constraints around it: the story had to stay inside the world's lore, reflect what the guest actually did, and hold up to the guest who had just lived it.`,
+    uxVisual: '/images/aether_ui.jpg',
+    featured: false,
+    // TODO(phil): supply /video/aether_teaser.mp4 if you have a teaser cut.
+    // featuredVideo: '/video/aether_teaser.mp4',
+  },
+
   fairyland: {
     title: 'FAIRYLAND',
     subtitle: 'Multimodal Narrative System',
@@ -98,7 +231,7 @@ export const projects: Record<string, Project> = {
       'AI chat UI tied to lore.',
       'AI-powered community engagement awareness',
     ],
-    featured: true,
+    featured: false,
     designDesc: `Designing for narrative cohesion across mediums required a unified visual language and interaction patterns. I developed a modular UI system that adapted to both web and mobile contexts, ensuring users felt continuity whether they were engaging with the story online or in-person. The use of consistent typography, color schemes, and iconography reinforced brand identity while facilitating intuitive navigation through complex narrative layers.
     
     The ticketing flow was designed to be more than just a transaction; it was an entry point into the story. By integrating narrative elements into the purchase process, users were 'primed' for the experience ahead, increasing engagement and anticipation.
@@ -119,7 +252,7 @@ export const projects: Record<string, Project> = {
     link: 'https://chalknotes.com/',
     img: '/images/chalknotes.png',
     tags: ['Spatial Audio', 'AR', 'Product Strategy', 'Mobile', 'No-Code Tools', "React Native", "Figma"],
-    overview: `A mixed‑reality audio‑AR platform that lets creators drop stories onto real‑world maps and audiences discover them.`,
+    overview: `A mixed‑reality audio‑AR platform that lets creators drop stories onto real‑world maps and audiences discover them. Relaunched in 2026 as [Emily Was Here](/work/emily_was_here), a lightweight white-label version of the same idea.`,
     role: `Lead Product Designer, UX Strategist, Engineer Manager. Owned end‑to‑end design across no‑code authoring and mobile discovery. Led research, prototyping, and usability testing with creators and audiences in uncontrolled real‑world environments.`,
     outcomes: [
       "Validated an 'Audio-First' AR interaction model, reducing screen-time during the experience by 60%.",
@@ -144,77 +277,9 @@ export const projects: Record<string, Project> = {
     outcomesVisual2: '/images/chalknotes_outcomes2.png',
     processVisual: '/images/chalknotes_process.png',
     overviewVisual: '/images/chalknotes_overview.png',
-    featured: true
-  },
-
-  esg_materiality: {
-    title: 'ESG Materiality App',
-    subtitle: 'B2B Data Visualization',
-    img: '/images/esg.png',
-    tags: ['B2B SaaS', 'Data Viz', 'Complex Workflows', 'Strategy'],
-    overview: `A massive multi-featured business intelligence web app to capture, prioritize, and aggregate ESG topics for the Global 500, modeling enterprise value and environmental impact of today and trajectories over the next decade.`,
-    role: `Lead Product/UX — research synthesis, information architecture, dashboards, and scenario modeling UX.`,
-    outcomes: [
-      "Productized a manual consulting service, creating a product that naturalized internal data.",
-      "Unified 5+ disparate data streams into a single 'Materiality Matrix' dashboard.",
-      "Reduced stakeholder reporting time by ~40% through automated visualization.",
-      "Future proofed the platform for evolving ESG standards and reporting requirements.",
-      "Facilitated cross-functional workshops to align on ESG priorities and data strategies.",
-      "Created War games scenarios to model long-term impact of ESG strategies."
-    ],
-    architectureDesc: "A B2B SaaS architecture transforming unstructured qualitative survey data into a structured SQL schema and quant reporting. The frontend utilizes complex D3.js visualization libraries to render dynamic 'Materiality Matrices,' allowing strategy teams to model risk trajectories in real-time rather than relying on static key_components.",
-    why: "Consulting data is often trapped in static PDFs. The challenge was transforming abstract strategy frameworks into a dynamic product used by Global 500 that allowed for year-over-year modeling and aggregation of ESG data.",
-    key_components: [
-      'Materiality topic priority system with unified taxonomy.',
-      'New insights and trend discovery from multi-project data aggregation.',
-      'Global 500 Executive dashboard protected by role-based access controls.',
-      'Topic, Interview & Survey scoring, ingestion and scheduling.',
-    ],
-    designDesc: "I replaced static tabular data with a dynamic interactive scatter plot. The UX allows users to drag-and-drop 'topics' to reweight their priority, giving strategy teams a tactile way to model 'What-If' scenarios. I designed a rigid grid system to ensure that even when displaying 50+ data points, the dashboard remained scannable and never felt cluttered.",
-    uxVisual: "/images/esg_ui.png",
-    featuredVideo: '/video/esg_video.mp4',
-    outcomesVisual: '/images/esg_outcomes.png',
-    outcomesVisual2: '/images/esg_outcomes2.png',
-    processVisual: '/images/esg_process.png',
-    overviewVisual: '/images/esg_overview.png',
-    featured: true
-  },
-
-  emily_was_here: {
-    title: 'Emily Was Here — Brooklyn Bridge Experience',
-    subtitle: 'Geospatial Mixed Reality',
-    link: 'https://brooklynbridgeexperience.com/',
-    img: '/images/emily.png',
-    tags: ['Geospatial', 'Audio AR', 'UX Research', 'Mobile'],
-    overview: `A poetic, GPS‑triggered audio walk across the Brooklyn Bridge. Voiceover, poetry, and ambient sound transform the crossing into an intimate narrative.`,
-    role: `XR Experience Designer & Technical Director — route design, GPS trigger pacing, and sound layering using the ChalkNotes stack.`,
-    architectureDesc: "A geospatial audio engine that triggers sound based on GPS radius, utilizing a React Native frontend and a Firebase real-time backend for creator updates.",
-    outcomes: [
-      'Shipped an on‑demand, location‑locked experience with no live performers or on‑site staff.',
-      'Demonstrated emotional impact through sound‑first design, measured through qualitative feedback and replays.',
-      'Extended the ChalkNotes architecture for more precise environmental and route control.',
-      'Managed team of 20 actors to produce high-quality voiceover recordings.'
-    ],
-    why: `Explores low‑friction, site‑specific storytelling that scales to city landmarks without heavy reliance on the device in the user's hand.`,
-    key_components: [
-      'GPS‑triggered audio walk route.',
-      'Narrative script and voiceover recordings.',
-      'Ambient soundscapes layered for immersion.',
-      'Route pacing and trigger radius design.'
-    ],
-    designDesc: `The landing page was to built excitement for the experience and be a web purchasing experience integrated with the mobile app. 
-    
-    The app experience was built on my app Chalknotes. I had to improve the app for this custom experience that lasted 2 hours. Designing for a seamless audio walk required careful consideration of pacing and environmental context. I mapped the route to identify natural pauses and scenic viewpoints, ensuring that audio triggers aligned with moments of visual interest. The UX prioritized minimal screen interaction, allowing users to focus on the auditory experience while navigating the bridge safely.
-    `,
-    uxVisual: "/images/bridge_ui.png",
-    outcomesVisual: '/images/bridge_outcomes.png',
-    outcomesVisual2: '/images/bridge_outcomes2.png',
-    processVisual: '/images/bridge_process.png',
-    overviewVisual: '/images/bridge_overview.png',
     featured: false
   },
 
-  // --- Additional portfolio projects (site) ---
   juliet_wherefore: {
     title: 'Wherefore Art Thou, Juliet?',
     link: 'https://storyversenyc.com/',
@@ -237,9 +302,7 @@ export const projects: Record<string, Project> = {
     featured: false
   },
 
-
-
-internal_ops_ford: {
+  internal_ops_ford: {
     title: 'Internal Ops UX — Ford Foundation',
     subtitle: 'Enterprise Knowledge Discovery',
     img: '/images/ford_ops.png',
@@ -267,7 +330,6 @@ internal_ops_ford: {
     featured: false
   },
 
-    // --- Grad portfolio (playful experiments & R&D) ---
   grad_labs: {
     title: 'Creative Labs',
     img: '/images/creative_labs.png',
@@ -285,5 +347,8 @@ internal_ops_ford: {
     featured: false
   },
 };
+
+/** Strips inline [label](/path) link markup down to its label, for plain-text contexts like cards. */
+export const plainCopy = (text: string) => text.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
 
 export const allTags = Array.from(new Set(Object.values(projects).flatMap(p => p.tags))).sort();
