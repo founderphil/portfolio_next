@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import ProjectCover from '@/components/ProjectCover';
 import { ArrowLeft, Target, Layers, Zap, ExternalLink, Layout } from 'lucide-react';
 import type { projects } from '@/data/projects';
 
@@ -121,11 +122,7 @@ export default function ProjectPageClient({ project, slug }: Props) {
               src={project.featuredVideo}
             />
           ) : (
-            <img
-              src={project.img}
-              alt={project.title}
-              className="w-full h-full object-cover opacity-80 grayscale hover:grayscale-0 transition-all duration-700"
-            />
+            <ProjectCover project={project} className="w-full h-full object-cover opacity-80 grayscale hover:grayscale-0 transition-all duration-700" />
           )}
 
           {/* Overlay Tech Pattern */}

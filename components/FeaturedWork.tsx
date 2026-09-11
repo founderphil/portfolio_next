@@ -1,4 +1,5 @@
 import { plainCopy } from '@/data/projects';
+import ProjectCover from '@/components/ProjectCover';
 import React from "react";
 
 export default function FeaturedWork({ featured = [] }: { featured?: any[] }) {
@@ -12,7 +13,7 @@ export default function FeaturedWork({ featured = [] }: { featured?: any[] }) {
         {featured.map((p)=> (
           <a key={p.slug} href={`/work/${p.slug}`} className="group block overflow-hidden border border-neutral-900 rounded-2xl hover:border-neutral-700 transition">
             <div className="aspect-[16/10] bg-neutral-900 overflow-hidden">
-              <img src={p.img} alt={p.title} className="w-full h-full object-cover group-hover:scale-[1.02] transition" />
+              <ProjectCover project={p} className="w-full h-full object-cover group-hover:scale-[1.02] transition" />
             </div>
             <div className="p-4 space-y-2">
               <h3 className="text-lg font-medium">{p.title}</h3>

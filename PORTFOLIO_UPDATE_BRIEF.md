@@ -23,8 +23,6 @@ Two files are in the repo root alongside this brief:
 - Delete `projects_additions.ts` from the repo once merged.
 
 **TODO(phil) — assets needed:**
-- `/images/agentic_briefing.png` — re-created abstraction for the NDA client card. Currently falling back to `/images/placeholder.svg`.
-- `/images/agentic_briefing_ui.png` — abstracted wireframe, no real UI. Reference commented out in `data/projects.ts`.
 - `/images/emily_was_here_ui.png` — app screenshot. Reference commented out. `/images/bridge_ui.png` is the old ChalkNotes-era UI if it still applies.
 - `/video/aether_teaser.mp4` — optional teaser cut. Reference commented out.
 - Pre-existing broken refs, unrelated to this merge: `/images/ford_ops_process.png` (renders broken on `work/internal_ops_ford`). Also `/images/MAIA_overview.png`, `/images/FAIRYLAND_overview.png`, `/images/esg_overview.png` — these are `overviewVisual`, which no component reads, so they are harmless dead data.
@@ -32,7 +30,7 @@ Two files are in the repo root alongside this brief:
 
 **TODO(phil) — unresolved, found while working:**
 - **I overwrote your untracked `public/images/aether.jpg`** (the CRT-monitor-with-lips shot, 1500x875, 156K) when generating assets, before renaming my file to `aether_orb.jpg`. It was untracked so git had no copy, and it is not in Trash or the build cache. Only a 600px reconstruction survives, in the session scratchpad. The original is presumably still in your Photos or the Squarespace media library. Note: `/Users/phil/big_files/storyverse_web/public/images/` holds two high-res AETHER originals (`aether_digital.jpg`, 4275x3288, the arcade cabinet / Fragment Chamber CRT; and `aether_performance.jpg`, 3214x2310) — neither is the overwritten shot, but both are better sources than the compressed Squarespace crops currently in use.
-- **NDA decision outstanding:** `boardlens.ai` has two real product screenshots and named Siemens Energy / Tallence testimonials. The `agentic_briefing` copy says the client is under NDA and visuals are re-created abstractions. I did not pull anything from that site. Confirm whether the NDA framing still holds.
+- Agentic briefing visuals supplied from `portfolioPICS/` (git-ignored): `agentic_briefing.jpg` (card), `agentic_briefing_ui.png` (lens grid), `agentic_briefing_arch.png` (lens structure diagram). Overview NDA sentence updated to match. Most other screenshots in that folder contain a real client's board financials and must stay unpublished.
 - `public/Phil_Olarte_AI_Product_Resume.pdf` is now unreferenced by any page. Delete it or link it.
 - Contact addresses are inconsistent: home CTA is now `me@phillipolarte.com`, but `app/contact/page.tsx` uses `phil@olartedesign.com` and `app/thelab/page.tsx` / `app/anthropic/page.tsx` use `phil@storyversenyc.com`. Only the home page was in scope.
 - Hero now reads "technical depth (M.S. in Emerging Technologies (AI/ML & HCI), NYU)" — nested parentheses, per the brief's literal wording. Reword if it bothers you.

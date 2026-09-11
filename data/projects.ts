@@ -6,6 +6,7 @@ export type Project = {
   subtitle?: string;
   link?: string;
   img: string;
+  animatedCover?: 'boardlens-timeline'; // animated canvas drawn over img
   tags: string[];
   overview: string;
   role: string;
@@ -39,10 +40,10 @@ export const projects: Record<string, Project> = {
   agentic_briefing: {
     title: 'Agentic Board Intelligence',
     subtitle: 'Enterprise Decision Support · Under NDA',
-    // TODO(phil): supply a re-created abstraction for the NDA client; using neutral placeholder for now.
-    img: '/images/placeholder.svg',
+    img: '/images/agentic_briefing.jpg',
+    animatedCover: 'boardlens-timeline',
     tags: ['Agentic AI', 'Human-AI Interaction', 'Trust & Transparency', 'Mixed-Initiative UX', 'Enterprise UX'],
-    overview: `An agentic decision-support product that reads dense board decks and surfaces the story executives need in order to act. I led the human-AI interaction layer through five UI iterations, from a text-heavy first version to a grounded, chunked, collaborative interface. Client is under NDA: company name, data, and production screens are withheld, and the visuals here are re-created abstractions.`,
+    overview: `An agentic decision-support product that reads dense board decks and surfaces the story executives need in order to act. I led the human-AI interaction layer through five UI iterations, from a text-heavy first version to a grounded, chunked, collaborative interface. Client is under NDA: company name and client data are withheld, and screens are cropped to remove identifying details.`,
     role: `AI Interaction Design Lead (contract, Jan–May 2026). Owned the interaction model between executives and the agent: research, information architecture, trust cues, transparency patterns, and five rounds of UI iteration driven by founder and user feedback. Also designed the investor deck and marketing site.`,
     outcomes: [
       'Replaced a dense, text-heavy results view with an organized layout that reveals findings in chunks, so executives read the story first and the evidence on demand.',
@@ -66,8 +67,8 @@ export const projects: Record<string, Project> = {
     Across five iterations the interface moved from prose to structure. Findings are revealed in chunks, ordered by the story they tell, with the underlying facts one layer down and their source passages one layer below that. I introduced trust cues at each level: a confidence score on every extracted fact from the moment of upload, source attribution on every claim, and an explicit path to clarify anything that looked off. The navigation was rebuilt to be mutually exclusive and collectively exhaustive, so the same finding never appeared under two headings.
 
     The last major addition was a side-panel collaborator. Earlier versions treated chat as a way to ask questions about the results. I redesigned it as a way to change them: an executive could say "treat the Q3 forecast as provisional" and watch the results update. That shifted the product from a chatbot with a report attached to a mixed-initiative tool where the human and the agent revise the same artifact together.`,
-    // TODO(phil): supply /images/agentic_briefing_ui.png (abstracted wireframe, no real UI).
-    // uxVisual: '/images/agentic_briefing_ui.png',
+    uxVisual: '/images/agentic_briefing_ui.png',
+    processVisual: '/images/agentic_briefing_arch.png',
     featured: true,
   },
 
@@ -204,7 +205,7 @@ export const projects: Record<string, Project> = {
 
     The hive mind closed the loop. By the end of a performance, the network held a record of every encounter each guest had chosen. The AI read that record and wrote them a story that was theirs, not a template with their name inserted. The design challenge was less the generation itself than the constraints around it: the story had to stay inside the world's lore, reflect what the guest actually did, and hold up to the guest who had just lived it.`,
     uxVisual: '/images/aether_ui.jpg',
-    featured: false,
+    featured: true,
     // TODO(phil): supply /video/aether_teaser.mp4 if you have a teaser cut.
     // featuredVideo: '/video/aether_teaser.mp4',
   },
@@ -231,7 +232,7 @@ export const projects: Record<string, Project> = {
       'AI chat UI tied to lore.',
       'AI-powered community engagement awareness',
     ],
-    featured: false,
+    featured: true,
     designDesc: `Designing for narrative cohesion across mediums required a unified visual language and interaction patterns. I developed a modular UI system that adapted to both web and mobile contexts, ensuring users felt continuity whether they were engaging with the story online or in-person. The use of consistent typography, color schemes, and iconography reinforced brand identity while facilitating intuitive navigation through complex narrative layers.
     
     The ticketing flow was designed to be more than just a transaction; it was an entry point into the story. By integrating narrative elements into the purchase process, users were 'primed' for the experience ahead, increasing engagement and anticipation.

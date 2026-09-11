@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import ProjectCover from '@/components/ProjectCover';
 import type { Project } from '@/data/projects';
 import { plainCopy } from '@/data/projects';
 
@@ -13,11 +14,7 @@ export default function ProjectCard({ slug, project }: ProjectCardProps) {
   return (
     <Link href={href} className="group block border border-neutral-800 rounded-xl overflow-hidden hover:border-neutral-600 transition">
       <div className="aspect-[16/10] bg-neutral-900 overflow-hidden">
-        <img
-          src={project.img}
-          alt={project.title}
-          className="w-full h-full object-cover group-hover:scale-[1.02] transition"
-        />
+        <ProjectCover project={project} className="w-full h-full object-cover group-hover:scale-[1.02] transition" />
       </div>
       <div className="p-4 space-y-1">
         <h3 className="text-lg font-medium">{project.title}</h3>
