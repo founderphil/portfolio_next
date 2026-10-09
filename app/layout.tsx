@@ -3,8 +3,8 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 const siteUrl = 'https://phillipolarte.com';
-const siteTitle = 'Phil Olarte · Product Design · AI, XR & Emerging Technology';
-const siteDescription = 'Portfolio site of Phillip Olarte. Product design across AI, XR, and data systems.';
+const siteTitle = 'Phillip Olarte · Product Designer & Design Engineer';
+const siteDescription = 'Phillip Olarte is a product designer and design engineer leading innovation across AI, enterprise software, and immersive live experiences—from research and strategy to working products.';
 const shareImage = '/images/olarte_headshot.jpeg';
 
 export const metadata: Metadata = {

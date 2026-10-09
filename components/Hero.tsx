@@ -10,12 +10,12 @@ export default function Hero() {
             Product Leadership · AI · Generative Interface Design · Storytelling
           </p>
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.02]">
-            Product designer for the AI era.
+            Product Designer &amp; Design Engineer for the AI era.
           </h1>
           <p className="text-base md:text-lg text-neutral-300 max-w-4xl">
-             I design, lead and ship AI-native products that turn complex probabilistic systems into intuitive tools and narratives.
-             I combine technical depth (M.S. in Emerging Technologies (AI/ML & HCI), NYU), product strategy, and storytelling to build software that is intuitive, human, 
-             trustworthy, visually compelling, and commercially meaningful. I’ve built the models and designed the interfaces. That combination is what I bring.
+            I lead innovation across AI, enterprise software, and immersive live experiences—from research and strategy to working products.
+            I’m an inventor at heart: I find new uses for technology, test what is feasible, and design and build the interactions that make it useful.
+            I bring 15 years of experience and an M.S. in Emerging Technologies (AI/ML & HCI) from NYU Tandon.
           </p>         
           
           {/* 

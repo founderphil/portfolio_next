@@ -84,6 +84,15 @@ export default function Approach() {
             that scale not just technically, but organizationally.
           </p>
           <p className="text-base md:text-lg text-neutral-300 max-w-4xl">
+            Innovation connects this work across industries. At TAU Innovations, field research
+            in Southeast Asia and Africa explored productivity and item provenance across supply
+            chains. At Ford, I helped grantmakers discover themes across institutional knowledge;
+            at BSR, I led a team turning ESG research into an enterprise platform. Today, I connect
+            sensors, software, and AI with live interaction at Storyverse. Across these settings,
+            I look for new applications for technology, test what is feasible, and bring the right
+            people together to make it work.
+          </p>
+          <p className="text-base md:text-lg text-neutral-300 max-w-4xl">
             I’m looking for a team that understands the next generation of
             products won’t be defined by interfaces alone, but by how
             intelligently they respond, adapt, and earn trust over time. If

@@ -7,18 +7,28 @@ export type Profile = {
 
 export const profile: Profile = {
   highlights: [
-    "Senior digital product leader with 10+ years of experience spanning product design, UX, and technical implementation.",
-    "Blends AI, systems thinking, and human-centered design to ship products that are both opinionated and trustworthy.",
-    "Brings together research, strategy, and execution — comfortable with ambiguity, zero-to-one work, and cross-functional leadership.",
+    "Product and innovation leader with 15 years of experience connecting enterprise software, supply-chain operations, AI, and immersive live interaction.",
+    "Combines field research, product strategy, design engineering, and cross-functional leadership to discover new applications for technology and bring them into use.",
+    "M.S. in Emerging Technologies from NYU Tandon, 2025. Capstone MAIA explored locally hosted embodied AI, privacy, and trust; that interest carried into AI interaction design at BoardLens.ai.",
+    "Produced AETHER with a 28-person team and integrated interactive technology into an immersive off-Broadway production. Led a 10-person product, design, and engineering team at BSR.",
+    "Field research at TAU Innovations in Southeast Asia and Africa explored productivity, item provenance, and supply-chain information. Ford Foundation work increased knowledge-tool adoption tenfold.",
   ],
   coreExpertise: [
-    "AI product design and conversational UX (LLMs, multimodal, real-time systems)",
-    "End-to-end product design from discovery and framing through launch and iteration",
-    "Systems, service, and interaction design across physical and digital touchpoints",
-    "Designing for business outcomes: engagement, efficiency, and long-term value",
-    "Partnering closely with engineering, PM, and research to ship complex products",
+    "Innovation leadership, opportunity discovery, and new applications for technology",
+    "Product strategy, user research, technical feasibility, and hands-on prototyping",
+    "Design engineering across digital interfaces, sensor devices, and physical interaction",
+    "Trustworthy human-AI interaction, local inference, and multimodal experiences",
+    "Cross-functional team leadership from discovery through delivery and adoption",
   ],
   skillsKeywords: [
+    "innovation leadership",
+    "new ventures",
+    "opportunity discovery",
+    "technical feasibility",
+    "design engineering",
+    "provenance",
+    "sensors",
+    "physical interaction",
     // Product & UX
     "product design",
     "ux design",
@@ -101,5 +111,5 @@ export const profile: Profile = {
     "systems thinking",
   ],
   whatImLookingFor:
-    "I’m looking for a lead product design role on a team building the next generation of AI-augmented products — where thoughtful interaction design, strong product thinking, and responsible AI are at the core of the work.",
+    "I’m looking for a stable, full-time role in product and innovation leadership, product design, or design engineering, helping a team discover new applications for its capabilities and develop them into useful products and sustainable offerings.",
 };
