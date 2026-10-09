@@ -61,26 +61,26 @@ export default function Approach() {
       <div className="grid gap-10 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)] lg:items-start">
         <div className="space-y-6">
           <p className="text-base md:text-lg text-neutral-300 max-w-4xl">
-            Design used to be about screens.
+            My work starts with people and the systems around them.
             <br /><br/>
-            Now it’s about behavior, systems, and decisions made by machines
-            alongside humans.
+            I explore where technology can improve a workflow, reveal new information,
+            or make an experience possible.
             <br /><br/>
-            We moved beyond static screens and into probabilistic systems that need to be trustworthy.
+            That can mean an enterprise interface, a locally hosted AI character, or a physical object in a live production.
           </p>
           <p className="text-base md:text-lg text-neutral-300 max-w-4xl">
-            I am a lead product designer with an M.S. in Emerging Technologies
-            (AI/ML & HCI) from NYU, and my work lives in that shift.
+            I am a product designer and design engineer with an M.S. in Emerging Technologies
+            from NYU Tandon, focused on AI and human-computer interaction.
             I’ve studied and built AI models, but more importantly, I’ve
             designed how people interact with these models: how intent is expressed, how
             trust is earned, and how complex systems remain digestible when
             intelligence is no longer deterministic.
           </p>
           <p className="text-base md:text-lg text-neutral-300 max-w-4xl">
-            As a former founder, I also design for reality. I know that great tech dies without adoption.
+            As a founder and product leader, I consider technical feasibility, operating constraints, and adoption alongside the experience.
              I focus on reducing the cognitive load of professional tools and ensuring that innovation 
              connects directly to business value. I care about craft, but I’m equally
-            focused on adoption, leverage, and long-term value - building products
+            focused on adoption, measurable outcomes, and long-term value - building products
             that scale not just technically, but organizationally.
           </p>
           <p className="text-base md:text-lg text-neutral-300 max-w-4xl">

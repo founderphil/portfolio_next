@@ -16,7 +16,7 @@ export default function Header() {
             Phil Olarte
           </span>
           <span className="mt-1 text-xs md:text-sm tracking-wide bg-gradient-to-r from-sky-400 via-emerald-300 to-sky-500 bg-clip-text text-transparent">
-            Product Designer | AI, XR &amp; Emerging Tech
+            Product Designer &amp; Design Engineer | AI, HCI, Emerging Tech
           </span>
         </a>
 

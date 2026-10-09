@@ -74,11 +74,11 @@ export const projects: Record<string, Project> = {
 
   esg_materiality: {
     title: 'ESG Materiality App',
-    subtitle: 'B2B Data Visualization',
+    subtitle: 'Enterprise Product Leadership · ESG Intelligence',
     img: '/images/esg.png',
     tags: ['B2B SaaS', 'Data Viz', 'Complex Workflows', 'Strategy'],
-    overview: `A massive multi-featured business intelligence web app to capture, prioritize, and aggregate ESG topics for the Global 500, modeling enterprise value and environmental impact of today and trajectories over the next decade.`,
-    role: `Lead Product Designer (Head of Product) — research synthesis, information architecture, dashboards, and scenario modeling UX.`,
+    overview: `Led a 10-person product, design, and engineering team to turn complex ESG research into a unified enterprise platform. The product captures, prioritizes, and aggregates findings so consultants and Fortune 500 clients can explore material issues and plan strategy.`,
+    role: `Head of Product, Materiality — led a 10-person product, design, and engineering team; owned research synthesis, information architecture, dashboards, and scenario modeling UX.`,
     outcomes: [
       "Productized a manual consulting service, creating a product that structured internal data.",
       "Unified 5+ disparate data streams into a single 'Materiality Matrix' dashboard.",
@@ -138,11 +138,11 @@ export const projects: Record<string, Project> = {
 
   maia: {
     title: 'The MAIA Experience',
-    subtitle: 'Generative Voice & Audio',
+    subtitle: 'Private Embodied AI · Research & Design Engineering',
     link: 'https://the-maia-experience.framer.ai/',
     img: '/images/maia.png',
     tags: ['GenAI', 'Voice UI', 'Python', 'LLM', 'Latency Masking'],
-    overview: `An intimate, 10‑minute encounter with MAIA — a real‑time AI character that sees, listens, and converses with visitors inside "Prof. Dupin’s study" as onboarding to a larger story world. Think AI meets Disney pre‑show experience - personalized for each guest.`,
+    overview: `My NYU Tandon master’s capstone explored how people experience privacy and trust with embodied AI. I designed and built a locally hosted character that sees, listens, and converses in a physical story world, and evaluated the experience with 37 participants. The project connects AI engineering with interaction design and live experience.`,
     role: `M.S. in Emerging Technologies (AI/ML & HCI), NYU. Lead Designer & Engineer. End‑to‑end experience design, LLM prompt engineering, real‑time voice interaction system architecture, and front‑end development for the interactive installation.`,
       outcomes: [
       "Engineered a local-LLM multi-threaded architecture that reduced latency from 10s to <200ms.",
@@ -303,13 +303,43 @@ export const projects: Record<string, Project> = {
     featured: false
   },
 
+  tau_innovations: {
+    "title": "TAU Innovations / Retovian",
+    "subtitle": "Field Research · Productivity & Provenance",
+    "img": "/images/tau_innovations.svg",
+    "tags": [
+        "Product Leadership",
+        "Innovation",
+        "Field Research",
+        "Supply Chain",
+        "Provenance",
+        "Enterprise UX"
+    ],
+    "overview": "At TAU Investment Management, I led TAU Innovations and developed Retovian, a cross-platform supply-chain transparency product. Fieldwork in Southeast Asia and Africa explored how technology could support productivity and connect item provenance with products across the chain. The work translated operating realities into product decisions for limited connectivity and people with little tablet experience.",
+    "role": "Head of TAU Innovations · Lead Product Designer (2013–2016) — led field research and product development, connecting productivity and provenance needs with practical interfaces and technical constraints.",
+    "why": "How could a supply-chain product help people understand productivity and item provenance while remaining usable in environments with limited connectivity and little prior tablet experience?",
+    "designDesc": "I began with fieldwork in Southeast Asia and Africa to understand how people worked, where information was missing, needs of factory owners, the brands that buy from them thousands of miles away, and how items and their origins could be connected across the supply chain. Productivity and transparency were related questions: useful data had to reflect the work happening on the ground.\n\nThose observations informed Retovian, a cross-platform transparency product. My responsibility was to connect the opportunity with an experience that could work in context, accounting for limited connectivity and users with little tablet experience.\n\nThe innovation was in connecting an operational need, information about provenance, and a feasible product approach. This work established a pattern I still use: investigate the environment, identify a useful application for technology, and shape the product around real operating constraints.",
+    "outcomes": [
+        "Led TAU Innovations and developed Retovian, a cross-platform supply-chain transparency product. A mix of simple manufactuing inputs from workers and sensors turned into advanced factory owner awareness dashboards. Tying production, sensor data and provenance together created a new level of visibility for factory owners and brands.",
+        "Conducted field research in Southeast Asia and Africa on productivity, item provenance, and information needs across the chain.",
+        "Designed for limited connectivity and people with little tablet experience."
+    ],
+    "key_components": [
+        "Field research in Southeast Asia and Africa",
+        "Productivity and information needs",
+        "Item provenance across the supply chain",
+        "Interfaces suited to connectivity and user constraints"
+    ],
+    "featured": true
+},
+
   internal_ops_ford: {
-    title: 'Internal Ops UX — Ford Foundation',
-    subtitle: 'Enterprise Knowledge Discovery',
+    title: 'Knowledge Discovery — Ford Foundation',
+    subtitle: 'Information Management · Digital Transformation · Knowledge Discovery',
     img: '/images/ford_ops.png',
     tags: ['NLP', 'Semantic Search', 'Information Architecture', 'Enterprise BI'],
-    overview: `Modernizing institutional memory. A UX transformation of an 80-year grantmaking archive, applying NLP to turn millions of static documents into a discoverable knowledge engine.`,
-    role: `Lead UX & Research — stakeholder interviews, taxonomy design, search UX, and legacy migration strategy.`,
+    overview: `Helped grantmakers discover themes and relationships across institutional knowledge. Combined research, information architecture, search redesign, and workflow improvements to increase adoption tenfold, and partnered with visiting Google researchers to evaluate machine learning and semantic search.`,
+    role: `Information Management Specialist · Product and UX Design — stakeholder research, information architecture, search redesign, and technology adoption.`,
     why: "Institutional knowledge was trapped in siloed legacy repositories. The challenge was preventing 'organizational amnesia' by transforming 80 years of unstructured PDFs and grant letters into a searchable, semantic database without overwhelming non-technical Program Officers.", 
     outcomes: [
       'Consolidated 4 disparate legacy repositories into a Single Source of Truth for grant history.',

@@ -15,7 +15,7 @@ export default function Hero() {
           <p className="text-base md:text-lg text-neutral-300 max-w-4xl">
             I lead innovation across AI, enterprise software, and immersive live experiences—from research and strategy to working products.
             I’m an inventor at heart: I find new uses for technology, test what is feasible, and design and build the interactions that make it useful.
-            I bring 15 years of experience and an M.S. in Emerging Technologies (AI/ML & HCI) from NYU Tandon.
+            I bring 15 years of experience, have founded four companies, and hold an M.S. in Emerging Technologies from NYU Tandon, with a focus on AI and human-computer interaction.
           </p>         
           
           {/* 
