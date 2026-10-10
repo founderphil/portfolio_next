@@ -185,10 +185,10 @@ export default function ProjectPageClient({ project, slug }: Props) {
             <div className="lg:col-span-1 flex flex-col justify-center">
               <div className="flex items-center gap-2 mb-4 text-purple-400 font-mono text-xs uppercase tracking-widest">
                 <Layers size={14} />
-                System Architecture
+                {project.processLabel || 'System Architecture'}
               </div>
 
-              <h3 className="text-2xl font-bold text-white mb-4">How it Works</h3>
+              <h3 className="text-2xl font-bold text-white mb-4">{project.processTitle || 'How it Works'}</h3>
 
               {/* DYNAMIC TEXT: No longer static boilerplate */}
               <p className="text-gray-400 text-sm leading-relaxed mb-8">
@@ -220,13 +220,13 @@ export default function ProjectPageClient({ project, slug }: Props) {
             >
               <img
                 src={project.processVisual}
-                alt="System Architecture Diagram"
+                alt={project.processAlt || "System Architecture Diagram"}
                 className="w-full h-auto opacity-90 invert-[.05] group-hover:opacity-100 transition-opacity cursor-zoom-in"
               />
 
               {/* Technical Caption */}
               <div className="p-3 border-t border-gray-800 font-mono text-[10px] text-gray-500 flex justify-between uppercase tracking-wider">
-                <span>Fig 1.0 — Data Flow</span>
+                <span>{project.processCaption || 'Fig 1.0 — Data Flow'}</span>
               </div>
             </button>
           </div>

@@ -17,6 +17,10 @@ export type Project = {
   outcomesVisual?: string;
   outcomesVisual2?: string;
   processVisual?: string;
+  processLabel?: string;
+  processTitle?: string;
+  processCaption?: string;
+  processAlt?: string;
   overviewVisual?: string;
   featuredVideo?: string;
   architectureDesc?: string;
@@ -416,6 +420,12 @@ export const projects: Record<string, Project> = {
       "Inventory, orders, and provenance planning",
       "Field research and on-site development"
     ],
+    processVisual: '/images/tau_innovations.svg',
+    processLabel: 'Innovation pathways',
+    processTitle: 'From discovery to provenance',
+    processCaption: 'Fig 1.0 — Innovation process',
+    processAlt: 'Industry innovation discovery leads to field research, branches into location-tagged live sensor audit data, blockchain contracts, and an operational transparency platform, then converges on field testing and item provenance.',
+    architectureDesc: 'Industry innovation discovery guided field research into factory operations and supply-chain information needs. The research informed three innovation pathways: location-tagged live sensor audit data, blockchain contracts, and an operational transparency platform. The pathways converged on field testing and the goal of connecting item provenance across the chain. Retovian’s operational platform was deployed; sensor and blockchain work remained exploratory.',
     "featured": true,
     decisions: [
       {

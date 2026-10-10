@@ -1,1 +1,50 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-labelledby="title desc"><title id="title">TAU Innovations and Retovian</title><desc id="desc">Conceptual cover connecting field research, productivity, and provenance. Not a product screenshot.</desc><rect width="1200" height="750" fill="#0b1520"/><g fill="none" stroke="#427d8c" stroke-width="3"><path d="M160 435H1040"/><circle cx="210" cy="435" r="32"/><circle cx="600" cy="435" r="32"/><circle cx="990" cy="435" r="32"/></g><g fill="#eef4f6" font-family="Arial,sans-serif"><text x="80" y="120" font-size="22" letter-spacing="4">TAU INNOVATIONS</text><text x="80" y="245" font-size="76">Retovian</text><text x="80" y="310" font-size="30">From field insight to a supply-chain product</text><g font-size="25" text-anchor="middle"><text x="210" y="525">Field research</text><text x="600" y="525">Productivity</text><text x="990" y="525">Provenance</text></g><text x="80" y="680" font-size="18" fill="#91a6af">Conceptual illustration</text></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 860" role="img" aria-labelledby="title desc">
+  <title id="title">TAU Innovations — discovery to item provenance</title>
+  <desc id="desc">Industry innovation discovery flows into field research, then splits into three innovation pathways: location-tagged live sensor audit data, blockchain contracts, and an operational transparency platform. All three converge on field testing, then move into item provenance. This is a conceptual process diagram.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M1 1L9 5L1 9" fill="none" stroke="#427d8c" stroke-width="1.5"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="860" fill="#0b1520"/>
+  <g fill="#eef4f6" font-family="Arial,sans-serif">
+    <text x="80" y="120" font-size="22" letter-spacing="4">TAU INNOVATIONS</text>
+    <text x="80" y="245" font-size="76">Retovian</text>
+    <text x="80" y="310" font-size="30">From industry discovery to item provenance</text>
+  </g>
+  <g fill="none" stroke="#427d8c" stroke-width="3" stroke-linejoin="round">
+    <path d="M158 550H322" marker-end="url(#arrow)"/>
+    <path d="M378 550H470V420H612" marker-end="url(#arrow)"/>
+    <path d="M470 550H612" marker-end="url(#arrow)"/>
+    <path d="M470 550V680H612" marker-end="url(#arrow)"/>
+    <path d="M668 420H800V550H872" marker-end="url(#arrow)"/>
+    <path d="M668 550H800"/>
+    <path d="M668 680H800V550"/>
+    <path d="M928 550H1062" marker-end="url(#arrow)"/>
+    <circle cx="130" cy="550" r="28"/>
+    <circle cx="350" cy="550" r="28"/>
+    <circle cx="640" cy="420" r="28"/>
+    <circle cx="640" cy="550" r="28"/>
+    <circle cx="640" cy="680" r="28"/>
+    <circle cx="900" cy="550" r="28"/>
+    <circle cx="1090" cy="550" r="28"/>
+  </g>
+  <g fill="#eef4f6" font-family="Arial,sans-serif" font-size="23" text-anchor="middle">
+    <text x="130" y="604">
+      <tspan x="130">Industry innovation</tspan><tspan x="130" dy="29">discovery</tspan>
+    </text>
+    <text x="350" y="604">Field research</text>
+    <text x="640" y="474">
+      <tspan x="640">Location-tagged</tspan><tspan x="640" dy="29">live sensor audit data</tspan>
+    </text>
+    <text x="640" y="604">Blockchain contracts</text>
+    <text x="640" y="734">
+      <tspan x="640">Operational</tspan><tspan x="640" dy="29">transparency platform</tspan>
+    </text>
+    <text x="900" y="604">Field testing</text>
+    <text x="1090" y="604">
+      <tspan x="1090">Item</tspan><tspan x="1090" dy="29">provenance</tspan>
+    </text>
+  </g>
+  <text x="80" y="820" fill="#91a6af" font-family="Arial,sans-serif" font-size="18">Conceptual illustration</text>
+</svg>
