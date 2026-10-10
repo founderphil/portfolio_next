@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import ProjectCover from '@/components/ProjectCover';
 import { ArrowLeft, Target, Layers, Zap, ExternalLink, Layout } from 'lucide-react';
@@ -37,6 +37,15 @@ export default function ProjectPageClient({ project, slug }: Props) {
 
   const closeLightbox = () => setLightboxSrc(null);
 
+  useEffect(() => {
+    if (!lightboxSrc) return;
+    const handleKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setLightboxSrc(null);
+    };
+    window.addEventListener('keydown', handleKey);
+    return () => window.removeEventListener('keydown', handleKey);
+  }, [lightboxSrc]);
+
   return (
     <main className="min-h-screen bg-[#050505] text-gray-200 font-sans selection:bg-purple-500/30">
       {/* GLOBAL NAV (Back) */}
@@ -68,7 +77,7 @@ export default function ProjectPageClient({ project, slug }: Props) {
             {/* Row 1: Role & Domain */}
             <div className="bg-[#0a0a0a] p-4">
               <span className="block text-gray-500 text-xs mb-1">ROLE</span>
-              {project.role.split('—')[0]}
+              {project.roleTitle || project.role.split('—')[0].split('. ')[0]}
             </div>
             <div className="bg-[#0a0a0a] p-4">
               <span className="block text-gray-500 text-xs mb-1">DOMAIN</span>
@@ -141,6 +150,33 @@ export default function ProjectPageClient({ project, slug }: Props) {
         </div>
       </section>
 
+      <section className="py-16 md:py-24 px-6 lg:px-20 border-b border-gray-800">
+        <div className="max-w-6xl mx-auto grid gap-8 lg:grid-cols-[1fr_2fr]">
+          <h2 className="text-2xl font-semibold text-white">My responsibility</h2>
+          <p className="text-base md:text-lg text-gray-300 leading-relaxed">{renderCopy(project.role)}</p>
+        </div>
+      </section>
+
+      {project.decisions && project.decisions.length > 0 && (
+        <section className="py-16 md:py-24 px-6 lg:px-20 border-b border-gray-800 bg-[#080808]">
+          <div className="max-w-6xl mx-auto grid gap-10 lg:grid-cols-[1fr_2fr]">
+            <div>
+              <p className="text-xs font-mono uppercase tracking-widest text-purple-400 mb-3">Judgment &amp; tradeoffs</p>
+              <h2 className="text-3xl font-semibold text-white">Decisions and why</h2>
+            </div>
+            <ol className="space-y-10">
+              {project.decisions.map((decision, i) => (
+                <li key={decision.title} className="border-t border-gray-800 pt-6">
+                  <p className="text-xs font-mono text-purple-400 mb-3">{String(i + 1).padStart(2, '0')}</p>
+                  <h3 className="text-xl md:text-2xl text-white mb-4">{decision.title}</h3>
+                  <p className="text-base md:text-lg text-gray-300 leading-relaxed">{renderCopy(decision.body)}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+      )}
+
       {/* 3. SYSTEM ARCHITECTURE (Refined) */}
       {project.processVisual && (
         <section className="py-24 px-6 lg:px-20 border-b border-gray-800">
@@ -198,18 +234,18 @@ export default function ProjectPageClient({ project, slug }: Props) {
       )}
 
       {/* 4. THE PRODUCT SOLUTION (UX/UI Layer) */}
-      <section className="py-24 px-6 lg:px-20 border-b border-gray-800 bg-[#080808]">
+      {(project.designDesc || hasUxVisual) && <section className="py-24 px-6 lg:px-20 border-b border-gray-800 bg-[#080808]">
         <div className="max-w-6xl mx-auto grid gap-16">
           
           {/* Left: Design Narrative */}
           <div>
             <div className="flex items-center gap-3 mb-6 text-blue-400 font-mono text-xs uppercase tracking-widest">
               <Layout size={14} /> 
-              UX & Interaction Layer
+              Design &amp; Implementation
             </div>
             
             <h3 className="text-3xl font-bold text-white mb-6">
-              Designing the Interface
+              Shaping the Experience
             </h3>
             
             <p className="text-lg text-gray-400 whitespace-pre-line leading-relaxed mb-8">
@@ -240,7 +276,30 @@ export default function ProjectPageClient({ project, slug }: Props) {
           )}
 
         </div>
-      </section>
+      </section>}
+
+      {project.gallery && project.gallery.length > 0 && (
+        <section className="py-16 md:py-24 px-6 lg:px-20 border-b border-gray-800" aria-label="Project photographs and artifacts">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl font-semibold text-white mb-4">In practice</h2>
+            <p className="text-gray-400 mb-10">Photographs and artifacts from the work. Select a photograph to view it in full.</p>
+            <div className="grid gap-x-8 gap-y-12 md:grid-cols-2">
+              {project.gallery.map((item) => (
+                <figure key={item.src} className="min-w-0">
+                  {item.type === 'image' ? (
+                    <button type="button" onClick={() => openLightbox(item.src)} aria-label={`Expand photograph: ${item.caption}`} className="block w-full bg-[#0a0a0a] border border-gray-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-purple-400">
+                      <img src={item.src} alt={item.caption} loading="lazy" className="w-full aspect-[4/3] object-contain cursor-zoom-in" />
+                    </button>
+                  ) : (
+                    <video src={item.src} controls playsInline preload="metadata" className="w-full" />
+                  )}
+                  <figcaption className="mt-4 text-sm text-gray-300 leading-relaxed">{item.caption}</figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* 5. OUTCOMES & IMPACT */}
       <section className={`${hasOutcomeVisuals ? 'grid lg:grid-cols-2' : ''} border-b border-gray-800`}>
@@ -304,6 +363,7 @@ export default function ProjectPageClient({ project, slug }: Props) {
       {/* Lightbox Overlay */}
       {lightboxSrc && (
         <div
+          role="dialog" aria-modal="true" aria-label="Expanded project photograph"
           className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-6"
           onClick={closeLightbox}
         >
