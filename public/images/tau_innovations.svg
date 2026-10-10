@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 860" role="img" aria-labelledby="title desc">
   <title id="title">TAU Innovations — discovery to item provenance</title>
-  <desc id="desc">Industry innovation discovery flows into field research, then splits into three innovation pathways: location-tagged live sensor audit data, blockchain contracts, and an operational transparency platform. All three converge on field testing, then move into item provenance. This is a conceptual process diagram.</desc>
+  <desc id="desc">Industry innovation discovery flows into field research, then splits into three innovation pathways: location-tagged live sensor audit data, blockchain contracts, and an operational transparency platform. All three converge on field testing, then move into singular item ESG impact and provenance. This is a conceptual process diagram.</desc>
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M1 1L9 5L1 9" fill="none" stroke="#427d8c" stroke-width="1.5"/>
@@ -34,16 +34,28 @@
       <tspan x="130">Industry innovation</tspan><tspan x="130" dy="29">discovery</tspan>
     </text>
     <text x="350" y="604">Field research</text>
-    <text x="640" y="474">
-      <tspan x="640">Location-tagged</tspan><tspan x="640" dy="29">live sensor audit data</tspan>
-    </text>
-    <text x="640" y="604">Blockchain contracts</text>
-    <text x="640" y="734">
-      <tspan x="640">Operational</tspan><tspan x="640" dy="29">transparency platform</tspan>
-    </text>
+    <g font-size="14" letter-spacing="1" fill="#91a6af">
+      <text x="640" y="466">Innovation 1</text>
+      <text x="640" y="596">Innovation 2</text>
+      <text x="640" y="726">Innovation 3</text>
+    </g>
+    <g stroke="#91a6af" stroke-width="1" opacity="0.55">
+      <path d="M580 472H700"/>
+      <path d="M580 602H700"/>
+      <path d="M580 732H700"/>
+    </g>
+    <g font-size="19">
+      <text x="640" y="492">
+        <tspan x="640">Location-tagged</tspan><tspan x="640" dy="22">live sensor audit data</tspan>
+      </text>
+      <text x="640" y="622">Blockchain contracts</text>
+      <text x="640" y="752">
+        <tspan x="640">Operational</tspan><tspan x="640" dy="22">transparency platform</tspan>
+      </text>
+    </g>
     <text x="900" y="604">Field testing</text>
     <text x="1090" y="604">
-      <tspan x="1090">Item</tspan><tspan x="1090" dy="29">provenance</tspan>
+      <tspan x="1090">Singular item</tspan><tspan x="1090" dy="29">ESG impact</tspan><tspan x="1090" dy="29">+ provenance</tspan>
     </text>
   </g>
   <text x="80" y="820" fill="#91a6af" font-family="Arial,sans-serif" font-size="18">Conceptual illustration</text>
