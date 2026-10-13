@@ -320,7 +320,7 @@ export default function AIHomePage() {
                   <textarea
                     ref={textareaRef}
                     className="max-h-32 min-h-[28px] w-full resize-none bg-transparent px-1 text-base outline-none placeholder:text-sm placeholder:text-neutral-500 sm:text-base"
-                    placeholder="Hello, I'm Phil Bot! What do you want to know about Phil? Ask me about his work with AI, XR, data systems, and more. (Press Enter to send, Shift + Enter for new line)"
+                    placeholder="Hello, I'm Phil Bot built by Phil Olarte to answer questions about Phil Olarte! What do you want to know about Phil? Ask me about his work with AI, XR, data systems, and more. (Press Enter to send, Shift + Enter for new line)"
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     onKeyDown={handleKeyDown}
